@@ -1,0 +1,274 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { neighborhoods } from "../data/neighborhoods";
+
+// Only pass route data, not hardcoded spots
+const hoodsForClient = neighborhoods.map(h => ({
+  name: h.name,
+  nameJp: h.nameJp,
+  description: h.description,
+  vibe: h.vibe,
+  access: h.access,
+  walkable: h.walkable,
+  route: h.route,
+  returnRoute: h.returnRoute,
+}));
+---
+
+<Layout title="Dia random" activeNav="random">
+  <main class="max-w-lg mx-auto px-4 py-6 space-y-6">
+    <div class="text-center">
+      <h1 class="text-2xl font-bold text-zinc-900 dark:text-white">Dia de improvisar</h1>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+        No sabes que hacer? Dale al boton y descubre un barrio
+      </p>
+    </div>
+
+    <div class="flex justify-center">
+      <button
+        id="randomBtn"
+        class="bg-gradient-to-r from-rose-500 to-orange-500 text-white font-bold px-8 py-4 rounded-2xl text-lg shadow-lg hover:shadow-xl active:scale-95 transition-all"
+      >
+        🎲 Barrio aleatorio
+      </button>
+    </div>
+
+    <!-- Loading -->
+    <div id="loading" class="hidden text-center py-8">
+      <div class="inline-block w-8 h-8 border-4 border-zinc-200 border-t-rose-500 rounded-full animate-spin"></div>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-3">Buscando sitios reales en Google Maps...</p>
+    </div>
+
+    <!-- Resultado -->
+    <div id="result" class="hidden space-y-4">
+      <div id="hood-header" class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+        <div class="bg-gradient-to-r from-fuchsia-500 to-violet-600 px-4 py-4 text-center">
+          <h2 id="hood-name" class="text-white font-bold text-xl"></h2>
+          <p id="hood-name-jp" class="text-white/70 text-sm mt-0.5"></p>
+        </div>
+        <div class="px-4 py-3 space-y-2">
+          <p id="hood-desc" class="text-sm text-zinc-700 dark:text-zinc-300"></p>
+          <div class="flex flex-wrap gap-2">
+            <span id="hood-vibe" class="text-[0.65rem] font-bold px-2 py-0.5 rounded-full bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-900/50 dark:text-fuchsia-300"></span>
+            <span id="hood-walkable" class="text-[0.65rem] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300"></span>
+          </div>
+          <div id="hood-access" class="flex items-center gap-1.5 mt-1">
+            <span class="text-sm">🚃</span>
+            <span class="text-xs text-zinc-500 dark:text-zinc-400"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="route-go" class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-3"></div>
+      <div id="spots-container"></div>
+      <div id="route-back" class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-3"></div>
+
+      <a id="maps-link" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl shadow hover:bg-blue-600 transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Abrir barrio en Google Maps
+      </a>
+    </div>
+  </main>
+</Layout>
+
+<script define:vars={{ hoodsForClient }}>
+  const LINE_COLORS = {
+    "Yamanote": "#9ACD32", "Saikyō": "#00B261", "Keihin-Tōhoku": "#00B2E5",
+    "Takasaki": "#F68B1E", "Utsunomiya": "#F68B1E", "Chūō-Sōbu": "#FFD400",
+    "Chūō": "#F15A22", "Yokosuka": "#0068B7", "Shonan-Shinjuku": "#E21F26",
+    "Skyliner": "#003894", "Keisei": "#003894", "Tōyoko": "#DA0442",
+    "Ōimachi": "#F18C43", "Den-en-toshi": "#00A23B", "TOBU": "#0F1E72",
+    "Yūrakuchō": "#C1A470", "Hibiya": "#B5B5AC", "Chiyoda": "#00A650",
+    "Hanzōmon": "#8B76D0", "Namboku": "#00ADA0", "Ōedo": "#B6007A",
+    "Rinkai": "#00A4DB", "Odakyu": "#1E90FF", "Ikegami": "#DE318D",
+    "Kanamachi": "#003894",
+  };
+
+  function getLineColor(name) {
+    for (const [key, color] of Object.entries(LINE_COLORS)) {
+      if (name.includes(key)) return color;
+    }
+    return "#71717A";
+  }
+
+  function shortLine(name) {
+    return name.replace(/^JR /, "").replace(/^Metro /, "").replace(/^Tokyu /, "").replace(/^Keisei /, "");
+  }
+
+  function renderRoute(steps, label, containerId) {
+    const el = document.getElementById(containerId);
+    const isDark = document.documentElement.classList.contains("dark");
+    const dotBg = isDark ? "rgb(24 24 27)" : "white";
+
+    // Calculate total cost
+    const totalYen = steps.reduce((sum, s) => {
+      if (!s.cost) return sum;
+      const num = parseInt(s.cost.replace(/[^0-9]/g, ""));
+      return sum + (isNaN(num) ? 0 : num);
+    }, 0);
+
+    let html = `
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          <span class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">${label}</span>
+        </div>
+        ${totalYen > 0 ? `<span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded-full">¥${totalYen.toLocaleString()}</span>` : ""}
+      </div><div class="ml-1">`;
+
+    steps.forEach((step, i) => {
+      const color = getLineColor(step.line);
+      const isFirst = i === 0;
+      const isLast = i === steps.length - 1;
+      const nextColor = !isLast ? getLineColor(steps[i + 1].line) : null;
+
+      if (isFirst) {
+        html += `<div class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full border-[3px] shrink-0 relative z-10" style="border-color:${color};background:${dotBg}"></span><div class="flex flex-col"><span class="text-xs font-bold text-zinc-800 dark:text-zinc-200">${step.from}</span><span class="text-[0.55rem] font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Subir aqui</span></div></div>`;
+      } else {
+        html += `<div class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full shrink-0 relative z-10 flex items-center justify-center" style="background:${color};outline:2px solid ${nextColor||color};outline-offset:1px"><span class="w-1.5 h-1.5 rounded-full bg-white"></span></span><div class="flex flex-col"><span class="text-xs font-bold text-zinc-800 dark:text-zinc-200">${step.from}</span><span class="text-[0.55rem] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">Transbordo</span></div></div>`;
+      }
+
+      const costHtml = step.cost ? `<span class="text-[0.6rem] font-semibold text-emerald-600 dark:text-emerald-400">${step.cost}</span>` : "";
+      html += `<div class="flex gap-2.5"><div class="flex justify-center w-3.5 shrink-0"><div class="w-[3px] rounded-full" style="background:${color}"></div></div><div class="flex flex-wrap items-center gap-1.5 py-1.5"><span class="text-[0.65rem] font-semibold px-2 py-0.5 rounded-full whitespace-nowrap" style="background:${color};color:white">${shortLine(step.line)}</span><span class="text-[0.6rem] text-zinc-400 dark:text-zinc-500">${step.duration}</span>${costHtml}</div></div>`;
+
+      if (isLast) {
+        html += `<div class="flex items-center gap-2.5"><span class="w-3.5 h-3.5 rounded-full shrink-0 relative z-10" style="background:${color}"></span><div class="flex flex-col"><span class="text-xs font-bold text-red-600 dark:text-red-400">${step.to}</span><span class="text-[0.55rem] font-semibold uppercase tracking-wider text-red-500 dark:text-red-400">Bajar aqui</span></div></div>`;
+      }
+    });
+
+    html += `</div>`;
+    el.innerHTML = html;
+  }
+
+  async function searchPlaces(query) {
+    const res = await fetch(`/api/places?q=${encodeURIComponent(query)}`);
+    return await res.json();
+  }
+
+  function classifyType(result) {
+    const t = (result.type || "").toLowerCase();
+    if (t.includes("temple") || t.includes("shrine") || t.includes("santuario") || t.includes("templo")) return "temple";
+    if (t.includes("restaurant") || t.includes("cafe") || t.includes("ramen") || t.includes("bar") || t.includes("bakery") || t.includes("coffee") || t.includes("izakaya") || t.includes("sushi")) return "food";
+    return "attraction";
+  }
+
+  const CAT_CONFIG = {
+    food:       { emoji: "🍜", label: "Donde comer", gradient: "from-orange-500 to-amber-500", name: "text-orange-700 dark:text-orange-300" },
+    temple:     { emoji: "⛩️", label: "Templos y santuarios", gradient: "from-red-500 to-rose-500", name: "text-red-700 dark:text-red-300" },
+    attraction: { emoji: "📍", label: "Que ver y hacer", gradient: "from-sky-500 to-blue-500", name: "text-sky-700 dark:text-sky-300" },
+  };
+
+  function renderSpots(results, container) {
+    // Group by type
+    const groups = { attraction: [], temple: [], food: [] };
+    for (const r of results) {
+      const type = classifyType(r);
+      groups[type].push(r);
+    }
+
+    let html = "";
+    for (const [type, spots] of Object.entries(groups)) {
+      if (spots.length === 0) continue;
+      const cfg = CAT_CONFIG[type];
+
+      html += `<section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+        <div class="bg-gradient-to-r ${cfg.gradient} px-4 py-2.5">
+          <h3 class="text-white font-semibold text-sm">${cfg.emoji} ${cfg.label}</h3>
+        </div><ul class="divide-y divide-zinc-50 dark:divide-zinc-800">`;
+
+      for (const spot of spots) {
+        const link = spot.place_id
+          ? `https://maps.google.com/maps?q=place_id:${spot.place_id}`
+          : (spot.link || "#");
+        const price = spot.price || "";
+        const rating = spot.rating ? `⭐ ${spot.rating}` : "";
+        const reviews = spot.reviews ? `(${spot.reviews})` : "";
+        const typeLabel = spot.type || "";
+
+        html += `<li class="px-4 py-3"><div class="flex items-start gap-2">
+          <span class="mt-0.5 text-sm shrink-0">${cfg.emoji}</span>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-1.5">
+              <a href="${link}" target="_blank" rel="noopener noreferrer" class="font-medium text-sm ${cfg.name} inline-flex items-center gap-1 hover:opacity-75 transition-opacity">
+                ${spot.title}
+                <svg class="w-3 h-3 text-blue-500 dark:text-blue-400 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </a>
+              ${rating ? `<span class="text-[0.6rem] font-bold text-amber-600 dark:text-amber-400">${rating} ${reviews}</span>` : ""}
+              ${price ? `<span class="px-1.5 py-0.5 rounded text-[0.6rem] font-bold bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">${price}</span>` : ""}
+            </div>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">${typeLabel}${spot.address ? " · " + spot.address.split(",").slice(0,2).join(",") : ""}</p>
+          </div>
+        </div></li>`;
+      }
+
+      html += `</ul></section>`;
+    }
+
+    container.innerHTML = html;
+  }
+
+  let lastIndex = -1;
+
+  async function randomize() {
+    const btn = document.getElementById("randomBtn");
+    const loading = document.getElementById("loading");
+    const result = document.getElementById("result");
+
+    // Pick random neighborhood
+    let idx;
+    do { idx = Math.floor(Math.random() * hoodsForClient.length); } while (idx === lastIndex && hoodsForClient.length > 1);
+    lastIndex = idx;
+    const hood = hoodsForClient[idx];
+
+    // Show loading
+    btn.disabled = true;
+    btn.classList.add("opacity-50");
+    result.classList.add("hidden");
+    loading.classList.remove("hidden");
+
+    // Header
+    document.getElementById("hood-name").textContent = hood.name;
+    document.getElementById("hood-name-jp").textContent = hood.nameJp;
+    document.getElementById("hood-desc").textContent = hood.description;
+    document.getElementById("hood-vibe").textContent = hood.vibe;
+    document.getElementById("hood-walkable").textContent = hood.walkable ? "🚶 Todo caminable" : "🚃 Necesita transporte";
+    document.getElementById("hood-access").querySelector("span:last-child").textContent = hood.access;
+    document.getElementById("maps-link").href = `https://maps.google.com/maps?q=${encodeURIComponent(hood.name + " Tokyo Japan")}`;
+
+    // Routes
+    renderRoute(hood.route, "Ruta de ida", "route-go");
+    renderRoute(hood.returnRoute, "Ruta de vuelta", "route-back");
+
+    // Fetch real places from SerpAPI (2 searches: food + attractions/temples)
+    try {
+      const [foodResults, placesResults] = await Promise.all([
+        searchPlaces(`restaurantes baratos ${hood.name} Tokyo`),
+        searchPlaces(`que ver ${hood.name} Tokyo templos parques`),
+      ]);
+
+      const allResults = [...placesResults, ...foodResults];
+      const container = document.getElementById("spots-container");
+      renderSpots(allResults, container);
+    } catch (err) {
+      document.getElementById("spots-container").innerHTML = `
+        <div class="text-center py-6 text-zinc-400">
+          <p>Error al buscar lugares. Intenta de nuevo.</p>
+        </div>`;
+    }
+
+    // Show result, hide loading
+    loading.classList.add("hidden");
+    result.classList.remove("hidden");
+    btn.disabled = false;
+    btn.classList.remove("opacity-50");
+
+    result.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    btn.classList.add("animate-bounce");
+    setTimeout(() => btn.classList.remove("animate-bounce"), 500);
+  }
+
+  document.getElementById("randomBtn").addEventListener("click", randomize);
+</script>

@@ -1,0 +1,42 @@
+---
+import type { FlightSegment } from "../data/itinerary";
+
+interface Props {
+  segments: FlightSegment[];
+  bookingRef: string;
+}
+
+const { segments, bookingRef } = Astro.props;
+---
+
+<div class="bg-gradient-to-br from-indigo-950 to-indigo-900 rounded-2xl p-4 text-white shadow-lg">
+  <div class="flex items-center justify-between mb-3">
+    <div class="flex items-center gap-2">
+      <svg class="w-5 h-5 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+      </svg>
+      <span class="font-semibold text-sm">Vuelo</span>
+    </div>
+    <span class="text-xs bg-indigo-800 px-2 py-1 rounded font-mono">{bookingRef}</span>
+  </div>
+
+  <div class="space-y-3">
+    {segments.map((seg, i) => (
+      <div class="flex items-center gap-3">
+        <div class="text-center min-w-[3rem]">
+          <div class="text-xs text-indigo-300">{seg.fromCode}</div>
+          <div class="text-[0.65rem] text-indigo-400">{seg.departure.split(' ').slice(0, 3).join(' ')}</div>
+        </div>
+        <div class="flex-1 flex items-center">
+          <div class="h-px flex-1 bg-indigo-600"></div>
+          <div class="px-2 text-[0.6rem] text-indigo-300 whitespace-nowrap">{seg.flightNumber} ({seg.duration})</div>
+          <div class="h-px flex-1 bg-indigo-600"></div>
+        </div>
+        <div class="text-center min-w-[3rem]">
+          <div class="text-xs text-indigo-300">{seg.toCode}</div>
+          <div class="text-[0.65rem] text-indigo-400">{seg.arrival.split(' ').slice(0, 3).join(' ')}</div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

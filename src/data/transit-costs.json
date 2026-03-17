@@ -1,0 +1,2894 @@
+{
+  "Narita -> Ueno": {
+    "cost": 2580,
+    "currency": "JPY",
+    "duration": "49 min",
+    "distance": "63.2 km",
+    "line": "Skyliner Skyliner 178 Toll Limited Express Keisei-Ueno (Keisei Electric Railway)",
+    "lines": [
+      "Skyliner Skyliner 178 Toll Limited Express Keisei-Ueno (Keisei Electric Railway)",
+      "Walk"
+    ],
+    "stops": [
+      {
+        "line": "Skyliner Skyliner 178 Toll Limited Express Keisei-Ueno",
+        "operator": "Keisei Electric Railway",
+        "from_stop": "Narita Airport Terminal 2･3 Station",
+        "to_stop": "Keisei Ueno Station"
+      },
+      {
+        "line": "Walk",
+        "operator": null,
+        "from_stop": null,
+        "to_stop": null
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 2580,
+        "currency": "JPY",
+        "duration": "48 min",
+        "distance": "63.2 km",
+        "line": "Skyliner Skyliner 80 Toll Limited Express Keisei-Ueno (Keisei Electric Railway)",
+        "lines": [
+          "Skyliner Skyliner 80 Toll Limited Express Keisei-Ueno (Keisei Electric Railway)",
+          "Walk"
+        ],
+        "stops": [
+          {
+            "line": "Skyliner Skyliner 80 Toll Limited Express Keisei-Ueno",
+            "operator": "Keisei Electric Railway",
+            "from_stop": "Narita Airport Terminal 2･3 Station",
+            "to_stop": "Keisei Ueno Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          }
+        ]
+      },
+      {
+        "cost": 2580,
+        "currency": "JPY",
+        "duration": "49 min",
+        "distance": "63.2 km",
+        "line": "Skyliner Skyliner 182 Toll Limited Express Keisei-Ueno (Keisei Electric Railway)",
+        "lines": [
+          "Skyliner Skyliner 182 Toll Limited Express Keisei-Ueno (Keisei Electric Railway)",
+          "Walk"
+        ],
+        "stops": [
+          {
+            "line": "Skyliner Skyliner 182 Toll Limited Express Keisei-Ueno",
+            "operator": "Keisei Electric Railway",
+            "from_stop": "Narita Airport Terminal 2･3 Station",
+            "to_stop": "Keisei Ueno Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          }
+        ]
+      },
+      {
+        "cost": 1060,
+        "currency": "JPY",
+        "duration": "1 hr 17 min",
+        "distance": "68.5 km",
+        "line": "Keisei Line Limited Express Keisei-Ueno (Keisei Electric Railway)",
+        "lines": [
+          "Keisei Line Limited Express Keisei-Ueno (Keisei Electric Railway)",
+          "Walk"
+        ],
+        "stops": [
+          {
+            "line": "Keisei Line Limited Express Keisei-Ueno",
+            "operator": "Keisei Electric Railway",
+            "from_stop": "Narita Airport Terminal 2･3 Station",
+            "to_stop": "Keisei Ueno Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          }
+        ]
+      },
+      {
+        "cost": 2740,
+        "currency": "JPY",
+        "duration": "49 min",
+        "distance": "63.0 km",
+        "line": "Skyliner Skyliner 182 Toll Limited Express Keisei-Ueno (Keisei Electric Railway)",
+        "lines": [
+          "Skyliner Skyliner 182 Toll Limited Express Keisei-Ueno (Keisei Electric Railway)",
+          "Walk",
+          "Yamanote Line Local For Ueno / Tokyo (Clockwise) (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Skyliner Skyliner 182 Toll Limited Express Keisei-Ueno",
+            "operator": "Keisei Electric Railway",
+            "from_stop": "Narita Airport Terminal 2･3 Station",
+            "to_stop": "Nippori Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Yamanote Line Local For Ueno / Tokyo (Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Nippori Station",
+            "to_stop": "Ueno Station"
+          }
+        ]
+      },
+      {
+        "cost": 3780,
+        "currency": "JPY",
+        "duration": "1 hr 23 min",
+        "distance": "58.5 km",
+        "line": "Narita Airport Limousine Bus Airport Shuttle Bus West Exit of Shinjuku Station (リムジンバス)",
+        "lines": [
+          "Narita Airport Limousine Bus Airport Shuttle Bus West Exit of Shinjuku Station (リムジンバス)",
+          "Walk",
+          "Hibiya Line Local Kita-Senju (東京メトロ)"
+        ],
+        "stops": [
+          {
+            "line": "Narita Airport Limousine Bus Airport Shuttle Bus West Exit of Shinjuku Station",
+            "operator": "リムジンバス",
+            "from_stop": "Narita Airport Terminal 1",
+            "to_stop": "東京シティ・エアターミナル（バス）（成田空港線・上り）"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Hibiya Line Local Kita-Senju",
+            "operator": "東京メトロ",
+            "from_stop": "Ningyōchō Station",
+            "to_stop": "Ueno Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Ueno -> Ukima-Funado": {
+    "cost": 260,
+    "currency": "JPY",
+    "duration": "26 min",
+    "distance": "12.9 km",
+    "line": "Takasaki Line Local Takasaki (East Japan Railway)",
+    "lines": [
+      "Takasaki Line Local Takasaki (East Japan Railway)",
+      "Walk",
+      "Saikyō Line Local Kawagoe (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Takasaki Line Local Takasaki",
+        "operator": "East Japan Railway",
+        "from_stop": "Ueno Station",
+        "to_stop": "Akabane Station"
+      },
+      {
+        "line": "Walk",
+        "operator": null,
+        "from_stop": null,
+        "to_stop": null
+      },
+      {
+        "line": "Saikyō Line Local Kawagoe",
+        "operator": "East Japan Railway",
+        "from_stop": "Akabane Station",
+        "to_stop": "Ukimafunado Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "37 min",
+        "distance": "17.4 km",
+        "line": "Yamanote Line Local For Ikebukuro / Shinjuku (Counter-Clockwise) (East Japan Railway)",
+        "lines": [
+          "Yamanote Line Local For Ikebukuro / Shinjuku (Counter-Clockwise) (East Japan Railway)",
+          "Walk",
+          "Saikyō Line Local Omiya (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Yamanote Line Local For Ikebukuro / Shinjuku (Counter-Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Ikebukuro Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Saikyō Line Local Omiya",
+            "operator": "East Japan Railway",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Ukimafunado Station"
+          }
+        ]
+      },
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "18 min",
+        "distance": "12.9 km",
+        "line": "Takasaki Line Local Takasaki (East Japan Railway)",
+        "lines": [
+          "Takasaki Line Local Takasaki (East Japan Railway)",
+          "Walk",
+          "Saikyō Line Local Omiya (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Takasaki Line Local Takasaki",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akabane Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Saikyō Line Local Omiya",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ukimafunado Station"
+          }
+        ]
+      },
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "21 min",
+        "distance": "12.9 km",
+        "line": "Utsunomiya Line Local Utsunomiya (East Japan Railway)",
+        "lines": [
+          "Utsunomiya Line Local Utsunomiya (East Japan Railway)",
+          "Walk",
+          "Saikyō Line Local Kawagoe (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Utsunomiya Line Local Utsunomiya",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akabane Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Saikyō Line Local Kawagoe",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ukimafunado Station"
+          }
+        ]
+      },
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "24 min",
+        "distance": "12.9 km",
+        "line": "Takasaki Line Local Kagohara (East Japan Railway)",
+        "lines": [
+          "Takasaki Line Local Kagohara (East Japan Railway)",
+          "Walk",
+          "Saikyō Line Local Kawagoe (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Takasaki Line Local Kagohara",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akabane Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Saikyō Line Local Kawagoe",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ukimafunado Station"
+          }
+        ]
+      },
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "23 min",
+        "distance": "12.9 km",
+        "line": "Takasaki Line Local Maebashi (East Japan Railway)",
+        "lines": [
+          "Takasaki Line Local Maebashi (East Japan Railway)",
+          "Walk",
+          "Saikyō Line Local Omiya (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Takasaki Line Local Maebashi",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akabane Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Saikyō Line Local Omiya",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ukimafunado Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Ukima-Funado -> Akabane": {
+    "cost": 200,
+    "currency": "JPY",
+    "duration": "5 min",
+    "distance": "3.3 km",
+    "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+    "lines": [
+      "Saikyō Line Local Shinjuku (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Saikyō Line Local Shinjuku",
+        "operator": "East Japan Railway",
+        "from_stop": "Ukimafunado Station",
+        "to_stop": "Akabane Station"
+      }
+    ],
+    "alternatives": []
+  },
+  "Akabane -> Akihabara": {
+    "cost": 260,
+    "currency": "JPY",
+    "duration": "21 min",
+    "distance": "11.2 km",
+    "line": "Keihin-Tōhoku Line Local Sakuragicho (East Japan Railway)",
+    "lines": [
+      "Keihin-Tōhoku Line Local Sakuragicho (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Keihin-Tōhoku Line Local Sakuragicho",
+        "operator": "East Japan Railway",
+        "from_stop": "Akabane Station",
+        "to_stop": "Akihabara Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "19 min",
+        "distance": "11.3 km",
+        "line": "Takasaki Line Local Kozu (East Japan Railway)",
+        "lines": [
+          "Takasaki Line Local Kozu (East Japan Railway)",
+          "Walk",
+          "Yamanote Line Local For Tokyo / Shinagawa (Clockwise) (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Takasaki Line Local Kozu",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ueno Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Yamanote Line Local For Tokyo / Shinagawa (Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akihabara Station"
+          }
+        ]
+      },
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "20 min",
+        "distance": "11.4 km",
+        "line": "Utsunomiya Line Local Atami (East Japan Railway)",
+        "lines": [
+          "Utsunomiya Line Local Atami (East Japan Railway)",
+          "Walk",
+          "Keihin-Tōhoku Line Local Ofuna (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Utsunomiya Line Local Atami",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ueno Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Keihin-Tōhoku Line Local Ofuna",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akihabara Station"
+          }
+        ]
+      },
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "20 min",
+        "distance": "11.3 km",
+        "line": "Utsunomiya Line Local Atami (East Japan Railway)",
+        "lines": [
+          "Utsunomiya Line Local Atami (East Japan Railway)",
+          "Walk",
+          "Yamanote Line Local For Tokyo / Shinagawa (Clockwise) (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Utsunomiya Line Local Atami",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ueno Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Yamanote Line Local For Tokyo / Shinagawa (Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akihabara Station"
+          }
+        ]
+      },
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "36 min",
+        "distance": "16.0 km",
+        "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+        "lines": [
+          "Saikyō Line Local Shinjuku (East Japan Railway)",
+          "Walk",
+          "Yamanote Line Local For Ueno / Tokyo (Clockwise) (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Saikyō Line Local Shinjuku",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ikebukuro Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Yamanote Line Local For Ueno / Tokyo (Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Akihabara Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Ukima-Funado -> Ikebukuro": {
+    "cost": 210,
+    "currency": "JPY",
+    "duration": "15 min",
+    "distance": "8.8 km",
+    "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+    "lines": [
+      "Saikyō Line Local Shinjuku (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Saikyō Line Local Shinjuku",
+        "operator": "East Japan Railway",
+        "from_stop": "Ukimafunado Station",
+        "to_stop": "Ikebukuro Station"
+      }
+    ],
+    "alternatives": []
+  },
+  "Ikebukuro -> Nakano": {
+    "cost": 210,
+    "currency": "JPY",
+    "duration": "13 min",
+    "distance": "9.1 km",
+    "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+    "lines": [
+      "Saikyō Line Local Shinjuku (East Japan Railway)",
+      "Walk",
+      "Chūō Line Rapid Toyoda (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Saikyō Line Local Shinjuku",
+        "operator": "East Japan Railway",
+        "from_stop": "Ikebukuro Station",
+        "to_stop": "Shinjuku Station"
+      },
+      {
+        "line": "Walk",
+        "operator": null,
+        "from_stop": null,
+        "to_stop": null
+      },
+      {
+        "line": "Chūō Line Rapid Toyoda",
+        "operator": "East Japan Railway",
+        "from_stop": "Shinjuku Station",
+        "to_stop": "Nakano Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 340,
+        "currency": "JPY",
+        "duration": "17 min",
+        "distance": "6.1 km",
+        "line": "Yamanote Line Local For Shinjuku / Shibuya (Counter-Clockwise) (East Japan Railway)",
+        "lines": [
+          "Yamanote Line Local For Shinjuku / Shibuya (Counter-Clockwise) (East Japan Railway)",
+          "Walk",
+          "Tozai Line Local Mitaka (東京メトロ)"
+        ],
+        "stops": [
+          {
+            "line": "Yamanote Line Local For Shinjuku / Shibuya (Counter-Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Takadanobaba Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Tozai Line Local Mitaka",
+            "operator": "東京メトロ",
+            "from_stop": "Takadanobaba Station",
+            "to_stop": "Nakano Station"
+          }
+        ]
+      },
+      {
+        "cost": 210,
+        "currency": "JPY",
+        "duration": "19 min",
+        "distance": "9.0 km",
+        "line": "Yamanote Line Local For Shinjuku / Shibuya (Counter-Clockwise) (East Japan Railway)",
+        "lines": [
+          "Yamanote Line Local For Shinjuku / Shibuya (Counter-Clockwise) (East Japan Railway)",
+          "Walk",
+          "Chūō Line Commuter Rapid Ome (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Yamanote Line Local For Shinjuku / Shibuya (Counter-Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Shinjuku Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Chūō Line Commuter Rapid Ome",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Nakano Station"
+          }
+        ]
+      },
+      {
+        "cost": 210,
+        "currency": "JPY",
+        "duration": "21 min",
+        "distance": "9.0 km",
+        "line": "Yamanote Line Local For Shinjuku / Shibuya (Counter-Clockwise) (East Japan Railway)",
+        "lines": [
+          "Yamanote Line Local For Shinjuku / Shibuya (Counter-Clockwise) (East Japan Railway)",
+          "Walk",
+          "Chūō-Sōbu Line(Local) Local Mitaka (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Yamanote Line Local For Shinjuku / Shibuya (Counter-Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Shinjuku Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Chūō-Sōbu Line(Local) Local Mitaka",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Nakano Station"
+          }
+        ]
+      },
+      {
+        "cost": 210,
+        "currency": "JPY",
+        "duration": "19 min",
+        "distance": "9.1 km",
+        "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+        "lines": [
+          "Saikyō Line Local Shinjuku (East Japan Railway)",
+          "Walk",
+          "Chūō-Sōbu Line(Local) Local Mitaka (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Saikyō Line Local Shinjuku",
+            "operator": "East Japan Railway",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Shinjuku Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Chūō-Sōbu Line(Local) Local Mitaka",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Nakano Station"
+          }
+        ]
+      },
+      {
+        "cost": 240,
+        "currency": "JPY",
+        "duration": "26 min",
+        "distance": "6.6 km",
+        "line": "池１１（関東バス） 中野駅行 (関東バス)",
+        "lines": [
+          "池１１（関東バス） 中野駅行 (関東バス)",
+          "Walk"
+        ],
+        "stops": [
+          {
+            "line": "池１１（関東バス） 中野駅行",
+            "operator": "関東バス",
+            "from_stop": "池袋二又交番（バス）",
+            "to_stop": "Arai Nakano Dori"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          }
+        ]
+      }
+    ]
+  },
+  "Akabane -> Ueno": {
+    "cost": 210,
+    "currency": "JPY",
+    "duration": "10 min",
+    "distance": "9.5 km",
+    "line": "Takasaki Line Local Kozu (East Japan Railway)",
+    "lines": [
+      "Takasaki Line Local Kozu (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Takasaki Line Local Kozu",
+        "operator": "East Japan Railway",
+        "from_stop": "Akabane Station",
+        "to_stop": "Ueno Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 210,
+        "currency": "JPY",
+        "duration": "17 min",
+        "distance": "9.4 km",
+        "line": "Keihin-Tōhoku Line Local Sakuragicho (East Japan Railway)",
+        "lines": [
+          "Keihin-Tōhoku Line Local Sakuragicho (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Keihin-Tōhoku Line Local Sakuragicho",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ueno Station"
+          }
+        ]
+      },
+      {
+        "cost": 210,
+        "currency": "JPY",
+        "duration": "10 min",
+        "distance": "9.5 km",
+        "line": "Utsunomiya Line Local Atami (East Japan Railway)",
+        "lines": [
+          "Utsunomiya Line Local Atami (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Utsunomiya Line Local Atami",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ueno Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Akabane -> Nippori": {
+    "cost": 210,
+    "currency": "JPY",
+    "duration": "13 min",
+    "distance": "7.4 km",
+    "line": "Keihin-Tōhoku Line Local Sakuragicho (East Japan Railway)",
+    "lines": [
+      "Keihin-Tōhoku Line Local Sakuragicho (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Keihin-Tōhoku Line Local Sakuragicho",
+        "operator": "East Japan Railway",
+        "from_stop": "Akabane Station",
+        "to_stop": "Nippori Station"
+      }
+    ],
+    "alternatives": []
+  },
+  "Ukima-Funado -> Shinjuku": {
+    "cost": 260,
+    "currency": "JPY",
+    "duration": "21 min",
+    "distance": "13.5 km",
+    "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+    "lines": [
+      "Saikyō Line Local Shinjuku (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Saikyō Line Local Shinjuku",
+        "operator": "East Japan Railway",
+        "from_stop": "Ukimafunado Station",
+        "to_stop": "Shinjuku Station"
+      }
+    ],
+    "alternatives": []
+  },
+  "Ukima-Funado -> Shibuya": {
+    "cost": 350,
+    "currency": "JPY",
+    "duration": "31 min",
+    "distance": "17.0 km",
+    "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+    "lines": [
+      "Saikyō Line Local Shinjuku (East Japan Railway)",
+      "Saikyō Line Local Shin-Kiba (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Saikyō Line Local Shinjuku",
+        "operator": "East Japan Railway",
+        "from_stop": "Ukimafunado Station",
+        "to_stop": "Akabane Station"
+      },
+      {
+        "line": "Saikyō Line Local Shin-Kiba",
+        "operator": "East Japan Railway",
+        "from_stop": "Akabane Station",
+        "to_stop": "Shibuya Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "33 min",
+        "distance": "17.3 km",
+        "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+        "lines": [
+          "Saikyō Line Local Shinjuku (East Japan Railway)",
+          "Walk",
+          "Yamanote Line Local For Shibuya / Shinagawa (Counter-Clockwise) (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Saikyō Line Local Shinjuku",
+            "operator": "East Japan Railway",
+            "from_stop": "Ukimafunado Station",
+            "to_stop": "Shinjuku Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Yamanote Line Local For Shibuya / Shinagawa (Counter-Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Shibuya Station"
+          }
+        ]
+      },
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "29 min",
+        "distance": "17.1 km",
+        "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+        "lines": [
+          "Saikyō Line Local Shinjuku (East Japan Railway)",
+          "Walk",
+          "Shonan-Shinjuku Line Rapid Odawara (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Saikyō Line Local Shinjuku",
+            "operator": "East Japan Railway",
+            "from_stop": "Ukimafunado Station",
+            "to_stop": "Shinjuku Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Shonan-Shinjuku Line Rapid Odawara",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Shibuya Station"
+          }
+        ]
+      },
+      {
+        "cost": 420,
+        "currency": "JPY",
+        "duration": "43 min",
+        "distance": "18.2 km",
+        "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+        "lines": [
+          "Saikyō Line Local Shinjuku (East Japan Railway)",
+          "Walk",
+          "Fukutoshin Line Local Motomachi-Chukagai (東京メトロ)"
+        ],
+        "stops": [
+          {
+            "line": "Saikyō Line Local Shinjuku",
+            "operator": "East Japan Railway",
+            "from_stop": "Ukimafunado Station",
+            "to_stop": "Ikebukuro Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Fukutoshin Line Local Motomachi-Chukagai",
+            "operator": "東京メトロ",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Shibuya Station"
+          }
+        ]
+      },
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "24 min",
+        "distance": "17.0 km",
+        "line": "Saikyō Line Local Shin-Kiba (East Japan Railway)",
+        "lines": [
+          "Saikyō Line Local Shin-Kiba (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Saikyō Line Local Shin-Kiba",
+            "operator": "East Japan Railway",
+            "from_stop": "Ukimafunado Station",
+            "to_stop": "Shibuya Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Shinjuku -> Kamakura": {
+    "cost": 1040,
+    "currency": "JPY",
+    "duration": "1 hr",
+    "distance": "54.6 km",
+    "line": "Saikyō Line Local Ebina (East Japan Railway)",
+    "lines": [
+      "Saikyō Line Local Ebina (East Japan Railway)",
+      "Yokosuka Line Local Kurihama (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Saikyō Line Local Ebina",
+        "operator": "East Japan Railway",
+        "from_stop": "Shinjuku Station",
+        "to_stop": "Musashi-Kosugi Sta."
+      },
+      {
+        "line": "Yokosuka Line Local Kurihama",
+        "operator": "East Japan Railway",
+        "from_stop": "Musashi-Kosugi Sta.",
+        "to_stop": "Kamakura Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 1040,
+        "currency": "JPY",
+        "duration": "1 hr 1 min",
+        "distance": "54.5 km",
+        "line": "Shonan-Shinjuku Line Local Zushi (East Japan Railway)",
+        "lines": [
+          "Shonan-Shinjuku Line Local Zushi (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Shonan-Shinjuku Line Local Zushi",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Kamakura Station"
+          }
+        ]
+      },
+      {
+        "cost": 1260,
+        "currency": "JPY",
+        "duration": "1 hr 21 min",
+        "distance": "64.1 km",
+        "line": "Shinjuku Line Local Motoyawata (Tokyo Metropolitan Bureau of Transportation)",
+        "lines": [
+          "Shinjuku Line Local Motoyawata (Tokyo Metropolitan Bureau of Transportation)",
+          "Walk",
+          "Sōbu Line(Rapid) Rapid Kurihama (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Shinjuku Line Local Motoyawata",
+            "operator": "Tokyo Metropolitan Bureau of Transportation",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Bakuroyokoyama Sta."
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Sōbu Line(Rapid) Rapid Kurihama",
+            "operator": "East Japan Railway",
+            "from_stop": "Bakurochō Station",
+            "to_stop": "Kamakura Station"
+          }
+        ]
+      },
+      {
+        "cost": 1040,
+        "currency": "JPY",
+        "duration": "1 hr 13 min",
+        "distance": "58.2 km",
+        "line": "Yamanote Line Local For Shibuya / Shinagawa (Counter-Clockwise) (East Japan Railway)",
+        "lines": [
+          "Yamanote Line Local For Shibuya / Shinagawa (Counter-Clockwise) (East Japan Railway)",
+          "Walk",
+          "Yokosuka Line Local Kurihama (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Yamanote Line Local For Shibuya / Shinagawa (Counter-Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Shinagawa Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Yokosuka Line Local Kurihama",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinagawa Station",
+            "to_stop": "Kamakura Station"
+          }
+        ]
+      },
+      {
+        "cost": 930,
+        "currency": "JPY",
+        "duration": "1 hr 20 min",
+        "distance": "50.6 km",
+        "line": "Walk",
+        "lines": [
+          "Walk",
+          "Fukutoshin Line Commuter Express Motomachi-Chukagai (東京メトロ)",
+          "Walk",
+          "Yokosuka Line Local Kurihama (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Fukutoshin Line Commuter Express Motomachi-Chukagai",
+            "operator": "東京メトロ",
+            "from_stop": "Shinjuku-sanchome Station",
+            "to_stop": "Yokohama Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Yokosuka Line Local Kurihama",
+            "operator": "East Japan Railway",
+            "from_stop": "Yokohama Station",
+            "to_stop": "Kamakura Station"
+          }
+        ]
+      },
+      {
+        "cost": 1040,
+        "currency": "JPY",
+        "duration": "1 hr 3 min",
+        "distance": "54.5 km",
+        "line": "Shonan-Shinjuku Line Rapid Odawara (East Japan Railway)",
+        "lines": [
+          "Shonan-Shinjuku Line Rapid Odawara (East Japan Railway)",
+          "Yokosuka Line Local Zushi (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Shonan-Shinjuku Line Rapid Odawara",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Musashi-Kosugi Sta."
+          },
+          {
+            "line": "Yokosuka Line Local Zushi",
+            "operator": "East Japan Railway",
+            "from_stop": "Musashi-Kosugi Sta.",
+            "to_stop": "Kamakura Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Akabane -> Tokyo": {
+    "cost": 260,
+    "currency": "JPY",
+    "duration": "16 min",
+    "distance": "13.4 km",
+    "line": "Takasaki Line Local Kozu (East Japan Railway)",
+    "lines": [
+      "Takasaki Line Local Kozu (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Takasaki Line Local Kozu",
+        "operator": "East Japan Railway",
+        "from_stop": "Akabane Station",
+        "to_stop": "Tokyo Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "18 min",
+        "distance": "13.4 km",
+        "line": "Utsunomiya Line Local Atami (East Japan Railway)",
+        "lines": [
+          "Utsunomiya Line Local Atami (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Utsunomiya Line Local Atami",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Tokyo Station"
+          }
+        ]
+      },
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "25 min",
+        "distance": "13.1 km",
+        "line": "Keihin-Tōhoku Line Local Sakuragicho (East Japan Railway)",
+        "lines": [
+          "Keihin-Tōhoku Line Local Sakuragicho (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Keihin-Tōhoku Line Local Sakuragicho",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Tokyo Station"
+          }
+        ]
+      },
+      {
+        "cost": 410,
+        "currency": "JPY",
+        "duration": "29 min",
+        "distance": "14.4 km",
+        "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+        "lines": [
+          "Saikyō Line Local Shinjuku (East Japan Railway)",
+          "Walk",
+          "Marunouchi Line Local Ogikubo (東京メトロ)"
+        ],
+        "stops": [
+          {
+            "line": "Saikyō Line Local Shinjuku",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ikebukuro Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Marunouchi Line Local Ogikubo",
+            "operator": "東京メトロ",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Tokyo Station"
+          }
+        ]
+      },
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "31 min",
+        "distance": "20.6 km",
+        "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+        "lines": [
+          "Saikyō Line Local Shinjuku (East Japan Railway)",
+          "Walk",
+          "Chūō Line Rapid Tokyo (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Saikyō Line Local Shinjuku",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Shinjuku Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Chūō Line Rapid Tokyo",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Tokyo Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Ukima-Funado -> Kawagoe": {
+    "cost": 620,
+    "currency": "JPY",
+    "duration": "47 min",
+    "distance": "",
+    "line": "Saikyō Line (East Japan Railway)",
+    "lines": [
+      "Saikyō Line Local Omiya",
+      "Saikyō Line Commuter Rapid Kawagoe"
+    ],
+    "stops": [
+      {
+        "line": "Saikyō Line Local Omiya",
+        "operator": "East Japan Railway",
+        "from_stop": "Ukima-Funado Station",
+        "to_stop": "Omiya Station"
+      },
+      {
+        "line": "Saikyō Line Commuter Rapid Kawagoe",
+        "operator": "East Japan Railway",
+        "from_stop": "Omiya Station",
+        "to_stop": "Kawagoe Station"
+      }
+    ],
+    "alternatives": []
+  },
+  "Shibuya -> Todoroki": {
+    "cost": 230,
+    "currency": "JPY",
+    "duration": "18 min",
+    "distance": "9.0 km",
+    "line": "Tōyoko Line Express Shonandai (Tokyu Corporation)",
+    "lines": [
+      "Tōyoko Line Express Shonandai (Tokyu Corporation)",
+      "Walk",
+      "Ōimachi Line Local Mizonokuchi (Tokyu Corporation)"
+    ],
+    "stops": [
+      {
+        "line": "Tōyoko Line Express Shonandai",
+        "operator": "Tokyu Corporation",
+        "from_stop": "Shibuya Station",
+        "to_stop": "Jiyūgaoka Station"
+      },
+      {
+        "line": "Walk",
+        "operator": null,
+        "from_stop": null,
+        "to_stop": null
+      },
+      {
+        "line": "Ōimachi Line Local Mizonokuchi",
+        "operator": "Tokyu Corporation",
+        "from_stop": "Jiyūgaoka Station",
+        "to_stop": "Todoroki Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 230,
+        "currency": "JPY",
+        "duration": "18 min",
+        "distance": "11.6 km",
+        "line": "Den-en-toshi Line Express Chuorinkan (Tokyu Corporation)",
+        "lines": [
+          "Den-en-toshi Line Express Chuorinkan (Tokyu Corporation)",
+          "Walk",
+          "Ōimachi Line Local Oimachi (Tokyu Corporation)"
+        ],
+        "stops": [
+          {
+            "line": "Den-en-toshi Line Express Chuorinkan",
+            "operator": "Tokyu Corporation",
+            "from_stop": "Shibuya Station",
+            "to_stop": "Futako-Tamagawa Sta."
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Ōimachi Line Local Oimachi",
+            "operator": "Tokyu Corporation",
+            "from_stop": "Futako-Tamagawa Sta.",
+            "to_stop": "Todoroki Station"
+          }
+        ]
+      },
+      {
+        "cost": 430,
+        "currency": "JPY",
+        "duration": "25 min",
+        "distance": "11.0 km",
+        "line": "Yamanote Line Local For Shinagawa / Tokyo (Counter-Clockwise) (East Japan Railway)",
+        "lines": [
+          "Yamanote Line Local For Shinagawa / Tokyo (Counter-Clockwise) (East Japan Railway)",
+          "Walk",
+          "Meguro Line Express Nishiya (Tokyu Corporation)",
+          "Walk",
+          "Ōimachi Line Local Mizonokuchi (Tokyu Corporation)"
+        ],
+        "stops": [
+          {
+            "line": "Yamanote Line Local For Shinagawa / Tokyo (Counter-Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Shibuya Station",
+            "to_stop": "Meguro Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Meguro Line Express Nishiya",
+            "operator": "Tokyu Corporation",
+            "from_stop": "Meguro Station",
+            "to_stop": "Ōokayama Sta."
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Ōimachi Line Local Mizonokuchi",
+            "operator": "Tokyu Corporation",
+            "from_stop": "Ōokayama Sta.",
+            "to_stop": "Todoroki Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Akabane -> Omiya": {
+    "cost": 350,
+    "currency": "JPY",
+    "duration": "15 min",
+    "distance": "17.3 km",
+    "line": "Utsunomiya Line Local Koganei (East Japan Railway)",
+    "lines": [
+      "Utsunomiya Line Local Koganei (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Utsunomiya Line Local Koganei",
+        "operator": "East Japan Railway",
+        "from_stop": "Akabane Station",
+        "to_stop": "Ōmiya Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "15 min",
+        "distance": "17.3 km",
+        "line": "Shonan-Shinjuku Line Rapid Kagohara (East Japan Railway)",
+        "lines": [
+          "Shonan-Shinjuku Line Rapid Kagohara (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Shonan-Shinjuku Line Rapid Kagohara",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ōmiya Station"
+          }
+        ]
+      },
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "25 min",
+        "distance": "17.4 km",
+        "line": "Keihin-Tōhoku Line Local Omiya (East Japan Railway)",
+        "lines": [
+          "Keihin-Tōhoku Line Local Omiya (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Keihin-Tōhoku Line Local Omiya",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ōmiya Station"
+          }
+        ]
+      },
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "17 min",
+        "distance": "18.2 km",
+        "line": "Saikyō Line Commuter Rapid Kawagoe (East Japan Railway)",
+        "lines": [
+          "Saikyō Line Commuter Rapid Kawagoe (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Saikyō Line Commuter Rapid Kawagoe",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ōmiya Station"
+          }
+        ]
+      },
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "15 min",
+        "distance": "17.3 km",
+        "line": "Takasaki Line Local Takasaki (East Japan Railway)",
+        "lines": [
+          "Takasaki Line Local Takasaki (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Takasaki Line Local Takasaki",
+            "operator": "East Japan Railway",
+            "from_stop": "Akabane Station",
+            "to_stop": "Ōmiya Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Omiya -> Kasukabe": {
+    "cost": 330,
+    "currency": "JPY",
+    "duration": "22 min",
+    "distance": "15.0 km",
+    "line": "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)",
+    "lines": [
+      "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)"
+    ],
+    "stops": [
+      {
+        "line": "TOBU URBAN PARK Line Local Kashiwa",
+        "operator": "Tobu Railway",
+        "from_stop": "Ōmiya Station",
+        "to_stop": "Kasukabe Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 330,
+        "currency": "JPY",
+        "duration": "22 min",
+        "distance": "15.0 km",
+        "line": "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)",
+        "lines": [
+          "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)"
+        ],
+        "stops": [
+          {
+            "line": "TOBU URBAN PARK Line Local Kashiwa",
+            "operator": "Tobu Railway",
+            "from_stop": "Ōmiya Station",
+            "to_stop": "Kasukabe Station"
+          }
+        ]
+      },
+      {
+        "cost": 330,
+        "currency": "JPY",
+        "duration": "22 min",
+        "distance": "15.0 km",
+        "line": "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)",
+        "lines": [
+          "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)"
+        ],
+        "stops": [
+          {
+            "line": "TOBU URBAN PARK Line Local Kashiwa",
+            "operator": "Tobu Railway",
+            "from_stop": "Ōmiya Station",
+            "to_stop": "Kasukabe Station"
+          }
+        ]
+      },
+      {
+        "cost": 330,
+        "currency": "JPY",
+        "duration": "22 min",
+        "distance": "15.0 km",
+        "line": "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)",
+        "lines": [
+          "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)"
+        ],
+        "stops": [
+          {
+            "line": "TOBU URBAN PARK Line Local Kashiwa",
+            "operator": "Tobu Railway",
+            "from_stop": "Ōmiya Station",
+            "to_stop": "Kasukabe Station"
+          }
+        ]
+      },
+      {
+        "cost": 330,
+        "currency": "JPY",
+        "duration": "22 min",
+        "distance": "15.0 km",
+        "line": "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)",
+        "lines": [
+          "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)"
+        ],
+        "stops": [
+          {
+            "line": "TOBU URBAN PARK Line Local Kashiwa",
+            "operator": "Tobu Railway",
+            "from_stop": "Ōmiya Station",
+            "to_stop": "Kasukabe Station"
+          }
+        ]
+      },
+      {
+        "cost": 330,
+        "currency": "JPY",
+        "duration": "21 min",
+        "distance": "15.0 km",
+        "line": "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)",
+        "lines": [
+          "TOBU URBAN PARK Line Local Kashiwa (Tobu Railway)"
+        ],
+        "stops": [
+          {
+            "line": "TOBU URBAN PARK Line Local Kashiwa",
+            "operator": "Tobu Railway",
+            "from_stop": "Ōmiya Station",
+            "to_stop": "Kasukabe Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Nippori -> Narita": {
+    "cost": 1280,
+    "currency": "JPY",
+    "duration": "1 hr",
+    "distance": "60.9 km",
+    "line": "Keisei Line Rapid Shibayamachiyoda (Keisei Electric Railway)",
+    "lines": [
+      "Keisei Line Rapid Shibayamachiyoda (Keisei Electric Railway)",
+      "Keisei Narita Skyaccess Access-Tokkyu Narita Airport Terminal 1 (Keisei Electric Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Keisei Line Rapid Shibayamachiyoda",
+        "operator": "Keisei Electric Railway",
+        "from_stop": "Nippori Station",
+        "to_stop": "Keisei Takasago Station"
+      },
+      {
+        "line": "Keisei Narita Skyaccess Access-Tokkyu Narita Airport Terminal 1",
+        "operator": "Keisei Electric Railway",
+        "from_stop": "Keisei Takasago Station",
+        "to_stop": "Narita Airport Terminal 2･3 Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 1060,
+        "currency": "JPY",
+        "duration": "1 hr 20 min",
+        "distance": "66.1 km",
+        "line": "Keisei Line Local Keisei-Sakura (Keisei Electric Railway)",
+        "lines": [
+          "Keisei Line Local Keisei-Sakura (Keisei Electric Railway)",
+          "Keisei Line Commuter Limited Express Narita Airport Terminal 1 (Keisei Electric Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Keisei Line Local Keisei-Sakura",
+            "operator": "Keisei Electric Railway",
+            "from_stop": "Nippori Station",
+            "to_stop": "Keisei Takasago Station"
+          },
+          {
+            "line": "Keisei Line Commuter Limited Express Narita Airport Terminal 1",
+            "operator": "Keisei Electric Railway",
+            "from_stop": "Keisei Takasago Station",
+            "to_stop": "Narita Airport Terminal 2･3 Station"
+          }
+        ]
+      },
+      {
+        "cost": 2010,
+        "currency": "JPY",
+        "duration": "1 hr 4 min",
+        "distance": "66.1 km",
+        "line": "Skyliner Evening Liner 211 Toll Limited Express Narita Airport Terminal 1 (Keisei Electric Railway)",
+        "lines": [
+          "Skyliner Evening Liner 211 Toll Limited Express Narita Airport Terminal 1 (Keisei Electric Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Skyliner Evening Liner 211 Toll Limited Express Narita Airport Terminal 1",
+            "operator": "Keisei Electric Railway",
+            "from_stop": "Nippori Station",
+            "to_stop": "Narita Airport Terminal 2･3 Station"
+          }
+        ]
+      },
+      {
+        "cost": 1650,
+        "currency": "JPY",
+        "duration": "1 hr 24 min",
+        "distance": "63.2 km",
+        "line": "Yamanote Line Local For Ueno / Tokyo (Clockwise) (East Japan Railway)",
+        "lines": [
+          "Yamanote Line Local For Ueno / Tokyo (Clockwise) (East Japan Railway)",
+          "Walk",
+          "Ginza Line Local Asakusa (東京メトロ)",
+          "Walk",
+          "Asakusa Line Access-Tokkyu Narita Airport Terminal 1 (Tokyo Metropolitan Bureau of Transportation)"
+        ],
+        "stops": [
+          {
+            "line": "Yamanote Line Local For Ueno / Tokyo (Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Nippori Station",
+            "to_stop": "Ueno Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Ginza Line Local Asakusa",
+            "operator": "東京メトロ",
+            "from_stop": "Ueno Station",
+            "to_stop": "Asakusa Sta."
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Asakusa Line Access-Tokkyu Narita Airport Terminal 1",
+            "operator": "Tokyo Metropolitan Bureau of Transportation",
+            "from_stop": "Asakusa Sta.",
+            "to_stop": "Narita Airport Terminal 2･3 Station"
+          }
+        ]
+      },
+      {
+        "cost": 1060,
+        "currency": "JPY",
+        "duration": "1 hr 17 min",
+        "distance": "66.1 km",
+        "line": "Keisei Line Local Keisei-Tsudanuma (Keisei Electric Railway)",
+        "lines": [
+          "Keisei Line Local Keisei-Tsudanuma (Keisei Electric Railway)",
+          "Keisei Line Commuter Limited Express Narita Airport Terminal 1 (Keisei Electric Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Keisei Line Local Keisei-Tsudanuma",
+            "operator": "Keisei Electric Railway",
+            "from_stop": "Nippori Station",
+            "to_stop": "Keisei Takasago Station"
+          },
+          {
+            "line": "Keisei Line Commuter Limited Express Narita Airport Terminal 1",
+            "operator": "Keisei Electric Railway",
+            "from_stop": "Keisei Takasago Station",
+            "to_stop": "Narita Airport Terminal 2･3 Station"
+          }
+        ]
+      },
+      {
+        "cost": 1510,
+        "currency": "JPY",
+        "duration": "1 hr 30 min",
+        "distance": "71.7 km",
+        "line": "Joban Line Rapid Narita (East Japan Railway)",
+        "lines": [
+          "Joban Line Rapid Narita (East Japan Railway)",
+          "Walk",
+          "Keisei Line Commuter Limited Express Narita Airport Terminal 1 (Keisei Electric Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Joban Line Rapid Narita",
+            "operator": "East Japan Railway",
+            "from_stop": "Nippori Station",
+            "to_stop": "NARITA STATION"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Keisei Line Commuter Limited Express Narita Airport Terminal 1",
+            "operator": "Keisei Electric Railway",
+            "from_stop": "Keisei-Narita Station",
+            "to_stop": "Narita Airport Terminal 2･3 Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Akihabara -> Akabane": {
+    "cost": 260,
+    "currency": "JPY",
+    "duration": "21 min",
+    "distance": "11.1 km",
+    "line": "Keihin-Tōhoku Line Local Omiya (East Japan Railway)",
+    "lines": [
+      "Keihin-Tōhoku Line Local Omiya (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Keihin-Tōhoku Line Local Omiya",
+        "operator": "East Japan Railway",
+        "from_stop": "Akihabara Station",
+        "to_stop": "Akabane Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "21 min",
+        "distance": "11.5 km",
+        "line": "Yamanote Line Local For Ueno / Ikebukuro (Counter-Clockwise) (East Japan Railway) + Takasaki Line Local Takasaki (East Japan Railway)",
+        "lines": [
+          "Yamanote Line Local For Ueno / Ikebukuro (Counter-Clockwise) (East Japan Railway)",
+          "Walk",
+          "Takasaki Line Local Takasaki (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Yamanote Line Local For Ueno / Ikebukuro (Counter-Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Akihabara Station",
+            "to_stop": "Ueno Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Takasaki Line Local Takasaki",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akabane Station"
+          }
+        ]
+      },
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "21 min",
+        "distance": "11.5 km",
+        "line": "Yamanote Line Local For Ueno / Ikebukuro (Counter-Clockwise) (East Japan Railway) + Utsunomiya Line Local Utsunomiya (East Japan Railway)",
+        "lines": [
+          "Yamanote Line Local For Ueno / Ikebukuro (Counter-Clockwise) (East Japan Railway)",
+          "Walk",
+          "Utsunomiya Line Local Utsunomiya (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Yamanote Line Local For Ueno / Ikebukuro (Counter-Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Akihabara Station",
+            "to_stop": "Ueno Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Utsunomiya Line Local Utsunomiya",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akabane Station"
+          }
+        ]
+      },
+      {
+        "cost": 390,
+        "currency": "JPY",
+        "duration": "24 min",
+        "distance": "11.6 km",
+        "line": "Hibiya Line Local Kita-Koshigaya (東京メトロ) + Utsunomiya Line Local Utsunomiya (East Japan Railway)",
+        "lines": [
+          "Walk",
+          "Hibiya Line Local Kita-Koshigaya (東京メトロ)",
+          "Walk",
+          "Utsunomiya Line Local Utsunomiya (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Hibiya Line Local Kita-Koshigaya",
+            "operator": "東京メトロ",
+            "from_stop": "Akihabara Station",
+            "to_stop": "Ueno Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Utsunomiya Line Local Utsunomiya",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akabane Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Nakano -> Ikebukuro": {
+    "cost": 210,
+    "currency": "JPY",
+    "duration": "16 min",
+    "distance": "9.1 km",
+    "line": "Chūō-Sōbu Line(Local) Local Chiba (East Japan Railway) + Saikyō Line Local Omiya (East Japan Railway)",
+    "lines": [
+      "Chūō-Sōbu Line(Local) Local Chiba (East Japan Railway)",
+      "Walk",
+      "Saikyō Line Local Omiya (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Chūō-Sōbu Line(Local) Local Chiba",
+        "operator": "East Japan Railway",
+        "from_stop": "Nakano Station",
+        "to_stop": "Shinjuku Station"
+      },
+      {
+        "line": "Walk",
+        "operator": null,
+        "from_stop": null,
+        "to_stop": null
+      },
+      {
+        "line": "Saikyō Line Local Omiya",
+        "operator": "East Japan Railway",
+        "from_stop": "Shinjuku Station",
+        "to_stop": "Ikebukuro Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 210,
+        "currency": "JPY",
+        "duration": "14 min",
+        "distance": "9.2 km",
+        "line": "Chūō Line Rapid Tokyo (East Japan Railway) + Saikyō Line Local Omiya (East Japan Railway)",
+        "lines": [
+          "Chūō Line Rapid Tokyo (East Japan Railway)",
+          "Walk",
+          "Saikyō Line Local Omiya (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Chūō Line Rapid Tokyo",
+            "operator": "East Japan Railway",
+            "from_stop": "Nakano Station",
+            "to_stop": "Shinjuku Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Saikyō Line Local Omiya",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Ikebukuro Station"
+          }
+        ]
+      },
+      {
+        "cost": 340,
+        "currency": "JPY",
+        "duration": "16 min",
+        "distance": "6.0 km",
+        "line": "Tozai Line Local Nishi-Funabashi (東京メトロ) + Yamanote Line Local For Ikebukuro / Ueno (Clockwise) (East Japan Railway)",
+        "lines": [
+          "Tozai Line Local Nishi-Funabashi (東京メトロ)",
+          "Walk",
+          "Yamanote Line Local For Ikebukuro / Ueno (Clockwise) (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Tozai Line Local Nishi-Funabashi",
+            "operator": "東京メトロ",
+            "from_stop": "Nakano Station",
+            "to_stop": "Takadanobaba Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Yamanote Line Local For Ikebukuro / Ueno (Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Takadanobaba Station",
+            "to_stop": "Ikebukuro Station"
+          }
+        ]
+      },
+      {
+        "cost": 210,
+        "currency": "JPY",
+        "duration": "18 min",
+        "distance": "8.9 km",
+        "line": "Chūō-Sōbu Line(Local) Local Chiba (East Japan Railway) + Yamanote Line Local For Ikebukuro / Ueno (Clockwise) (East Japan Railway)",
+        "lines": [
+          "Chūō-Sōbu Line(Local) Local Chiba (East Japan Railway)",
+          "Walk",
+          "Yamanote Line Local For Ikebukuro / Ueno (Clockwise) (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Chūō-Sōbu Line(Local) Local Chiba",
+            "operator": "East Japan Railway",
+            "from_stop": "Nakano Station",
+            "to_stop": "Shinjuku Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Yamanote Line Local For Ikebukuro / Ueno (Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Shinjuku Station",
+            "to_stop": "Ikebukuro Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Ueno -> Akabane": {
+    "cost": 210,
+    "currency": "JPY",
+    "duration": "9 min",
+    "distance": "9.6 km",
+    "line": "Utsunomiya Line Local Koganei (East Japan Railway)",
+    "lines": [
+      "Utsunomiya Line Local Koganei (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Utsunomiya Line Local Koganei",
+        "operator": "East Japan Railway",
+        "from_stop": "Ueno Station",
+        "to_stop": "Akabane Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 210,
+        "currency": "JPY",
+        "duration": "17 min",
+        "distance": "9.4 km",
+        "line": "Keihin-Tōhoku Line Local Omiya (East Japan Railway)",
+        "lines": [
+          "Keihin-Tōhoku Line Local Omiya (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Keihin-Tōhoku Line Local Omiya",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akabane Station"
+          }
+        ]
+      },
+      {
+        "cost": 210,
+        "currency": "JPY",
+        "duration": "10 min",
+        "distance": "9.6 km",
+        "line": "Takasaki Line Local Takasaki (East Japan Railway)",
+        "lines": [
+          "Takasaki Line Local Takasaki (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Takasaki Line Local Takasaki",
+            "operator": "East Japan Railway",
+            "from_stop": "Ueno Station",
+            "to_stop": "Akabane Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Nippori -> Akabane": {
+    "cost": 210,
+    "currency": "JPY",
+    "duration": "13 min",
+    "distance": "7.5 km",
+    "line": "Keihin-Tōhoku Line Local Omiya (East Japan Railway)",
+    "lines": [
+      "Keihin-Tōhoku Line Local Omiya (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Keihin-Tōhoku Line Local Omiya",
+        "operator": "East Japan Railway",
+        "from_stop": "Nippori Station",
+        "to_stop": "Akabane Station"
+      }
+    ],
+    "alternatives": []
+  },
+  "Shinjuku -> Ukima-Funado": {
+    "cost": 260,
+    "currency": "JPY",
+    "duration": "19 min",
+    "distance": "13.5 km",
+    "line": "Saikyō Line Local Kawagoe (East Japan Railway)",
+    "lines": [
+      "Saikyō Line Local Kawagoe (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Saikyō Line Local Kawagoe",
+        "operator": "East Japan Railway",
+        "from_stop": "Shinjuku Station",
+        "to_stop": "Ukimafunado Station"
+      }
+    ],
+    "alternatives": []
+  },
+  "Shibuya -> Ukima-Funado": {
+    "cost": 350,
+    "currency": "JPY",
+    "duration": "31 min",
+    "distance": "17.1 km",
+    "line": "Saikyō Line Commuter Rapid Kawagoe (East Japan Railway) + Saikyō Line Local Omiya (East Japan Railway)",
+    "lines": [
+      "Saikyō Line Commuter Rapid Kawagoe (East Japan Railway)",
+      "Saikyō Line Local Omiya (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Saikyō Line Commuter Rapid Kawagoe",
+        "operator": "East Japan Railway",
+        "from_stop": "Shibuya Station",
+        "to_stop": "Ikebukuro Station"
+      },
+      {
+        "line": "Saikyō Line Local Omiya",
+        "operator": "East Japan Railway",
+        "from_stop": "Ikebukuro Station",
+        "to_stop": "Ukimafunado Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "35 min",
+        "distance": "17.1 km",
+        "line": "Shonan-Shinjuku Line Rapid Kagohara (East Japan Railway) + Saikyō Line Local Kawagoe (East Japan Railway)",
+        "lines": [
+          "Shonan-Shinjuku Line Rapid Kagohara (East Japan Railway)",
+          "Walk",
+          "Saikyō Line Local Kawagoe (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Shonan-Shinjuku Line Rapid Kagohara",
+            "operator": "East Japan Railway",
+            "from_stop": "Shibuya Station",
+            "to_stop": "Ikebukuro Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Saikyō Line Local Kawagoe",
+            "operator": "East Japan Railway",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Ukimafunado Station"
+          }
+        ]
+      },
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "35 min",
+        "distance": "17.1 km",
+        "line": "Yamanote Line Local For Shinjuku / Ikebukuro (Clockwise) (East Japan Railway) + Saikyō Line Local Kawagoe (East Japan Railway)",
+        "lines": [
+          "Yamanote Line Local For Shinjuku / Ikebukuro (Clockwise) (East Japan Railway)",
+          "Walk",
+          "Saikyō Line Local Kawagoe (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Yamanote Line Local For Shinjuku / Ikebukuro (Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Shibuya Station",
+            "to_stop": "Ikebukuro Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Saikyō Line Local Kawagoe",
+            "operator": "East Japan Railway",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Ukimafunado Station"
+          }
+        ]
+      },
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "26 min",
+        "distance": "17.0 km",
+        "line": "Saikyō Line Local Kawagoe (East Japan Railway)",
+        "lines": [
+          "Saikyō Line Local Kawagoe (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Saikyō Line Local Kawagoe",
+            "operator": "East Japan Railway",
+            "from_stop": "Shibuya Station",
+            "to_stop": "Ukimafunado Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Kamakura -> Shinjuku": {
+    "cost": 1040,
+    "currency": "JPY",
+    "duration": "1 hr 15 min",
+    "distance": "58.0 km",
+    "line": "Yokosuka Line Local Chiba (East Japan Railway) + Yamanote Line Local For Shibuya / Shinjuku (Clockwise) (East Japan Railway)",
+    "lines": [
+      "Yokosuka Line Local Chiba (East Japan Railway)",
+      "Walk",
+      "Yamanote Line Local For Shibuya / Shinjuku (Clockwise) (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Yokosuka Line Local Chiba",
+        "operator": "East Japan Railway",
+        "from_stop": "Kamakura Station",
+        "to_stop": "Shinagawa Station"
+      },
+      {
+        "line": "Walk",
+        "operator": null,
+        "from_stop": null,
+        "to_stop": null
+      },
+      {
+        "line": "Yamanote Line Local For Shibuya / Shinjuku (Clockwise)",
+        "operator": "East Japan Railway",
+        "from_stop": "Shinagawa Station",
+        "to_stop": "Shinjuku Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 1040,
+        "currency": "JPY",
+        "duration": "1 hr 7 min",
+        "distance": "54.4 km",
+        "line": "Yokosuka Line Local Chiba (East Japan Railway) + Shonan-Shinjuku Line Local Koganei (East Japan Railway)",
+        "lines": [
+          "Yokosuka Line Local Chiba (East Japan Railway)",
+          "Shonan-Shinjuku Line Local Koganei (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Yokosuka Line Local Chiba",
+            "operator": "East Japan Railway",
+            "from_stop": "Kamakura Station",
+            "to_stop": "Totsuka Station"
+          },
+          {
+            "line": "Shonan-Shinjuku Line Local Koganei",
+            "operator": "East Japan Railway",
+            "from_stop": "Totsuka Station",
+            "to_stop": "Shinjuku Station"
+          }
+        ]
+      },
+      {
+        "cost": 1260,
+        "currency": "JPY",
+        "duration": "1 hr 21 min",
+        "distance": "64.4 km",
+        "line": "Yokosuka Line Local Chiba (East Japan Railway) + Shinjuku Line Local Sasazuka (Tokyo Metropolitan Bureau of Transportation)",
+        "lines": [
+          "Yokosuka Line Local Chiba (East Japan Railway)",
+          "Walk",
+          "Shinjuku Line Local Sasazuka (Tokyo Metropolitan Bureau of Transportation)"
+        ],
+        "stops": [
+          {
+            "line": "Yokosuka Line Local Chiba",
+            "operator": "East Japan Railway",
+            "from_stop": "Kamakura Station",
+            "to_stop": "Bakurochō Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Shinjuku Line Local Sasazuka",
+            "operator": "Tokyo Metropolitan Bureau of Transportation",
+            "from_stop": "Bakuroyokoyama Sta.",
+            "to_stop": "Shinjuku Station"
+          }
+        ]
+      },
+      {
+        "cost": 1040,
+        "currency": "JPY",
+        "duration": "1 hr",
+        "distance": "54.6 km",
+        "line": "Yokosuka Line Local Chiba (East Japan Railway) + Sotetsu-Jr Chokutsu Line Local Shinjuku (East Japan Railway)",
+        "lines": [
+          "Yokosuka Line Local Chiba (East Japan Railway)",
+          "Sotetsu-Jr Chokutsu Line Local Shinjuku (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Yokosuka Line Local Chiba",
+            "operator": "East Japan Railway",
+            "from_stop": "Kamakura Station",
+            "to_stop": "Musashi-Kosugi Sta."
+          },
+          {
+            "line": "Sotetsu-Jr Chokutsu Line Local Shinjuku",
+            "operator": "East Japan Railway",
+            "from_stop": "Musashi-Kosugi Sta.",
+            "to_stop": "Shinjuku Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Tokyo -> Akabane": {
+    "cost": 260,
+    "currency": "JPY",
+    "duration": "15 min",
+    "distance": "13.3 km",
+    "line": "Utsunomiya Line Local Koganei (East Japan Railway)",
+    "lines": [
+      "Utsunomiya Line Local Koganei (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Utsunomiya Line Local Koganei",
+        "operator": "East Japan Railway",
+        "from_stop": "Tokyo Station",
+        "to_stop": "Akabane Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "15 min",
+        "distance": "13.3 km",
+        "line": "Takasaki Line Local Takasaki (East Japan Railway)",
+        "lines": [
+          "Takasaki Line Local Takasaki (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Takasaki Line Local Takasaki",
+            "operator": "East Japan Railway",
+            "from_stop": "Tokyo Station",
+            "to_stop": "Akabane Station"
+          }
+        ]
+      },
+      {
+        "cost": 260,
+        "currency": "JPY",
+        "duration": "25 min",
+        "distance": "13.1 km",
+        "line": "Keihin-Tōhoku Line Local Omiya (East Japan Railway)",
+        "lines": [
+          "Keihin-Tōhoku Line Local Omiya (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Keihin-Tōhoku Line Local Omiya",
+            "operator": "East Japan Railway",
+            "from_stop": "Tokyo Station",
+            "to_stop": "Akabane Station"
+          }
+        ]
+      },
+      {
+        "cost": 410,
+        "currency": "JPY",
+        "duration": "32 min",
+        "distance": "14.3 km",
+        "line": "Marunouchi Line Local Ikebukuro (東京メトロ) + Saikyō Line Local Kawagoe (East Japan Railway)",
+        "lines": [
+          "Marunouchi Line Local Ikebukuro (東京メトロ)",
+          "Walk",
+          "Saikyō Line Local Kawagoe (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Marunouchi Line Local Ikebukuro",
+            "operator": "東京メトロ",
+            "from_stop": "Tokyo Station",
+            "to_stop": "Ikebukuro Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Saikyō Line Local Kawagoe",
+            "operator": "East Japan Railway",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Akabane Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Kawagoe -> Ukima-Funado": {
+    "cost": 620,
+    "currency": "JPY",
+    "duration": "46 min",
+    "distance": "31.0 km",
+    "line": "Kawagoe Line Local Shin-Kiba (East Japan Railway)",
+    "lines": [
+      "Kawagoe Line Local Shin-Kiba (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Kawagoe Line Local Shin-Kiba",
+        "operator": "East Japan Railway",
+        "from_stop": "Kawagoe Station",
+        "to_stop": "Ukimafunado Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 620,
+        "currency": "JPY",
+        "duration": "50 min",
+        "distance": "31.0 km",
+        "line": "Kawagoe Line Local Shin-Kiba (East Japan Railway)",
+        "lines": [
+          "Kawagoe Line Local Shin-Kiba (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Kawagoe Line Local Shin-Kiba",
+            "operator": "East Japan Railway",
+            "from_stop": "Kawagoe Station",
+            "to_stop": "Ukimafunado Station"
+          }
+        ]
+      },
+      {
+        "cost": 700,
+        "currency": "JPY",
+        "duration": "51 min",
+        "distance": "39.6 km",
+        "line": "Tobu-Tojo Line Kawagoe Limited Express Ikebukuro (Tobu Railway) + Saikyō Line Local Omiya (East Japan Railway)",
+        "lines": [
+          "Tobu-Tojo Line Kawagoe Limited Express Ikebukuro (Tobu Railway)",
+          "Walk",
+          "Saikyō Line Local Omiya (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Tobu-Tojo Line Kawagoe Limited Express Ikebukuro",
+            "operator": "Tobu Railway",
+            "from_stop": "Kawagoe Station",
+            "to_stop": "Ikebukuro Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Saikyō Line Local Omiya",
+            "operator": "East Japan Railway",
+            "from_stop": "Ikebukuro Station",
+            "to_stop": "Ukimafunado Station"
+          }
+        ]
+      },
+      {
+        "cost": 530,
+        "currency": "JPY",
+        "duration": "40 min",
+        "distance": "28.8 km",
+        "line": "Tobu-Tojo Line Kawagoe Limited Express Ikebukuro (Tobu Railway) + Musashino Line Local Shin-Narashino (East Japan Railway) + Saikyō Line Local Shin-Kiba (East Japan Railway)",
+        "lines": [
+          "Tobu-Tojo Line Kawagoe Limited Express Ikebukuro (Tobu Railway)",
+          "Walk",
+          "Musashino Line Local Shin-Narashino (East Japan Railway)",
+          "Walk",
+          "Saikyō Line Local Shin-Kiba (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Tobu-Tojo Line Kawagoe Limited Express Ikebukuro",
+            "operator": "Tobu Railway",
+            "from_stop": "Kawagoe Station",
+            "to_stop": "Asakadai Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Musashino Line Local Shin-Narashino",
+            "operator": "East Japan Railway",
+            "from_stop": "Kita-Asaka Station",
+            "to_stop": "Musashi-Urawa Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Saikyō Line Local Shin-Kiba",
+            "operator": "East Japan Railway",
+            "from_stop": "Musashi-Urawa Station",
+            "to_stop": "Ukimafunado Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Todoroki -> Shibuya": {
+    "cost": 230,
+    "currency": "JPY",
+    "duration": "20 min",
+    "distance": "11.6 km",
+    "line": "Ōimachi Line Local Mizonokuchi (Tokyu Corporation) + Den-en-toshi Line Express Minami-Kurihashi (Tokyu Corporation)",
+    "lines": [
+      "Ōimachi Line Local Mizonokuchi (Tokyu Corporation)",
+      "Walk",
+      "Den-en-toshi Line Express Minami-Kurihashi (Tokyu Corporation)"
+    ],
+    "stops": [
+      {
+        "line": "Ōimachi Line Local Mizonokuchi",
+        "operator": "Tokyu Corporation",
+        "from_stop": "Todoroki Station",
+        "to_stop": "Futako-Tamagawa Sta."
+      },
+      {
+        "line": "Walk",
+        "operator": null,
+        "from_stop": null,
+        "to_stop": null
+      },
+      {
+        "line": "Den-en-toshi Line Express Minami-Kurihashi",
+        "operator": "Tokyu Corporation",
+        "from_stop": "Futako-Tamagawa Sta.",
+        "to_stop": "Shibuya Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 230,
+        "currency": "JPY",
+        "duration": "18 min",
+        "distance": "9.1 km",
+        "line": "Ōimachi Line Local Oimachi (Tokyu Corporation) + Tōyoko Line Commuter Limited Express Shibuya (Tokyu Corporation)",
+        "lines": [
+          "Ōimachi Line Local Oimachi (Tokyu Corporation)",
+          "Walk",
+          "Tōyoko Line Commuter Limited Express Shibuya (Tokyu Corporation)"
+        ],
+        "stops": [
+          {
+            "line": "Ōimachi Line Local Oimachi",
+            "operator": "Tokyu Corporation",
+            "from_stop": "Todoroki Station",
+            "to_stop": "Jiyūgaoka Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Tōyoko Line Commuter Limited Express Shibuya",
+            "operator": "Tokyu Corporation",
+            "from_stop": "Jiyūgaoka Station",
+            "to_stop": "Shibuya Station"
+          }
+        ]
+      },
+      {
+        "cost": 250,
+        "currency": "JPY",
+        "duration": "31 min",
+        "distance": "8.1 km",
+        "line": "渋８２ Shibuya Sta. Via Fukasawa-fudo Temple ・Sangen-jaya (Tokyu Bus Co., Ltd.)",
+        "lines": [
+          "Walk",
+          "渋８２ Shibuya Sta. Via Fukasawa-fudo Temple ・Sangen-jaya (Tokyu Bus Co., Ltd.)"
+        ],
+        "stops": [
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "渋８２ Shibuya Sta. Via Fukasawa-fudo Temple ・Sangen-jaya",
+            "operator": "Tokyu Bus Co., Ltd.",
+            "from_stop": "Todoroki",
+            "to_stop": "Shibuya Sta."
+          }
+        ]
+      },
+      {
+        "cost": 430,
+        "currency": "JPY",
+        "duration": "36 min",
+        "distance": "11.0 km",
+        "line": "Ōimachi Line Local Oimachi (Tokyu Corporation) + Meguro Line Local Urawamisono (Tokyu Corporation) + Yamanote Line Local For Shibuya / Shinjuku (Clockwise) (East Japan Railway)",
+        "lines": [
+          "Ōimachi Line Local Oimachi (Tokyu Corporation)",
+          "Walk",
+          "Meguro Line Local Urawamisono (Tokyu Corporation)",
+          "Walk",
+          "Yamanote Line Local For Shibuya / Shinjuku (Clockwise) (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Ōimachi Line Local Oimachi",
+            "operator": "Tokyu Corporation",
+            "from_stop": "Todoroki Station",
+            "to_stop": "Ōokayama Sta."
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Meguro Line Local Urawamisono",
+            "operator": "Tokyu Corporation",
+            "from_stop": "Ōokayama Sta.",
+            "to_stop": "Meguro Station"
+          },
+          {
+            "line": "Walk",
+            "operator": null,
+            "from_stop": null,
+            "to_stop": null
+          },
+          {
+            "line": "Yamanote Line Local For Shibuya / Shinjuku (Clockwise)",
+            "operator": "East Japan Railway",
+            "from_stop": "Meguro Station",
+            "to_stop": "Shibuya Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Kasukabe -> Omiya": {
+    "cost": 330,
+    "currency": "JPY",
+    "duration": "22 min",
+    "distance": "15.0 km",
+    "line": "TOBU URBAN PARK Line Local Omiya (Tobu Railway)",
+    "lines": [
+      "TOBU URBAN PARK Line Local Omiya (Tobu Railway)"
+    ],
+    "stops": [
+      {
+        "line": "TOBU URBAN PARK Line Local Omiya",
+        "operator": "Tobu Railway",
+        "from_stop": "Kasukabe Station",
+        "to_stop": "Ōmiya Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 330,
+        "currency": "JPY",
+        "duration": "21 min",
+        "distance": "15.0 km",
+        "line": "TOBU URBAN PARK Line Local Omiya (Tobu Railway)",
+        "lines": [
+          "TOBU URBAN PARK Line Local Omiya (Tobu Railway)"
+        ],
+        "stops": [
+          {
+            "line": "TOBU URBAN PARK Line Local Omiya",
+            "operator": "Tobu Railway",
+            "from_stop": "Kasukabe Station",
+            "to_stop": "Ōmiya Station"
+          }
+        ]
+      },
+      {
+        "cost": 330,
+        "currency": "JPY",
+        "duration": "21 min",
+        "distance": "15.0 km",
+        "line": "TOBU URBAN PARK Line Local Omiya (Tobu Railway)",
+        "lines": [
+          "TOBU URBAN PARK Line Local Omiya (Tobu Railway)"
+        ],
+        "stops": [
+          {
+            "line": "TOBU URBAN PARK Line Local Omiya",
+            "operator": "Tobu Railway",
+            "from_stop": "Kasukabe Station",
+            "to_stop": "Ōmiya Station"
+          }
+        ]
+      },
+      {
+        "cost": 330,
+        "currency": "JPY",
+        "duration": "21 min",
+        "distance": "15.0 km",
+        "line": "TOBU URBAN PARK Line Local Omiya (Tobu Railway)",
+        "lines": [
+          "TOBU URBAN PARK Line Local Omiya (Tobu Railway)"
+        ],
+        "stops": [
+          {
+            "line": "TOBU URBAN PARK Line Local Omiya",
+            "operator": "Tobu Railway",
+            "from_stop": "Kasukabe Station",
+            "to_stop": "Ōmiya Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Omiya -> Akabane": {
+    "cost": 350,
+    "currency": "JPY",
+    "duration": "15 min",
+    "distance": "17.3 km",
+    "line": "Utsunomiya Line Local Ueno (East Japan Railway)",
+    "lines": [
+      "Utsunomiya Line Local Ueno (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Utsunomiya Line Local Ueno",
+        "operator": "East Japan Railway",
+        "from_stop": "Ōmiya Station",
+        "to_stop": "Akabane Station"
+      }
+    ],
+    "alternatives": [
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "15 min",
+        "distance": "17.2 km",
+        "line": "Takasaki Line Local Hiratsuka (East Japan Railway)",
+        "lines": [
+          "Takasaki Line Local Hiratsuka (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Takasaki Line Local Hiratsuka",
+            "operator": "East Japan Railway",
+            "from_stop": "Ōmiya Station",
+            "to_stop": "Akabane Station"
+          }
+        ]
+      },
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "25 min",
+        "distance": "17.3 km",
+        "line": "Keihin-Tōhoku Line Local Ofuna (East Japan Railway)",
+        "lines": [
+          "Keihin-Tōhoku Line Local Ofuna (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Keihin-Tōhoku Line Local Ofuna",
+            "operator": "East Japan Railway",
+            "from_stop": "Ōmiya Station",
+            "to_stop": "Akabane Station"
+          }
+        ]
+      },
+      {
+        "cost": 350,
+        "currency": "JPY",
+        "duration": "16 min",
+        "distance": "18.2 km",
+        "line": "Saikyō Line Commuter Rapid Shin-Kiba (East Japan Railway)",
+        "lines": [
+          "Saikyō Line Commuter Rapid Shin-Kiba (East Japan Railway)"
+        ],
+        "stops": [
+          {
+            "line": "Saikyō Line Commuter Rapid Shin-Kiba",
+            "operator": "East Japan Railway",
+            "from_stop": "Ōmiya Station",
+            "to_stop": "Akabane Station"
+          }
+        ]
+      }
+    ]
+  },
+  "Akabane -> Ukima-Funado": {
+    "cost": 200,
+    "currency": "JPY",
+    "duration": "5 min",
+    "distance": "3.3 km",
+    "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+    "lines": [
+      "Saikyō Line Local Shinjuku (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Saikyō Line Local Shinjuku",
+        "operator": "East Japan Railway",
+        "from_stop": "Ukimafunado Station",
+        "to_stop": "Akabane Station"
+      }
+    ],
+    "alternatives": []
+  },
+  "Ikebukuro -> Ukima-Funado": {
+    "cost": 210,
+    "currency": "JPY",
+    "duration": "15 min",
+    "distance": "8.8 km",
+    "line": "Saikyō Line Local Shinjuku (East Japan Railway)",
+    "lines": [
+      "Saikyō Line Local Shinjuku (East Japan Railway)"
+    ],
+    "stops": [
+      {
+        "line": "Saikyō Line Local Shinjuku",
+        "operator": "East Japan Railway",
+        "from_stop": "Ukimafunado Station",
+        "to_stop": "Ikebukuro Station"
+      }
+    ],
+    "alternatives": []
+  },
+  "Asakusa -> Ueno": {
+    "cost": 0,
+    "currency": "JPY",
+    "duration": "15 min",
+    "distance": "",
+    "line": "Andando",
+    "lines": [
+      "Andando"
+    ],
+    "stops": [
+      {
+        "line": "Andando",
+        "operator": null,
+        "from_stop": null,
+        "to_stop": null
+      }
+    ],
+    "alternatives": []
+  }
+}

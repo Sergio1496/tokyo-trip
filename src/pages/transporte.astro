@@ -1,0 +1,91 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { jrSaikyoTimes, airportArrival, airportDeparture } from "../data/transport";
+---
+
+<Layout title="Transporte" activeNav="transport">
+  <main class="max-w-lg mx-auto px-4 py-6 space-y-6">
+    <div class="text-center">
+      <h1 class="text-2xl font-bold text-zinc-900 dark:text-white">Transporte</h1>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Rutas y tiempos desde Ukima-Funado</p>
+    </div>
+
+    <!-- JR Saikyo Times -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-blue-500 to-indigo-500 px-4 py-3">
+        <h2 class="text-white font-semibold text-sm">Desde Ukima-Funado (JR Saikyo)</h2>
+      </div>
+      <div class="divide-y divide-zinc-50 dark:divide-zinc-800">
+        {jrSaikyoTimes.map((row) => (
+          <div class="flex items-center justify-between px-4 py-2.5">
+            <span class="text-sm font-medium text-zinc-800 dark:text-zinc-200">{row.destination}</span>
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-zinc-500 dark:text-zinc-400">{row.transfer}</span>
+              <span class="text-xs font-semibold bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded-full min-w-[3.5rem] text-center">{row.time}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Airport Arrival -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-3">
+        <h2 class="text-white font-semibold text-sm">{airportArrival.title}</h2>
+        <p class="text-white/80 text-xs">{airportArrival.method} - {airportArrival.price}</p>
+      </div>
+      <ol class="px-4 py-3 space-y-2">
+        {airportArrival.steps.map((step, i) => (
+          <li class="flex items-start gap-3">
+            <span class="shrink-0 w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 text-xs font-bold flex items-center justify-center">{i + 1}</span>
+            <span class="text-sm text-zinc-700 dark:text-zinc-300">{step}</span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Airport Departure -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-orange-500 to-red-500 px-4 py-3">
+        <h2 class="text-white font-semibold text-sm">{airportDeparture.title}</h2>
+        <p class="text-white/80 text-xs">{airportDeparture.method} - {airportDeparture.price}</p>
+      </div>
+      <div class="px-4 py-3">
+        <div class="flex gap-3 mb-3">
+          <div class="bg-red-50 dark:bg-red-950 text-red-600 dark:text-red-400 rounded-xl px-3 py-2 text-center flex-1">
+            <div class="text-[0.6rem] uppercase tracking-wider">Despertador</div>
+            <div class="text-lg font-bold">{airportDeparture.wakeUp}</div>
+          </div>
+          <div class="bg-orange-50 dark:bg-orange-950 text-orange-600 dark:text-orange-400 rounded-xl px-3 py-2 text-center flex-1">
+            <div class="text-[0.6rem] uppercase tracking-wider">Salir de casa</div>
+            <div class="text-lg font-bold">{airportDeparture.leaveHome}</div>
+          </div>
+          <div class="bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 rounded-xl px-3 py-2 text-center flex-1">
+            <div class="text-[0.6rem] uppercase tracking-wider">Vuelo</div>
+            <div class="text-lg font-bold">{airportDeparture.flightTime}</div>
+          </div>
+        </div>
+        <ol class="space-y-2">
+          {airportDeparture.steps.map((step, i) => (
+            <li class="flex items-start gap-3">
+              <span class="shrink-0 w-5 h-5 rounded-full bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 text-xs font-bold flex items-center justify-center">{i + 1}</span>
+              <span class="text-sm text-zinc-700 dark:text-zinc-300">{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="bg-amber-50 dark:bg-amber-950/30 rounded-2xl border border-amber-200 dark:border-amber-800 p-4">
+      <h3 class="text-sm font-semibold text-amber-800 dark:text-amber-300 mb-2">Tips de transporte</h3>
+      <ul class="space-y-1.5 text-xs text-amber-700 dark:text-amber-400">
+        <li>* Suica/ICOCA para todo. Cargar en máquinas de estaciones</li>
+        <li>* Caminar mucho: Ueno-Asakusa, Asakusa-Akihabara, Harajuku-Shibuya (15-20 min)</li>
+        <li>* JR Saikyo directo: Ikebukuro, Shinjuku, Shibuya, Kawagoe</li>
+        <li>* En Nippori se puede elegir entre Access Express o Skyliner sobre la marcha</li>
+        <li>* Devolver Suica/ICOCA en maquina JR el ultimo dia para recuperar deposito 500 yen</li>
+      </ul>
+    </section>
+  </main>
+</Layout>

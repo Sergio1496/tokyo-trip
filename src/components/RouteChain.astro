@@ -1,0 +1,192 @@
+---
+import type { TransportStep } from "../data/itinerary";
+import transitCosts from "../data/transit-costs.json";
+
+interface Props {
+  steps: TransportStep[];
+  label?: string;
+}
+
+const { steps, label = "Ruta del dia" } = Astro.props;
+
+interface TransitData {
+  cost: number;
+  currency: string;
+  duration: string;
+  line: string;
+  stops?: { line: string; operator: string | null }[];
+}
+
+const costs = transitCosts as Record<string, TransitData>;
+
+const lineColors: Record<string, string> = {
+  "Yamanote": "#9ACD32", "Saikyō": "#00B261", "Keihin-Tōhoku": "#00B2E5",
+  "Takasaki": "#F68B1E", "Utsunomiya": "#F68B1E", "Chūō-Sōbu": "#FFD400",
+  "Chūō": "#F15A22", "Yokosuka": "#0068B7", "Shonan-Shinjuku": "#E21F26",
+  "Keiyō": "#C9242F", "Kawagoe": "#8B8B00", "Skyliner": "#003894",
+  "Keisei": "#003894", "Tōyoko": "#DA0442", "Ōimachi": "#F18C43",
+  "Den-en-toshi": "#00A23B", "TOBU": "#0F1E72", "Ginza": "#FF9500",
+  "Marunouchi": "#F62E36", "Hibiya": "#B5B5AC", "Tōzai": "#009BBF",
+  "Chiyoda": "#00A650", "Yūrakuchō": "#C1A470", "Hanzōmon": "#8B76D0",
+  "Namboku": "#00ADA0", "Fukutoshin": "#9C5E31", "Ōedo": "#B6007A",
+  "Rinkai": "#00A4DB", "Odakyu": "#1E90FF", "Andando": "#9CA3AF",
+  "Fujikyu": "#E60012",
+};
+
+function getColor(name: string): string {
+  for (const [key, color] of Object.entries(lineColors)) {
+    if (name.includes(key)) return color;
+  }
+  return "#71717A";
+}
+
+function getSegments(step: TransportStep) {
+  const key = `${step.from} -> ${step.to}`;
+  const data = costs[key];
+  if (!data?.stops) return null;
+  return data.stops
+    .filter(s => s.line !== "Walk")
+    .map(s => {
+      const short = s.line
+        .replace(/ (Local|Rapid|Express|Commuter Rapid|Toll Limited Express|Access-Tokkyu) .+$/, "")
+        .replace(" Line", "");
+      return { name: short, color: getColor(s.line) };
+    });
+}
+
+function getCost(step: TransportStep): string | null {
+  if (step.cost) return step.cost;
+  const key = `${step.from} -> ${step.to}`;
+  const data = costs[key];
+  if (data?.cost) return `¥${data.cost.toLocaleString()}`;
+  return null;
+}
+
+function getStepColor(step: TransportStep): string {
+  const segments = getSegments(step);
+  return segments?.[0]?.color || getColor(step.line);
+}
+
+const totalCost = steps.reduce((sum, step) => {
+  const key = `${step.from} -> ${step.to}`;
+  const data = costs[key];
+  return sum + (data?.cost || 0);
+}, 0);
+
+const isWalking = (line: string) => line.toLowerCase().includes("andando");
+---
+
+<div class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-3">
+  <div class="flex items-center justify-between mb-3">
+    <div class="flex items-center gap-1.5">
+      <svg class="w-4 h-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+      </svg>
+      <span class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">{label}</span>
+    </div>
+    {totalCost > 0 && (
+      <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded-full">
+        ¥{totalCost.toLocaleString()}
+      </span>
+    )}
+  </div>
+
+  <div class="ml-1">
+    {steps.map((step, i) => {
+      const segments = getSegments(step);
+      const cost = getCost(step);
+      const color = getStepColor(step);
+      const isFirst = i === 0;
+      const isLast = i === steps.length - 1;
+      const isTransfer = !isFirst;
+      const walking = isWalking(step.line);
+      const nextColor = !isLast ? getStepColor(steps[i + 1]) : null;
+
+      return (
+        <>
+          {/* === ESTACION === */}
+          <div class="flex items-center gap-2.5">
+            {/* Dot */}
+            {isFirst ? (
+              <span class="route-dot w-3.5 h-3.5 rounded-full border-[3px] shrink-0 relative z-10" style={`border-color: ${color}`} />
+            ) : (
+              <span class="w-3.5 h-3.5 rounded-full shrink-0 relative z-10 flex items-center justify-center" style={`background: ${color}; outline: 2px solid ${nextColor || color}; outline-offset: 1px;`}>
+                <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+              </span>
+            )}
+            <div class="flex flex-col">
+              <span class="text-xs font-bold text-zinc-800 dark:text-zinc-200">{step.from}</span>
+              <span class:list={[
+                "text-[0.55rem] font-semibold uppercase tracking-wider",
+                isFirst ? "text-emerald-600 dark:text-emerald-400" : "text-amber-600 dark:text-amber-400",
+              ]}>
+                {isFirst ? (walking ? "Inicio" : "Subir aqui") : (walking ? "Caminar" : "Transbordo")}
+              </span>
+            </div>
+          </div>
+
+          {/* === LINEA VERTICAL + INFO === */}
+          <div class="flex gap-2.5">
+            <div class="flex justify-center w-3.5 shrink-0">
+              {walking ? (
+                <div class="w-[3px] rounded-full border-l-[3px] border-dashed h-full" style={`border-color: ${color}`} />
+              ) : (
+                <div class="w-[3px] rounded-full" style={`background: ${color}`} />
+              )}
+            </div>
+            <div class="flex flex-wrap items-center gap-1.5 py-1.5">
+              {walking ? (
+                <span class="text-[0.65rem] font-semibold px-2 py-0.5 rounded-full whitespace-nowrap bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300">
+                  🚶 Andando
+                </span>
+              ) : segments ? segments.map(seg => (
+                <span
+                  class="text-[0.65rem] font-semibold px-2 py-0.5 rounded-full whitespace-nowrap"
+                  style={`background: ${seg.color}; color: white`}
+                >
+                  {seg.name}
+                </span>
+              )) : (
+                <span
+                  class="text-[0.65rem] font-semibold px-2 py-0.5 rounded-full whitespace-nowrap"
+                  style={`background: ${color}; color: white`}
+                >
+                  {step.line}
+                </span>
+              )}
+              <span class="text-[0.6rem] text-zinc-400 dark:text-zinc-500">{step.duration}</span>
+              {cost && (
+                <span class="text-[0.6rem] font-semibold text-emerald-600 dark:text-emerald-400">{cost}</span>
+              )}
+            </div>
+          </div>
+
+          {/* === ESTACION DESTINO FINAL === */}
+          {isLast && (
+            <div class="flex items-center gap-2.5">
+              <span
+                class="w-3.5 h-3.5 rounded-full shrink-0 relative z-10"
+                style={`background: ${color}`}
+              />
+              <div class="flex flex-col">
+                <span class="text-xs font-bold text-red-600 dark:text-red-400">{step.to}</span>
+                <span class="text-[0.55rem] font-semibold uppercase tracking-wider text-red-500 dark:text-red-400">
+                  {walking ? "Destino" : "Bajar aqui"}
+                </span>
+              </div>
+            </div>
+          )}
+        </>
+      );
+    })}
+  </div>
+</div>
+
+<style>
+  .route-dot {
+    background: white;
+  }
+  :global(.dark) .route-dot {
+    background: rgb(24 24 27);
+  }
+</style>

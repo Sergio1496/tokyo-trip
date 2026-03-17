@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@theme {
+  --color-sakura: #f8b4c8;
+  --color-torii: #d63031;
+  --color-indigo-dark: #1e1b4b;
+  --color-koi: #e17055;
+}

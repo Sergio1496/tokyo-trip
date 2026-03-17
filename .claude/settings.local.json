@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rtk npx:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(taskkill //F //IM node.exe)",
+      "WebFetch(domain:serpapi.com)",
+      "Bash(curl -s \"https://maps.googleapis.com/maps/api/directions/json?origin=Ukima-Funado+Station,+Tokyo&destination=Akabane+Station,+Tokyo&mode=transit&language=es&key=AIzaSyBvM3tLYj_X2DRhdQAy3WCBsDI9HwKAoZs\")",
+      "Bash(curl -s \"https://maps.googleapis.com/maps/api/directions/json?origin=Shinjuku+Station,+Tokyo&destination=Shibuya+Station,+Tokyo&mode=transit&departure_time=1777698000&language=es&key=AIzaSyBvM3tLYj_X2DRhdQAy3WCBsDI9HwKAoZs\")",
+      "Bash(curl -s \"https://maps.googleapis.com/maps/api/directions/json?origin=Shinjuku+Station,+Tokyo&destination=Shibuya+Station,+Tokyo&mode=driving&key=AIzaSyBvM3tLYj_X2DRhdQAy3WCBsDI9HwKAoZs\")",
+      "Bash(node -e \"const d=JSON.parse\\(require\\(''''fs''''\\).readFileSync\\(0,''''utf8''''\\)\\); console.log\\(JSON.stringify\\(d,null,2\\)\\)\")",
+      "Bash(curl -s \"https://serpapi.com/search.json?engine=google_maps_directions&start_addr=Ukima-Funado+Station,+Tokyo&end_addr=Akabane+Station,+Tokyo&travel_mode=4&hl=es&api_key=02435f32ac21c445b9afce32a6f29a2fd761e9b2dfbb4a06c6bf3398efeaac7f\")",
+      "Bash(node -e \":*)",
+      "Bash(curl -s \"https://serpapi.com/search.json?engine=google_maps_directions&start_addr=Shinjuku+Station,+Tokyo&end_addr=Shibuya+Station,+Tokyo&travel_mode=4&hl=es&api_key=02435f32ac21c445b9afce32a6f29a2fd761e9b2dfbb4a06c6bf3398efeaac7f\")",
+      "Bash(curl -s \"https://serpapi.com/search.json?engine=google_maps_directions&start_addr=Shinjuku+Station,+Tokyo,+Japan&end_addr=Shibuya+Station,+Tokyo,+Japan&travel_mode=3&hl=en&api_key=02435f32ac21c445b9afce32a6f29a2fd761e9b2dfbb4a06c6bf3398efeaac7f\")",
+      "Bash(node --check scripts/fetch-transit-costs.mjs)",
+      "Bash(node scripts/fetch-transit-costs.mjs)",
+      "Bash(curl -s \"https://serpapi.com/search.json?engine=google_maps_directions&start_addr=Ukima-Funado+Station,+Kita,+Tokyo,+Japan&end_addr=Kawagoe+Station,+Saitama,+Japan&travel_mode=3&hl=en&api_key=02435f32ac21c445b9afce32a6f29a2fd761e9b2dfbb4a06c6bf3398efeaac7f\")",
+      "Bash(rtk pnpm:*)",
+      "Bash(pnpm build:*)",
+      "Bash(node scripts/fetch-return-routes.mjs)",
+      "WebSearch",
+      "Bash(node scripts/add-categories.mjs)",
+      "Bash(node scripts/import-csv.mjs)",
+      "Bash(curl -s \"https://serpapi.com/search.json?engine=google_maps&q=restaurants+Shimokitazawa+Tokyo&type=search&hl=en&api_key=02435f32ac21c445b9afce32a6f29a2fd761e9b2dfbb4a06c6bf3398efeaac7f\")",
+      "Bash(curl -s \"https://serpapi.com/search.json?engine=google_maps&q=temples+shrines+Shimokitazawa+Tokyo&type=search&hl=en&api_key=02435f32ac21c445b9afce32a6f29a2fd761e9b2dfbb4a06c6bf3398efeaac7f\")",
+      "Bash(pnpm add:*)",
+      "Bash(node scripts/add-route-costs.mjs)",
+      "Bash(curl -s \"https://historical-forecast-api.open-meteo.com/v1/forecast?latitude=35.6762&longitude=139.6503&start_date=2025-05-03&end_date=2025-05-16&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,weathercode&timezone=Asia/Tokyo\")",
+      "Bash(curl -s \"https://archive-api.open-meteo.com/v1/archive?latitude=35.6762&longitude=139.6503&start_date=2025-05-03&end_date=2025-05-16&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weather_code&timezone=Asia/Tokyo\")",
+      "Bash(curl -s \"https://api.frankfurter.dev/v1/latest?base=JPY&symbols=EUR\")",
+      "Bash(rtk ls:*)",
+      "Bash(npx vercel:*)"
+    ]
+  }
+}

@@ -1,0 +1,486 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { budgetTips, dailyBudget } from "../data/transport";
+---
+
+<Layout title="Presupuesto" activeNav="budget">
+  <main class="max-w-lg mx-auto px-4 py-6 space-y-6">
+    <div class="text-center">
+      <h1 class="text-2xl font-bold text-zinc-900 dark:text-white">Ahorro</h1>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Tips, trucos y presupuesto para 14 días</p>
+    </div>
+
+    <!-- Budget Table -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-3">
+        <h2 class="text-white font-semibold text-sm">Presupuesto estimado (por persona)</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs">
+          <thead>
+            <tr class="bg-zinc-50 dark:bg-zinc-800/50">
+              {dailyBudget.headers.map((h) => (
+                <th class="px-3 py-2 text-left font-semibold text-zinc-600 dark:text-zinc-400">{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-50 dark:divide-zinc-800">
+            {dailyBudget.rows.map((row, i) => (
+              <tr>
+                <td class="px-3 py-2 text-zinc-700 dark:text-zinc-300">{row.label}</td>
+                <td class="px-3 py-2 text-zinc-500 dark:text-zinc-400">
+                  <span>¥{row.eco.toLocaleString()}</span>
+                  <span class="budget-eur text-emerald-600 dark:text-emerald-400 ml-1" data-yen={row.eco}></span>
+                </td>
+                <td class="px-3 py-2 text-zinc-500 dark:text-zinc-400">
+                  <span>¥{row.mod.toLocaleString()}</span>
+                  <span class="budget-eur text-emerald-600 dark:text-emerald-400 ml-1" data-yen={row.mod}></span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr class="bg-emerald-50 dark:bg-emerald-950/30 font-semibold">
+              <td class="px-3 py-2.5 text-emerald-800 dark:text-emerald-300">TOTAL 14 días</td>
+              <td class="px-3 py-2.5 text-emerald-700 dark:text-emerald-400 text-[0.7rem]">
+                ¥{dailyBudget.rows.reduce((s, r) => s + r.eco, 0).toLocaleString()}
+                <span class="budget-eur" data-yen={dailyBudget.rows.reduce((s, r) => s + r.eco, 0)}></span>
+              </td>
+              <td class="px-3 py-2.5 text-emerald-700 dark:text-emerald-400 text-[0.7rem]">
+                ¥{dailyBudget.rows.reduce((s, r) => s + r.mod, 0).toLocaleString()}
+                <span class="budget-eur" data-yen={dailyBudget.rows.reduce((s, r) => s + r.mod, 0)}></span>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="px-3 py-2 text-[0.65rem] text-zinc-400 dark:text-zinc-500">{dailyBudget.note}</div>
+    </section>
+
+    <script>
+      // Update budget table with real exchange rate
+      fetch("/api/exchange")
+        .then(r => r.json())
+        .then(data => {
+          if (data.error) return;
+          document.querySelectorAll(".budget-eur").forEach(el => {
+            const yen = parseInt(el.dataset.yen);
+            if (isNaN(yen)) return;
+            el.textContent = `(${(yen * data.rate).toFixed(0)}€)`;
+          });
+        })
+        .catch(() => {});
+    </script>
+
+    <!-- Tipo de cambio en tiempo real -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-4 shadow-sm">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-sm font-semibold text-zinc-800 dark:text-zinc-200">💱 Tipo de cambio</h3>
+        <span id="fx-live" class="hidden text-[0.55rem] font-bold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300">EN VIVO</span>
+      </div>
+      <div class="grid grid-cols-4 gap-2 text-center">
+        <div class="bg-zinc-50 dark:bg-zinc-800 rounded-xl p-2">
+          <div class="text-[0.6rem] text-zinc-400 uppercase">500 ¥</div>
+          <div id="fx-500" class="text-sm font-bold text-zinc-800 dark:text-zinc-200">...</div>
+        </div>
+        <div class="bg-zinc-50 dark:bg-zinc-800 rounded-xl p-2">
+          <div class="text-[0.6rem] text-zinc-400 uppercase">1.000 ¥</div>
+          <div id="fx-1000" class="text-sm font-bold text-zinc-800 dark:text-zinc-200">...</div>
+        </div>
+        <div class="bg-zinc-50 dark:bg-zinc-800 rounded-xl p-2">
+          <div class="text-[0.6rem] text-zinc-400 uppercase">5.000 ¥</div>
+          <div id="fx-5000" class="text-sm font-bold text-zinc-800 dark:text-zinc-200">...</div>
+        </div>
+        <div class="bg-zinc-50 dark:bg-zinc-800 rounded-xl p-2">
+          <div class="text-[0.6rem] text-zinc-400 uppercase">10.000 ¥</div>
+          <div id="fx-10000" class="text-sm font-bold text-zinc-800 dark:text-zinc-200">...</div>
+        </div>
+      </div>
+
+      <!-- Conversor -->
+      <div class="mt-3 flex items-center gap-2">
+        <div class="flex-1 relative">
+          <input id="fx-input" type="number" placeholder="Cantidad" class="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2 text-sm text-zinc-800 dark:text-zinc-200 pr-8" />
+          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-zinc-400">¥</span>
+        </div>
+        <span class="text-zinc-400">=</span>
+        <div class="flex-1 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-xl px-3 py-2 text-sm font-bold text-emerald-700 dark:text-emerald-400 text-center" id="fx-result">
+          0 €
+        </div>
+      </div>
+
+      <p id="fx-date" class="text-[0.55rem] text-zinc-400 mt-2 text-right"></p>
+    </section>
+
+    <script>
+      fetch("/api/exchange")
+        .then(r => r.json())
+        .then(data => {
+          if (data.error) return;
+          document.getElementById("fx-live").classList.remove("hidden");
+          document.getElementById("fx-500").textContent = data.examples["500"].toFixed(2) + " €";
+          document.getElementById("fx-1000").textContent = data.examples["1000"].toFixed(2) + " €";
+          document.getElementById("fx-5000").textContent = data.examples["5000"].toFixed(2) + " €";
+          document.getElementById("fx-10000").textContent = data.examples["10000"].toFixed(2) + " €";
+          document.getElementById("fx-date").textContent = "Actualizado: " + data.date + " (Frankfurter API)";
+
+          const input = document.getElementById("fx-input");
+          const result = document.getElementById("fx-result");
+          input.addEventListener("input", () => {
+            const val = parseFloat(input.value);
+            if (isNaN(val) || val <= 0) { result.textContent = "0 €"; return; }
+            result.textContent = (val * data.rate).toFixed(2) + " €";
+          });
+        })
+        .catch(() => {
+          document.getElementById("fx-500").textContent = "~3 €";
+          document.getElementById("fx-1000").textContent = "~6 €";
+          document.getElementById("fx-5000").textContent = "~30 €";
+          document.getElementById("fx-10000").textContent = "~60 €";
+          document.getElementById("fx-date").textContent = "Cambio aproximado (sin conexión)";
+        });
+    </script>
+
+    <!-- Tips existentes mejorados -->
+    {([
+      { title: "🚃 Transporte", items: budgetTips.transport, gradient: "from-blue-500 to-indigo-500", bg: "bg-blue-50 dark:bg-blue-950/30", text: "text-blue-700 dark:text-blue-400" },
+      { title: "🍜 Comida barata", items: budgetTips.food, gradient: "from-orange-500 to-red-500", bg: "bg-orange-50 dark:bg-orange-950/30", text: "text-orange-700 dark:text-orange-400" },
+      { title: "🎌 Actividades GRATIS", items: budgetTips.activities, gradient: "from-emerald-500 to-teal-500", bg: "bg-emerald-50 dark:bg-emerald-950/30", text: "text-emerald-700 dark:text-emerald-400" },
+      { title: "🛍️ Compras baratas", items: budgetTips.shopping, gradient: "from-violet-500 to-purple-500", bg: "bg-violet-50 dark:bg-violet-950/30", text: "text-violet-700 dark:text-violet-400" },
+    ] as const).map((cat) => (
+      <section class={`${cat.bg} rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden`}>
+        <div class={`bg-gradient-to-r ${cat.gradient} px-4 py-2.5`}>
+          <h3 class="text-white font-semibold text-sm">{cat.title}</h3>
+        </div>
+        <ul class="px-4 py-3 space-y-2">
+          {cat.items.map((item) => (
+            <li class={`text-xs ${cat.text} flex items-start gap-2`}>
+              <span class="shrink-0 mt-0.5 w-1.5 h-1.5 rounded-full bg-current opacity-50"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <!-- KONBINI GUIDE -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-green-500 to-emerald-500 px-4 py-3">
+        <h3 class="text-white font-semibold text-sm">🏪 Guía del Konbini (tu mejor amigo)</h3>
+      </div>
+      <div class="px-4 py-3 space-y-3">
+        <p class="text-xs text-zinc-600 dark:text-zinc-400">Los konbini (7-Eleven, Lawson, FamilyMart) están en cada esquina y son increíblemente baratos y buenos. Abiertos 24h.</p>
+        <div class="space-y-2">
+          <div class="flex items-start gap-2">
+            <span class="text-sm shrink-0">🍙</span>
+            <div>
+              <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200">Onigiri (120-180 yen)</span>
+              <p class="text-[0.65rem] text-zinc-500 dark:text-zinc-400">Bolas de arroz rellenas. El salmón (sake) y atún (tsuna mayo) son los más seguros</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-sm shrink-0">🍱</span>
+            <div>
+              <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200">Bento (400-600 yen)</span>
+              <p class="text-[0.65rem] text-zinc-500 dark:text-zinc-400">Bandejas completas con arroz, carne y acompañamiento. Lo calientan gratis</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-sm shrink-0">🥤</span>
+            <div>
+              <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200">Bebidas (100-160 yen)</span>
+              <p class="text-[0.65rem] text-zinc-500 dark:text-zinc-400">Café de máquina buenísimo por 100 yen. Té verde embotellado por 130 yen</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-sm shrink-0">🍮</span>
+            <div>
+              <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200">Postres (150-300 yen)</span>
+              <p class="text-[0.65rem] text-zinc-500 dark:text-zinc-400">Los pasteles y pudines de konbini son nivel pastelería. Probar el pudín de Lawson</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-sm shrink-0">💰</span>
+            <div>
+              <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200">Truco: descuentos nocturnos</span>
+              <p class="text-[0.65rem] text-zinc-500 dark:text-zinc-400">A partir de las 21-22h, los bento y sándwiches llevan pegatina de descuento (20-50% off)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CADENAS BARATAS RANKING -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-3">
+        <h3 class="text-white font-semibold text-sm">🏆 Ranking cadenas baratas</h3>
+      </div>
+      <div class="divide-y divide-zinc-50 dark:divide-zinc-800">
+        {([
+          { name: "Matsuya / Yoshinoya / Sukiya", price: "desde 400 yen", desc: "Gyudon (bol de arroz con ternera). Pedido por tablet, rápido", emoji: "🥩", link: "https://maps.google.com/maps?q=Matsuya+Tokyo" },
+          { name: "Hanamaru Udon", price: "desde 300 yen", desc: "Udon en self-service. Escoge toppings y paga al final", emoji: "🍜", link: "https://maps.google.com/maps?q=Hanamaru+Udon+Tokyo" },
+          { name: "SUSHIRO / Kura Sushi", price: "desde 120 yen/plato", desc: "Sushi rotatorio por tablet. 2 piezas por plato", emoji: "🍣", link: "https://maps.google.com/maps?q=SUSHIRO+Tokyo" },
+          { name: "Tenya", price: "desde 500 yen", desc: "Tempura sobre arroz, menú del día baratísimo", emoji: "🍤", link: "https://maps.google.com/maps?q=Tenya+Tokyo" },
+          { name: "CoCo Ichibanya", price: "desde 500 yen", desc: "Curry japonés personalizable (nivel de picante y toppings)", emoji: "🍛", link: "https://maps.google.com/maps?q=CoCo+Ichibanya+Tokyo" },
+          { name: "Ootoya", price: "desde 700 yen", desc: "Comida casera japonesa (teishoku). Como comer en casa de una abuela japonesa", emoji: "🍚", link: "https://maps.google.com/maps?q=Ootoya+Tokyo" },
+          { name: "Hidakaya", price: "desde 400 yen", desc: "Ramen y gyoza baratos. Gyoza a 200 yen por 6 piezas", emoji: "🥟", link: "https://maps.google.com/maps?q=Hidakaya+Tokyo" },
+        ]).map((chain) => (
+          <a href={chain.link} target="_blank" rel="noopener noreferrer" class="flex items-start gap-3 px-4 py-3 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
+            <span class="text-lg shrink-0">{chain.emoji}</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200">{chain.name}</span>
+                <span class="text-[0.6rem] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300">{chain.price}</span>
+              </div>
+              <p class="text-[0.65rem] text-zinc-500 dark:text-zinc-400 mt-0.5">{chain.desc}</p>
+            </div>
+            <svg class="w-3 h-3 text-blue-500 dark:text-blue-400 shrink-0 mt-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- AGUA Y BEBIDAS -->
+    <section class="bg-cyan-50 dark:bg-cyan-950/30 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+      <div class="bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2.5">
+        <h3 class="text-white font-semibold text-sm">💧 Agua y bebidas gratis</h3>
+      </div>
+      <ul class="px-4 py-3 space-y-2">
+        <li class="text-xs text-cyan-700 dark:text-cyan-400 flex items-start gap-2">
+          <span class="shrink-0 mt-0.5">🚰</span>
+          <span>El agua del grifo en Japón es potable y buena. Llevar botella reutilizable</span>
+        </li>
+        <li class="text-xs text-cyan-700 dark:text-cyan-400 flex items-start gap-2">
+          <span class="shrink-0 mt-0.5">⛲</span>
+          <span>Fuentes de agua en todos los parques públicos, estaciones de tren y muchos templos</span>
+        </li>
+        <li class="text-xs text-cyan-700 dark:text-cyan-400 flex items-start gap-2">
+          <span class="shrink-0 mt-0.5">🏪</span>
+          <span>En konbini: agua 100 yen (2L) o mugicha (té de cebada frío) 100 yen. No comprar marcas caras</span>
+        </li>
+        <li class="text-xs text-cyan-700 dark:text-cyan-400 flex items-start gap-2">
+          <span class="shrink-0 mt-0.5">🎰</span>
+          <span>Máquinas expendedoras: bebidas desde 100-130 yen. Las de marca blanca (白い自販機) son más baratas</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SUPERMERCADOS -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-rose-500 to-pink-500 px-4 py-3">
+        <h3 class="text-white font-semibold text-sm">🛒 Supermercados: el truco del descuento nocturno</h3>
+      </div>
+      <div class="px-4 py-3 space-y-2">
+        <p class="text-xs text-zinc-600 dark:text-zinc-400">A partir de las <strong class="text-zinc-800 dark:text-zinc-200">19-20h</strong>, los supermercados empiezan a poner pegatinas de descuento en la comida preparada:</p>
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div class="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-2">
+            <div class="text-lg font-bold text-amber-600">20%</div>
+            <div class="text-[0.55rem] text-zinc-400">19:00-20:00</div>
+          </div>
+          <div class="bg-orange-50 dark:bg-orange-950/30 rounded-xl p-2">
+            <div class="text-lg font-bold text-orange-600">30%</div>
+            <div class="text-[0.55rem] text-zinc-400">20:00-21:00</div>
+          </div>
+          <div class="bg-red-50 dark:bg-red-950/30 rounded-xl p-2">
+            <div class="text-lg font-bold text-red-600">50%</div>
+            <div class="text-[0.55rem] text-zinc-400">21:00+</div>
+          </div>
+        </div>
+        <p class="text-xs text-zinc-500 dark:text-zinc-400">Buscar supermercados: Life, Seiyu, Maruetsu, OK Store. El sushi y sashimi con descuento es un chollo increíble</p>
+        <a href="https://maps.google.com/maps?q=supermercado+cerca+Ukima-Funado+Tokyo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs text-blue-600 dark:text-blue-400 hover:underline">
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Ver supermercados cerca de casa
+        </a>
+      </div>
+    </section>
+
+    <!-- TAX FREE -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-indigo-500 to-violet-500 px-4 py-3">
+        <h3 class="text-white font-semibold text-sm">🧾 Tax Free - Ahorra un 10%</h3>
+      </div>
+      <div class="px-4 py-3 space-y-2">
+        <p class="text-xs text-zinc-600 dark:text-zinc-400">Como turistas podéis recuperar el <strong class="text-zinc-800 dark:text-zinc-200">10% de impuestos</strong> en compras superiores a 5.000 yen en una misma tienda y mismo día.</p>
+        <div class="space-y-1.5">
+          <div class="flex items-start gap-2 text-xs text-indigo-700 dark:text-indigo-400">
+            <span class="shrink-0">✅</span>
+            <span>Llevar siempre el <strong>pasaporte encima</strong> (original, no copia)</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-indigo-700 dark:text-indigo-400">
+            <span class="shrink-0">✅</span>
+            <span>Buscar el cartel "<strong>Tax Free</strong>" o "免税" en la tienda</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-indigo-700 dark:text-indigo-400">
+            <span class="shrink-0">✅</span>
+            <span>Pedir tax free al pagar. Te sellan el pasaporte electrónicamente</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-indigo-700 dark:text-indigo-400">
+            <span class="shrink-0">✅</span>
+            <span>Don Quijote, Uniqlo, BicCamera, Yodobashi: todos tienen tax free</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-red-600 dark:text-red-400">
+            <span class="shrink-0">⚠️</span>
+            <span>Consumibles (comida, bebida) tax free deben salir de Japón sin abrir. Los revisan en el aeropuerto</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUICA/ICOCA -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-green-600 to-emerald-600 px-4 py-3">
+        <h3 class="text-white font-semibold text-sm">💳 Suica/ICOCA - La tarjeta para todo</h3>
+      </div>
+      <div class="px-4 py-3 space-y-2">
+        <div class="space-y-1.5">
+          <div class="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
+            <span class="shrink-0">🚃</span>
+            <span>Pagar metro, JR, bus y monorail sin comprar tickets individuales</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
+            <span class="shrink-0">🏪</span>
+            <span>Pagar en konbinis, máquinas expendedoras, y muchas tiendas</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
+            <span class="shrink-0">💰</span>
+            <span>Depósito de 500 yen al comprarla. Se recupera al devolverla en máquinas JR</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
+            <span class="shrink-0">📱</span>
+            <span>Opción: Suica en iPhone (Wallet). Sin depósito, recargas con Apple Pay</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
+            <span class="shrink-0">🔄</span>
+            <span>Recargar en cualquier máquina de estación (billetes de 1.000 a 10.000 yen)</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-amber-600 dark:text-amber-400">
+            <span class="shrink-0">💡</span>
+            <span>Recomendación: cargar 3.000-5.000 yen cada vez. Se gasta rápido</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPS ÚTILES -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-sky-500 to-blue-500 px-4 py-3">
+        <h3 class="text-white font-semibold text-sm">📱 Apps imprescindibles (gratis)</h3>
+      </div>
+      <div class="divide-y divide-zinc-50 dark:divide-zinc-800">
+        {([
+          { name: "Google Maps", desc: "Rutas de tren en tiempo real, horarios exactos, navegación a pie", emoji: "🗺️" },
+          { name: "Suica (iPhone Wallet)", desc: "Tarjeta de transporte sin tarjeta física. Recargas con Apple Pay", emoji: "💳" },
+          { name: "Google Translate", desc: "Cámara para traducir menús y carteles en japonés al instante", emoji: "🔤" },
+          { name: "Tabelog", desc: "El TripAdvisor japonés. Rating más fiable que Google para restaurantes", emoji: "⭐" },
+          { name: "PayPay", desc: "App de pago QR japonesa. Muchos sitios pequeños solo aceptan esto o efectivo", emoji: "💸" },
+          { name: "Navitime", desc: "Rutas de tren con precios exactos en yenes. Mejor que Google Maps para trenes", emoji: "🚃" },
+        ]).map((app) => (
+          <div class="flex items-start gap-3 px-4 py-3">
+            <span class="text-lg shrink-0">{app.emoji}</span>
+            <div>
+              <span class="text-xs font-semibold text-zinc-800 dark:text-zinc-200">{app.name}</span>
+              <p class="text-[0.65rem] text-zinc-500 dark:text-zinc-400 mt-0.5">{app.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- WIFI -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-purple-500 to-fuchsia-500 px-4 py-3">
+        <h3 class="text-white font-semibold text-sm">📶 Internet en Japón</h3>
+      </div>
+      <div class="px-4 py-3 space-y-2">
+        <div class="space-y-1.5">
+          <div class="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
+            <span class="shrink-0">📱</span>
+            <span><strong>eSIM</strong> (lo más barato): Ubigi, Airalo o Holafly. Desde ~10 EUR/14 días. Solo datos, sin llamadas</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
+            <span class="shrink-0">📡</span>
+            <span><strong>Pocket WiFi</strong>: alquilar en el aeropuerto (~500 yen/día). Compartido para los dos</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
+            <span class="shrink-0">🆓</span>
+            <span><strong>WiFi gratis</strong>: estaciones JR, konbinis, Starbucks, centros comerciales</span>
+          </div>
+          <div class="flex items-start gap-2 text-xs text-amber-600 dark:text-amber-400">
+            <span class="shrink-0">💡</span>
+            <span>Recomendación: eSIM + WiFi del alojamiento es suficiente. No necesitáis pocket WiFi</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ERRORES COMUNES A EVITAR -->
+    <section class="bg-red-50 dark:bg-red-950/30 rounded-2xl border border-red-200 dark:border-red-800 overflow-hidden">
+      <div class="bg-gradient-to-r from-red-500 to-rose-500 px-4 py-2.5">
+        <h3 class="text-white font-semibold text-sm">🚫 Errores que cuestan dinero</h3>
+      </div>
+      <ul class="px-4 py-3 space-y-2">
+        {([
+          "NO cambiar dinero en el aeropuerto. La tasa es malísima. Usar cajeros 7-Eleven o Post Office (comisión baja)",
+          "NO coger taxi. Un trayecto de 10 min puede costar 1.500-2.000 yen. El metro siempre es mejor",
+          "NO comer en zonas turísticas (Senso-ji, Takeshita). Los precios son el doble. Caminar 5 min y sale más barato",
+          "NO comprar agua embotellada de marca. Llevar botella y rellenar en fuentes o comprar en konbini (100 yen/2L)",
+          "NO olvidar el pasaporte para Tax Free. Dejarlo en la habitación = perder el 10% de descuento",
+          "NO comprar JR Pass. Para 14 días en Tokyo NO merece la pena (solo sale a cuenta si viajas a Osaka/Kyoto)",
+        ]).map((item) => (
+          <li class="text-xs text-red-700 dark:text-red-400 flex items-start gap-2">
+            <span class="shrink-0 mt-0.5">⚠️</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- EFECTIVO -->
+    <section class="bg-amber-50 dark:bg-amber-950/30 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-4">
+      <h3 class="text-sm font-semibold text-amber-800 dark:text-amber-300 mb-2">💴 Efectivo en Japón</h3>
+      <ul class="space-y-1.5">
+        <li class="text-xs text-amber-700 dark:text-amber-400 flex items-start gap-2">
+          <span class="shrink-0">🏧</span>
+          <span>Cajeros <strong>7-Eleven</strong> y <strong>Post Office (JP Post)</strong> aceptan tarjetas extranjeras. Otros cajeros NO</span>
+        </li>
+        <li class="text-xs text-amber-700 dark:text-amber-400 flex items-start gap-2">
+          <span class="shrink-0">💳</span>
+          <span>VISA/Mastercard funcionan en cadenas grandes, konbinis y tiendas de marca. Sitios pequeños solo efectivo</span>
+        </li>
+        <li class="text-xs text-amber-700 dark:text-amber-400 flex items-start gap-2">
+          <span class="shrink-0">💡</span>
+          <span>Llevar siempre ~5.000-10.000 yen en efectivo encima. Muchos restaurantes pequeños e izakayas solo aceptan cash</span>
+        </li>
+        <li class="text-xs text-amber-700 dark:text-amber-400 flex items-start gap-2">
+          <span class="shrink-0">🪙</span>
+          <span>Guardar monedas de 100 y 500 yen. Se usan para coin lockers, máquinas expendedoras y templos</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- LINKS ÚTILES -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 overflow-hidden shadow-sm">
+      <div class="bg-gradient-to-r from-zinc-600 to-zinc-700 px-4 py-3">
+        <h3 class="text-white font-semibold text-sm">🔗 Enlaces útiles</h3>
+      </div>
+      <div class="divide-y divide-zinc-50 dark:divide-zinc-800">
+        {([
+          { name: "Hyperdia - Horarios de trenes", url: "https://www.hyperdia.com/", desc: "Buscador de rutas de tren con precios exactos" },
+          { name: "Google Maps - Supermercados cerca", url: "https://maps.google.com/maps?q=supermercado+Ukima-Funado+Tokyo", desc: "Supermercados cerca de Ukima-Funado" },
+          { name: "Google Maps - Konbinis cerca", url: "https://maps.google.com/maps?q=convenience+store+Ukima-Funado+Tokyo", desc: "7-Eleven, Lawson, FamilyMart cerca de casa" },
+          { name: "Google Maps - 100 yen shops", url: "https://maps.google.com/maps?q=Daiso+100+yen+shop+Tokyo", desc: "Tiendas Daiso y de 100 yen en Tokyo" },
+          { name: "Google Maps - Don Quijote", url: "https://maps.google.com/maps?q=Don+Quijote+Donki+Tokyo", desc: "Tiendas Don Quijote (abiertas hasta tarde)" },
+          { name: "XE.com - Tipo de cambio", url: "https://www.xe.com/currencyconverter/convert/?Amount=1000&From=JPY&To=EUR", desc: "Conversor yen a euro en tiempo real" },
+        ]).map((link) => (
+          <a href={link.url} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-4 py-3 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition">
+            <div class="flex-1 min-w-0">
+              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">{link.name}</span>
+              <p class="text-[0.65rem] text-zinc-500 dark:text-zinc-400 mt-0.5">{link.desc}</p>
+            </div>
+            <svg class="w-4 h-4 text-zinc-300 dark:text-zinc-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

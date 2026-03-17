@@ -1,0 +1,147 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { days } from "../data/itinerary";
+import { tripInfo } from "../data/base";
+
+const dayColors: Record<string, string> = {
+  "Llegada": "from-indigo-500 to-blue-500",
+  "Akihabara": "from-pink-500 to-rose-500",
+  "Ikebukuro / Nakano": "from-purple-500 to-violet-500",
+  "Asakusa": "from-red-500 to-orange-500",
+  "Yanaka / Nezu": "from-emerald-500 to-teal-500",
+  "Shinjuku": "from-yellow-500 to-amber-500",
+  "Shibuya / Harajuku": "from-fuchsia-500 to-pink-500",
+  "Kamakura": "from-cyan-500 to-blue-500",
+  "Fujikawaguchiko": "from-sky-500 to-indigo-500",
+  "Ginza / Tsukiji": "from-amber-500 to-orange-500",
+  "Kawagoe": "from-lime-500 to-green-500",
+  "Todoroki / Roppongi": "from-violet-500 to-purple-500",
+  "Kasukabe": "from-teal-500 to-cyan-500",
+  "Aeropuerto": "from-zinc-500 to-zinc-600",
+};
+---
+
+<Layout title="Inicio" activeNav="home">
+  <main class="max-w-lg mx-auto px-4 py-6">
+    <!-- Hero -->
+    <div class="text-center mb-6">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl shadow-lg shadow-red-500/25 mb-3">
+        <span class="text-3xl">&#9961;</span>
+      </div>
+      <h1 class="text-3xl font-bold text-zinc-900 dark:text-white">Tokyo 2026</h1>
+      <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-1">{tripInfo.dates}</p>
+    </div>
+
+    <!-- Accommodation Card -->
+    <div class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-4 mb-4 shadow-sm">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-900/50 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5 text-violet-600 dark:text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h2 class="font-semibold text-sm text-zinc-900 dark:text-white">{tripInfo.accommodation.name}</h2>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{tripInfo.accommodation.address}</p>
+          <div class="flex flex-wrap gap-x-3 gap-y-1 mt-2 text-xs text-zinc-500 dark:text-zinc-400">
+            <span>Estacion: <strong class="text-zinc-700 dark:text-zinc-300">{tripInfo.accommodation.station}</strong></span>
+          </div>
+          <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+            <span>Check-in: <strong class="text-zinc-700 dark:text-zinc-300">{tripInfo.accommodation.checkIn}</strong></span>
+            <span>Check-out: <strong class="text-zinc-700 dark:text-zinc-300">{tripInfo.accommodation.checkOut}</strong></span>
+          </div>
+          <div class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">{tripInfo.travelers} - {tripInfo.accommodation.nights} noches</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flight Cards -->
+    <div class="grid grid-cols-2 gap-2 mb-6">
+      <div class="bg-gradient-to-br from-indigo-950 to-indigo-900 rounded-xl p-3 text-white">
+        <div class="text-[0.6rem] text-indigo-300 uppercase tracking-wider mb-1">Ida</div>
+        <div class="text-xs font-semibold">VLC -> ZRH -> NRT</div>
+        <div class="text-[0.65rem] text-indigo-300 mt-1">Sab 2 May 06:00</div>
+        <div class="text-[0.65rem] text-indigo-300">-> Dom 3 May 09:10</div>
+        <div class="mt-1.5 text-[0.6rem] bg-indigo-800 inline-block px-1.5 py-0.5 rounded font-mono">ZNRHMT</div>
+      </div>
+      <div class="bg-gradient-to-br from-indigo-950 to-indigo-900 rounded-xl p-3 text-white">
+        <div class="text-[0.6rem] text-indigo-300 uppercase tracking-wider mb-1">Vuelta</div>
+        <div class="text-xs font-semibold">NRT -> ZRH -> VLC</div>
+        <div class="text-[0.65rem] text-indigo-300 mt-1">Sab 16 May 11:00</div>
+        <div class="text-[0.65rem] text-indigo-300">-> Dom 17 May 00:05</div>
+        <div class="mt-1.5 text-[0.6rem] bg-indigo-800 inline-block px-1.5 py-0.5 rounded font-mono">ZNRHMT</div>
+      </div>
+    </div>
+
+    <!-- Day Grid -->
+    <h2 class="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-3">14 Dias</h2>
+    <div class="grid grid-cols-2 gap-2 mb-6">
+      {days.map((day) => {
+        const gradient = dayColors[day.area] || "from-zinc-500 to-zinc-600";
+        return (
+          <a
+            href={`/dia/${day.dayNumber}`}
+            class="group relative overflow-hidden rounded-xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 shadow-sm hover:shadow-md transition-all"
+            data-trip-day={day.dayNumber}
+          >
+            <div class={`bg-gradient-to-r ${gradient} h-1.5`} />
+            <div class="p-3">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-[0.65rem] text-zinc-400 dark:text-zinc-500 font-medium">Dia {day.dayNumber}</span>
+                <span class="text-[0.6rem] text-zinc-400 dark:text-zinc-500">{day.weekday.slice(0, 3)} {day.date.split(' ')[0]}</span>
+              </div>
+              <h3 class="text-sm font-semibold text-zinc-800 dark:text-zinc-200 leading-tight">{day.title}</h3>
+              <p class="text-[0.65rem] text-zinc-400 dark:text-zinc-500 mt-0.5">{day.area}</p>
+              <span id={`weather-${day.dayNumber}`} class="text-[0.6rem] text-zinc-400 dark:text-zinc-500 mt-0.5 hidden"></span>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Quick Links -->
+    <div class="grid grid-cols-2 gap-2">
+      <a href="/transporte" class="flex items-center gap-2 bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-xl p-3 shadow-sm hover:shadow-md transition">
+        <div class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
+          <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+        </div>
+        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Transporte</span>
+      </a>
+      <a href="/presupuesto" class="flex items-center gap-2 bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-xl p-3 shadow-sm hover:shadow-md transition">
+        <div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
+          <svg class="w-4 h-4 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </div>
+        <span class="text-sm font-medium text-zinc-700 dark:text-zinc-300">Ahorro</span>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    // Weather on day cards
+    fetch("/api/weather")
+      .then(r => r.json())
+      .then(data => {
+        if (!data.days) return;
+        data.days.forEach(w => {
+          const el = document.getElementById(`weather-${w.dayNumber}`);
+          if (!el) return;
+          el.classList.remove("hidden");
+          const rain = w.rain > 0 ? ` 🌧️${w.rain}mm` : "";
+          el.textContent = `${w.emoji} ${w.tempMax}°/${w.tempMin}°${rain}`;
+        });
+      })
+      .catch(() => {});
+
+    const tripStart = new Date(2026, 4, 3);
+    const today = new Date();
+    const diffDays = Math.floor((today.getTime() - tripStart.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+    if (diffDays >= 1 && diffDays <= 14) {
+      const el = document.querySelector(`[data-trip-day="${diffDays}"]`);
+      if (el) {
+        el.classList.add("ring-2", "ring-red-500", "ring-offset-2");
+        const badge = document.createElement("span");
+        badge.className = "absolute top-2 right-2 bg-red-500 text-white text-[0.55rem] font-bold px-1.5 py-0.5 rounded-full";
+        badge.textContent = "HOY";
+        el.appendChild(badge);
+      }
+    }
+  </script>
+</Layout>

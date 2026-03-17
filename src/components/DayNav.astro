@@ -1,0 +1,47 @@
+---
+interface Props {
+  currentDay: number;
+}
+const { currentDay } = Astro.props;
+const dayLabels = [
+  "Llegada", "Akiba", "Ikeb+Nak", "Asakusa", "Yanaka",
+  "Shinjuku", "Shibuya", "Kamakura", "Fuji", "Ginza",
+  "Kawagoe", "teamLab", "Kasukabe", "Salida"
+];
+---
+
+<div class="sticky top-0 z-40 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
+  <div class="overflow-x-auto scrollbar-hide">
+    <div class="flex gap-1.5 p-2 min-w-max px-3" id="day-nav">
+      {Array.from({ length: 14 }, (_, i) => i + 1).map((day) => (
+        <a
+          href={`/dia/${day}`}
+          class:list={[
+            "flex flex-col items-center px-2.5 py-1.5 rounded-xl text-xs font-medium transition-all shrink-0 min-w-[3.2rem]",
+            day === currentDay
+              ? "bg-red-500 text-white shadow-md shadow-red-500/25"
+              : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700",
+          ]}
+          data-day={day}
+        >
+          <span class="text-[0.65rem] opacity-70">{day}</span>
+          <span class="truncate max-w-[3rem]">{dayLabels[day - 1]}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ currentDay }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const activeEl = document.querySelector(`[data-day="${currentDay}"]`);
+    if (activeEl) {
+      activeEl.scrollIntoView({ inline: "center", block: "nearest" });
+    }
+  });
+</script>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+</style>

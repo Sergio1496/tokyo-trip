@@ -1,0 +1,578 @@
+[
+  {
+    "title": "Templo Hokoku-ji",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Templo+Hokoku-ji/data=!4m2!3m1!1s0x6018442d28cbf7a7:0x72746d1149c32ef7",
+    "list": "Lista predeterminada",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Tanpopo Inn",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Tanpopo+Inn/data=!4m2!3m1!1s0x601893d92129adb7:0xf595ca6567ce3c7",
+    "list": "Lista predeterminada",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "dots. tokyo",
+    "note": "",
+    "url": "https://www.google.com/maps/place/dots.+tokyo/data=!4m2!3m1!1s0x60188e9722555555:0xe8b4377d04627f8d",
+    "list": "Lista predeterminada",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Seisuke Knife - Kappabashi",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Seisuke+Knife+-+Kappabashi/data=!4m2!3m1!1s0x60188fe782fad471:0xcd0991b3fd26abf0",
+    "list": "Lista predeterminada",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Todoroki Ravine Park",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Todoroki+Ravine+Park/data=!4m2!3m1!1s0x6018f45405495069:0x71ab45cd45edb2b9",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Akihabara UDX Parking",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Akihabara+UDX+Parking/data=!4m2!3m1!1s0x60188ea77d2b79b9:0x61672270a7cac6f0",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Sumibiyaki noukou chuka soba seafood",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Sumibiyaki+noukou+chuka+soba+seafood/data=!4m2!3m1!1s0x60188d052c01b31b:0xf769fb6419c5479f",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Triple Crown Creperie",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Triple+Crown+Creperie/data=!4m2!3m1!1s0x601893ef7c06b9e1:0x675a434aee8ed4ef",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Ramen Kamo to Negi Ueno Okachimachi Main Store",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Ramen+Kamo+to+Negi+Ueno+Okachimachi+Main+Store/data=!4m2!3m1!1s0x60188e9f836fe4eb:0xe59c5e732e04d0f7",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Tonkatsu Marushichi | Monzen-nakacho",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Tonkatsu+Marushichi+%7C+Monzen-nakacho/data=!4m2!3m1!1s0x6018894430277991:0xa4687055351b8b16",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Santuario Nezu",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Santuario+Nezu/data=!4m2!3m1!1s0x60188c32ce217ef9:0xc0a807378062b0d",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "GYOPAO Gyoza Roppongi",
+    "note": "",
+    "url": "https://www.google.com/maps/place/GYOPAO+Gyoza+Roppongi/data=!4m2!3m1!1s0x60188b82a9127f3d:0xa387ac54965052f1",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "ICHIRAN Shibuya",
+    "note": "",
+    "url": "https://www.google.com/maps/place/ICHIRAN+Shibuya/data=!4m2!3m1!1s0x60188ca8749c6b39:0xf2802bee15a9a6e",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Oreryū Shio Ramen Shibuya Sōhonten",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Orery%C5%AB+Shio+Ramen+Shibuya+S%C5%8Dhonten/data=!4m2!3m1!1s0x60188b55c48c5ec5:0x81ef09e68309aa54",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Oreryū Shio Ramen Shibuya Sentāgai",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Orery%C5%AB+Shio+Ramen+Shibuya+Sent%C4%81gai/data=!4m2!3m1!1s0x60188dd0a9a85791:0x3a6a386d2f6c31da",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Haruki Kitaakabane",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Haruki+Kitaakabane/data=!4m2!3m1!1s0x60189338e3bfa3d1:0xddca024c6133490e",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Punk BBQ & Sushi",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Punk+BBQ+%26+Sushi/data=!4m2!3m1!1s0xd6049002851120f:0xda24a599e3d4388e",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "SUSHIRO Ueno",
+    "note": "",
+    "url": "https://www.google.com/maps/place/SUSHIRO+Ueno/data=!4m2!3m1!1s0x60188e9fa9461afb:0x276a69060f368710",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "3495ｰ2 Funatsu",
+    "note": "",
+    "url": "https://www.google.com/maps/place/3495%EF%BD%B02+Funatsu/data=!4m2!3m1!1s0x60195e282bcf11c1:0x610f416bbc0d0988",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Uobei Shibuya Dogenzaka Store",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Uobei+Shibuya+Dogenzaka+Store/data=!4m2!3m1!1s0x60188ca9c3e93569:0x51b1ecd6fe7ee73f",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Omoide Yokochō- Callejón de los Recuerdos",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Omoide+Yokoch%C5%8D-+Callej%C3%B3n+de+los+Recuerdos/data=!4m2!3m1!1s0x60188cd7058ad73f:0x908f55935cc13cd3",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Shibuya Nonbei Yokocho",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Shibuya+Nonbei+Yokocho/data=!4m2!3m1!1s0x60188b5801d200a7:0xdfae104c597fa255",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Kogamasao Memorial Park",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Kogamasao+Memorial+Park/data=!4m2!3m1!1s0x60195f3f0ea04e47:0xc2d263851029533f",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "HALAL WAGYU RAMEN SHINJUKU-TEI Tokyo Yotsuya",
+    "note": "",
+    "url": "https://www.google.com/maps/place/HALAL+WAGYU+RAMEN+SHINJUKU-TEI+Tokyo+Yotsuya/data=!4m2!3m1!1s0x60188d43bb6e5a53:0xde244bba260d25cb",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Cat Cafe MOCHA Akihabara",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Cat+Cafe+MOCHA+Akihabara/data=!4m2!3m1!1s0x60188c1de917cb8d:0xe651617dd2b56535",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Surugaya Omiya Maruiten",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Surugaya+Omiya+Maruiten/data=!4m2!3m1!1s0x6018c173251a1be9:0x794428832f587f6c",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "LaLa garden Kasukabe",
+    "note": "",
+    "url": "https://www.google.com/maps/place/LaLa+garden+Kasukabe/data=!4m2!3m1!1s0x6018beb4afc643f9:0x6ff91ba69be5fe53",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Junjō Shōtengai -Pure Heart Shopping Street-",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Junj%C5%8D+Sh%C5%8Dtengai+-Pure+Heart+Shopping+Street-/data=!4m2!3m1!1s0x6018f27d8e4b83d7:0x938ae61b4dd025f2",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Fujikawaguchiko",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Fujikawaguchiko/data=!4m2!3m1!1s0x601be06b8847241b:0x5c735674800c6246",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Tochigi",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Tochigi/data=!4m2!3m1!1s0x601f3f8106b1aa97:0x226136dc12e5b1dc",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Kasukabe",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Kasukabe/data=!4m2!3m1!1s0x6018b9577625918b:0x90e883e997254242",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Kawagoe",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Kawagoe/data=!4m2!3m1!1s0x6018da49f61066b7:0xdfd5d75b60b9af9e",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Ginza Yakitori Kato",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Ginza+Yakitori+Kato/data=!4m2!3m1!1s0x60188b15f6be221b:0x9a6eeb59bbbdb911",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Sushi Shiogamakō Ginza Kiwami",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Sushi+Shiogamak%C5%8D+Ginza+Kiwami/data=!4m2!3m1!1s0x60188b27cbc78081:0x385b02c07ebc55aa",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Yakiniku Inoue Ginza",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Yakiniku+Inoue+Ginza/data=!4m2!3m1!1s0x60188be4778b6aab:0xefd20d760a13209",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Ciriaco cheesecake",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Ciriaco+cheesecake/data=!4m2!3m1!1s0xd604f00485b9523:0x75f7cd88c1b21626",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Kuhonbutsu Joshin-ji Temple",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Kuhonbutsu+Joshin-ji+Temple/data=!4m2!3m1!1s0x6018f4e2b9ae92c3:0xc0be74d32c2e2ed4",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Daikoku Parking Area",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Daikoku+Parking+Area/data=!4m2!3m1!1s0x60185d7092f37e6f:0xf526152a55b3d3a6",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Akihabara Electric Town",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Akihabara+Electric+Town/data=!4m2!3m1!1s0x60188c1d829dd5cd:0x772f5995da208987",
+    "list": "Quiero ir",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Tenkaippin - Akihabara",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Tenkaippin+-+Akihabara/data=!4m2!3m1!1s0x60188da3a8937a67:0xaaa7629184e3684f",
+    "list": "Ramen tokio",
+    "cat": "food",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Yakinikuraiku Nakanosanmoruten",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Yakinikuraiku+Nakanosanmoruten/data=!4m2!3m1!1s0x6018f328b3aea609:0xea9859cabd639271",
+    "list": "Restaurantes_cafeterias Tokyo",
+    "cat": "food",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "ロクシタン SHIBUYA TOKYO",
+    "note": "",
+    "url": "https://www.google.com/maps/place/%E3%83%AD%E3%82%AF%E3%82%B7%E3%82%BF%E3%83%B3+SHIBUYA+TOKYO/data=!4m2!3m1!1s0x60188b57df0eda91:0xa5d24e92feb152c0",
+    "list": "Restaurantes_cafeterias Tokyo",
+    "cat": "food",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Nakano Broadway",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Nakano+Broadway/data=!4m2!3m1!1s0x6018f290b2ddee83:0xe1b67e4ee0eff0be",
+    "list": "Sitios donde ir Tokyo",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Yamashiroya Ueno",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Yamashiroya+Ueno/data=!4m2!3m1!1s0x60188e9e5f5ed73f:0x9710bfada7b2ccf1",
+    "list": "Sitios donde ir Tokyo",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Santuario Yasukuni",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Santuario+Yasukuni/data=!4m2!3m1!1s0x60188c680dae43d5:0xb5e754e6bf88ce90",
+    "list": "Sitios donde ir Tokyo",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Santuario Atago",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Santuario+Atago/data=!4m2!3m1!1s0x6003ed755935edbb:0x5756f46678a0b0d2",
+    "list": "Sitios donde ir Tokyo",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "teamLab Borderless: MORI Building DIGITAL ART MUSEUM",
+    "note": "",
+    "url": "https://www.google.com/maps/place/teamLab+Borderless:+MORI+Building+DIGITAL+ART+MUSEUM/data=!4m2!3m1!1s0x601889fad49a9443:0x5831aba3288d2651",
+    "list": "Sitios donde ir Tokyo",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Sawara",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Sawara/data=!4m2!3m1!1s0x60225877007b9ac9:0xe2bc1b9d051569cd",
+    "list": "Sitios donde ir Tokyo",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Harajuku Gyozarou",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Harajuku+Gyozarou/data=!4m2!3m1!1s0x60188ca46f48ab17:0x8b30eb7879902bda",
+    "list": "Sitios favoritos",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Mendokoro Hanada Ikebukuro",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Mendokoro+Hanada+Ikebukuro/data=!4m2!3m1!1s0x60188d68bc75857f:0xb1c187e8c053636",
+    "list": "Sitios favoritos",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "AmiAmi",
+    "note": "",
+    "url": "https://www.google.com/maps/place/AmiAmi/data=!4m2!3m1!1s0x60188c1da7cc1d3d:0xb9f7632ec6b29c97",
+    "list": "Sitios favoritos",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "CREATIVE MUSEUM TOKYO",
+    "note": "",
+    "url": "https://www.google.com/maps/place/CREATIVE+MUSEUM+TOKYO/data=!4m2!3m1!1s0x60188bbf166ac4a1:0xbdd0d2b518555899",
+    "list": "Sitios favoritos",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Marion Crêpes Takeshita Street",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Marion+Cr%C3%AApes+Takeshita+Street/data=!4m2!3m1!1s0x60188cbb3777fb3d:0x6d22890a2f23e178",
+    "list": "Sitios favoritos",
+    "cat": "attraction",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Shibuya Scramble Crossing",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Shibuya+Scramble+Crossing/data=!4m2!3m1!1s0x60188bcaeb0cd12b:0x20e563a2e0aec969",
+    "list": "Sitios favoritos",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "紙文房あらき",
+    "note": "",
+    "url": "https://www.google.com/maps/place/%E7%B4%99%E6%96%87%E6%88%BF%E3%81%82%E3%82%89%E3%81%8D/data=!4m2!3m1!1s0x5ff833703612fbfd:0x7e6cbee2f1bbf27e",
+    "list": "Sitios favoritos",
+    "cat": "attraction",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Portón Kaminarimon",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Port%C3%B3n+Kaminarimon/data=!4m2!3m1!1s0x60188ec6db068cd1:0xd9a856805c8012bd",
+    "list": "Templos",
+    "cat": "temple",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Yasakiinari Shrine",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Yasakiinari+Shrine/data=!4m2!3m1!1s0x60188e9605822583:0xfbf7a137a97626f7",
+    "list": "Templos",
+    "cat": "temple",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Salon Chingodo",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Salon+Chingodo/data=!4m2!3m1!1s0x60188ec0f2beffff:0xeead2a603ab28b97",
+    "list": "Templos",
+    "cat": "temple",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Puerta Hozomon",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Puerta+Hozomon/data=!4m2!3m1!1s0x60188ec10f6fc403:0xc401cd525f9f8276",
+    "list": "Templos",
+    "cat": "temple",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Sensō-ji",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Sens%C5%8D-ji/data=!4m2!3m1!1s0x60188ec1a4463df1:0x6c0d289a8292810d",
+    "list": "Templos",
+    "cat": "temple",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Hoon-ji",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Hoon-ji/data=!4m2!3m1!1s0x60188e97bf546657:0x33f50fb4c3d9eb3e",
+    "list": "Templos",
+    "cat": "temple",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Genkūji",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Genk%C5%ABji/data=!4m2!3m1!1s0x60188e970c162c37:0x52e8167d7fec85c2",
+    "list": "Templos",
+    "cat": "temple",
+    "inItinerary": false,
+    "assignedDay": null
+  },
+  {
+    "title": "Templo Sogenji",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Templo+Sogenji/data=!4m2!3m1!1s0x60188e96fa907b3b:0xb4601acc616e0a16",
+    "list": "Templos",
+    "cat": "temple",
+    "inItinerary": true,
+    "assignedDay": null
+  },
+  {
+    "title": "Akiba Shrine",
+    "note": "",
+    "url": "https://www.google.com/maps/place/Akiba+Shrine/data=!4m2!3m1!1s0x60188e96d68f1233:0x264fd0bcc3ca3e1f",
+    "list": "Templos",
+    "cat": "temple",
+    "inItinerary": true,
+    "assignedDay": null
+  }
+]
