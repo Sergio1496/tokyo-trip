@@ -148,7 +148,7 @@ const buildPlaces = (importedPlaces as any[]).filter((p) => !p.inItinerary && !p
 
       for (const place of places) {
         const emoji = place.cat ? (CAT_EMOJI[place.cat] || "📍") : "📌";
-        const catBadge = place.cat ? `<span class="px-1.5 py-0.5 rounded text-[0.6rem] font-bold uppercase ${CAT_COLORS[place.cat] || ""}">${CAT_LABEL[place.cat] || ""}</span>` : "";
+        const catBadge = place.cat ? `<span class="px-1.5 py-0.5 rounded text-[0.65rem] font-bold uppercase ${CAT_COLORS[place.cat] || ""}">${CAT_LABEL[place.cat] || ""}</span>` : "";
 
         html += `
           <li class="px-4 py-3">

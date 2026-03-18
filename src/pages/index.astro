@@ -53,24 +53,6 @@ const dayColors: Record<string, string> = {
       </div>
     </div>
 
-    <!-- Flight Cards -->
-    <div class="grid grid-cols-2 gap-2 mb-6">
-      <div class="bg-gradient-to-br from-indigo-950 to-indigo-900 rounded-xl p-3 text-white">
-        <div class="text-[0.6rem] text-indigo-300 uppercase tracking-wider mb-1">Ida</div>
-        <div class="text-xs font-semibold">VLC -> ZRH -> NRT</div>
-        <div class="text-[0.65rem] text-indigo-300 mt-1">Sab 2 May 06:00</div>
-        <div class="text-[0.65rem] text-indigo-300">-> Dom 3 May 09:10</div>
-        <div class="mt-1.5 text-[0.6rem] bg-indigo-800 inline-block px-1.5 py-0.5 rounded font-mono">ZNRHMT</div>
-      </div>
-      <div class="bg-gradient-to-br from-indigo-950 to-indigo-900 rounded-xl p-3 text-white">
-        <div class="text-[0.6rem] text-indigo-300 uppercase tracking-wider mb-1">Vuelta</div>
-        <div class="text-xs font-semibold">NRT -> ZRH -> VLC</div>
-        <div class="text-[0.65rem] text-indigo-300 mt-1">Sab 16 May 11:00</div>
-        <div class="text-[0.65rem] text-indigo-300">-> Dom 17 May 00:05</div>
-        <div class="mt-1.5 text-[0.6rem] bg-indigo-800 inline-block px-1.5 py-0.5 rounded font-mono">ZNRHMT</div>
-      </div>
-    </div>
-
     <!-- Day Grid -->
     <h2 class="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-3">14 Dias</h2>
     <div class="grid grid-cols-2 gap-2 mb-6">
@@ -86,11 +68,11 @@ const dayColors: Record<string, string> = {
             <div class="p-3">
               <div class="flex items-center justify-between mb-1">
                 <span class="text-[0.65rem] text-zinc-400 dark:text-zinc-500 font-medium">Dia {day.dayNumber}</span>
-                <span class="text-[0.6rem] text-zinc-400 dark:text-zinc-500">{day.weekday.slice(0, 3)} {day.date.split(' ')[0]}</span>
+                <span class="text-[0.65rem] text-zinc-400 dark:text-zinc-500">{day.weekday.slice(0, 3)} {day.date.split(' ')[0]}</span>
               </div>
               <h3 class="text-sm font-semibold text-zinc-800 dark:text-zinc-200 leading-tight">{day.title}</h3>
               <p class="text-[0.65rem] text-zinc-400 dark:text-zinc-500 mt-0.5">{day.area}</p>
-              <span id={`weather-${day.dayNumber}`} class="text-[0.6rem] text-zinc-400 dark:text-zinc-500 mt-0.5 hidden"></span>
+              <span id={`weather-${day.dayNumber}`} class="text-[0.65rem] text-zinc-400 dark:text-zinc-500 mt-0.5 hidden"></span>
             </div>
           </a>
         );
@@ -138,7 +120,7 @@ const dayColors: Record<string, string> = {
       if (el) {
         el.classList.add("ring-2", "ring-red-500", "ring-offset-2");
         const badge = document.createElement("span");
-        badge.className = "absolute top-2 right-2 bg-red-500 text-white text-[0.55rem] font-bold px-1.5 py-0.5 rounded-full";
+        badge.className = "absolute top-2 right-2 bg-red-500 text-white text-[0.65rem] font-bold px-1.5 py-0.5 rounded-full";
         badge.textContent = "HOY";
         el.appendChild(badge);
       }

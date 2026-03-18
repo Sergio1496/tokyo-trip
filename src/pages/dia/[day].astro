@@ -40,6 +40,15 @@ const nextDay = day.dayNumber < 14 ? day.dayNumber + 1 : null;
     </div>
 
     <!-- Weather -->
+    <div id="weather-skeleton" class="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-3">
+      <div class="flex items-center gap-2 animate-pulse">
+        <div class="w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-700"></div>
+        <div class="flex-1 space-y-1.5">
+          <div class="h-3.5 w-24 bg-zinc-200 dark:bg-zinc-700 rounded"></div>
+          <div class="h-3 w-32 bg-zinc-100 dark:bg-zinc-800 rounded"></div>
+        </div>
+      </div>
+    </div>
     <div id="weather" class="hidden bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-100 dark:border-zinc-800 p-3">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
@@ -58,16 +67,17 @@ const nextDay = day.dayNumber < 14 ? day.dayNumber + 1 : null;
             <span class="text-sm">🌧️</span>
             <span id="w-rain" class="text-sm font-bold text-blue-600 dark:text-blue-400"></span>
           </div>
-          <p id="w-rain-label" class="text-[0.6rem] text-zinc-400 dark:text-zinc-500"></p>
+          <p id="w-rain-label" class="text-[0.65rem] text-zinc-400 dark:text-zinc-500"></p>
         </div>
       </div>
-      <p id="w-source" class="text-[0.55rem] text-zinc-400 dark:text-zinc-500 mt-1.5 text-right"></p>
+      <p id="w-source" class="text-[0.65rem] text-zinc-400 dark:text-zinc-500 mt-1.5 text-right"></p>
     </div>
 
     <script define:vars={{ dayNumber: day.dayNumber }}>
       fetch("/api/weather")
         .then(r => r.json())
         .then(data => {
+          document.getElementById("weather-skeleton")?.classList.add("hidden");
           if (!data.days) return;
           const w = data.days.find(d => d.dayNumber === dayNumber);
           if (!w) return;
@@ -88,7 +98,9 @@ const nextDay = day.dayNumber < 14 ? day.dayNumber + 1 : null;
             ? "Pronostico real"
             : "Basado en datos de mayo 2025 (referencia)";
         })
-        .catch(() => {});
+        .catch(() => {
+          document.getElementById("weather-skeleton")?.classList.add("hidden");
+        });
     </script>
 
     <!-- Flight Info -->
@@ -125,6 +137,124 @@ const nextDay = day.dayNumber < 14 ? day.dayNumber + 1 : null;
         ))}
       </div>
     )}
+
+    <!-- Nearby Restaurants (matches TimeSlotCard pattern) -->
+    <section class="bg-white dark:bg-zinc-900 rounded-2xl shadow-sm border border-zinc-100 dark:border-zinc-800 overflow-hidden">
+      <div class="bg-gradient-to-r from-orange-400 to-amber-400 px-4 py-2.5 flex items-center justify-between">
+        <h3 class="text-white font-semibold text-sm">Donde comer</h3>
+        <span id="restaurants-header-right" class="text-white/80 text-xs">{day.area}</span>
+        <button id="refresh-restaurants" class="hidden text-[0.65rem] font-bold text-white/80 hover:text-white bg-white/20 px-2 py-0.5 rounded-full transition-colors">
+          Otros resultados
+        </button>
+      </div>
+
+      <div id="restaurants-prompt" class="px-4 py-4">
+        <button
+          id="search-restaurants"
+          class="w-full text-sm text-orange-600 dark:text-orange-400 font-semibold py-2 border border-orange-200 dark:border-orange-900/50 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-950/30 transition-colors flex items-center justify-center gap-1.5"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          Buscar restaurantes cercanos
+        </button>
+      </div>
+
+      <div id="restaurants-loading" class="hidden px-4 py-6 text-center">
+        <div class="inline-block w-6 h-6 border-[3px] border-zinc-200 dark:border-zinc-700 border-t-orange-500 rounded-full animate-spin"></div>
+        <p class="text-xs text-zinc-400 dark:text-zinc-500 mt-2">Buscando restaurantes...</p>
+      </div>
+
+      <div id="restaurants-list" class="hidden"></div>
+
+      <div id="restaurants-error" class="hidden px-4 py-6 text-center">
+        <p class="text-zinc-400 dark:text-zinc-500 text-sm">No se pudieron cargar los restaurantes</p>
+        <button id="retry-restaurants" class="mt-2 text-xs font-semibold text-orange-600 dark:text-orange-400 hover:underline">Reintentar</button>
+      </div>
+    </section>
+
+    <script define:vars={{ area: day.area }}>
+      async function loadRestaurants() {
+        const prompt = document.getElementById("restaurants-prompt");
+        const headerRight = document.getElementById("restaurants-header-right");
+        const refreshBtn = document.getElementById("refresh-restaurants");
+        const loading = document.getElementById("restaurants-loading");
+        const list = document.getElementById("restaurants-list");
+        const error = document.getElementById("restaurants-error");
+
+        prompt.classList.add("hidden");
+        headerRight.classList.add("hidden");
+        refreshBtn.classList.remove("hidden");
+        loading.classList.remove("hidden");
+        list.classList.add("hidden");
+        error.classList.add("hidden");
+
+        try {
+          const res = await fetch(`/api/places?q=${encodeURIComponent(`restaurantes baratos buenas reseñas ${area} Tokyo`)}`);
+          const data = await res.json();
+
+          if (!Array.isArray(data) || data.length === 0) {
+            loading.classList.add("hidden");
+            error.classList.remove("hidden");
+            return;
+          }
+
+          let html = `<ul class="divide-y divide-zinc-50 dark:divide-zinc-800/50">`;
+
+          for (const r of data) {
+            const link = r.place_id
+              ? `https://maps.google.com/maps?q=place_id:${r.place_id}`
+              : "#";
+            const dirLink = r.place_id
+              ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(r.title)}&destination_place_id=${r.place_id}`
+              : null;
+            const stars = r.rating ? `⭐ ${r.rating}` : "";
+            const reviews = r.reviews ? `(${r.reviews})` : "";
+
+            html += `<li class="px-4 py-3">
+              <div class="flex items-start gap-2.5">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-start justify-between gap-2">
+                    <a href="${link}" target="_blank" rel="noopener noreferrer"
+                       class="font-semibold text-sm text-orange-700 dark:text-orange-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors inline-flex items-center gap-1.5">
+                      ${r.title}
+                      <svg class="w-3 h-3 text-blue-500 dark:text-blue-400 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </a>
+                    ${dirLink ? `<a href="${dirLink}" target="_blank" rel="noopener noreferrer" class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors" title="Como llegar"><svg class="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg></a>` : ""}
+                  </div>
+                  <div class="flex flex-wrap items-center gap-1.5 mt-1">
+                    ${stars ? `<span class="text-[0.65rem] font-bold text-amber-600 dark:text-amber-400">${stars} ${reviews}</span>` : ""}
+                    ${r.price ? `<span class="text-[0.65rem] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400">${r.price}</span>` : ""}
+                    ${r.type ? `<span class="text-[0.65rem] text-zinc-400">${r.type}</span>` : ""}
+                  </div>
+                  ${r.address ? `<p class="text-[0.65rem] text-zinc-400 dark:text-zinc-500 mt-0.5 truncate">${r.address}</p>` : ""}
+                </div>
+              </div>
+            </li>`;
+          }
+
+          html += `</ul>`;
+
+          const mapsQuery = encodeURIComponent(`restaurantes ${area} Tokyo`);
+          html += `<div class="px-4 py-2.5 border-t border-zinc-50 dark:border-zinc-800/50">
+            <a href="https://www.google.com/maps/search/${mapsQuery}" target="_blank" rel="noopener noreferrer"
+               class="flex items-center justify-center gap-1.5 text-xs font-semibold text-orange-600 dark:text-orange-400 hover:text-orange-500 transition-colors">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Ver mas en Google Maps
+            </a>
+          </div>`;
+
+          list.innerHTML = html;
+          loading.classList.add("hidden");
+          list.classList.remove("hidden");
+        } catch (err) {
+          loading.classList.add("hidden");
+          error.classList.remove("hidden");
+        }
+      }
+
+      document.getElementById("search-restaurants")?.addEventListener("click", loadRestaurants);
+      document.getElementById("refresh-restaurants")?.addEventListener("click", loadRestaurants);
+      document.getElementById("retry-restaurants")?.addEventListener("click", loadRestaurants);
+    </script>
 
     <!-- Return Route -->
     {day.returnRoute && (

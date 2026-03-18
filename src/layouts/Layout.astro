@@ -1,7 +1,7 @@
 ---
 interface Props {
   title: string;
-  activeNav?: "home" | "days" | "transport" | "budget" | "places" | "random";
+  activeNav?: "home" | "days" | "transport" | "budget" | "places" | "random" | "discover";
 }
 
 const { title, activeNav = "home" } = Astro.props;
@@ -37,13 +37,9 @@ import "../styles/global.css";
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
           <span>Transporte</span>
         </a>
-        <a href="/lugares" class:list={["flex flex-col items-center gap-0.5 text-xs", activeNav === "places" ? "text-red-500" : "text-zinc-400 dark:text-zinc-500"]}>
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" /></svg>
-          <span>Lugares</span>
-        </a>
-        <a href="/random" class:list={["flex flex-col items-center gap-0.5 text-xs", activeNav === "random" ? "text-red-500" : "text-zinc-400 dark:text-zinc-500"]}>
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-          <span>Random</span>
+        <a href="/random" class:list={["flex flex-col items-center gap-0.5 text-xs", (activeNav === "random" || activeNav === "discover" || activeNav === "places") ? "text-red-500" : "text-zinc-400 dark:text-zinc-500"]}>
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          <span>Descubrir</span>
         </a>
         <a href="/presupuesto" class:list={["flex flex-col items-center gap-0.5 text-xs", activeNav === "budget" ? "text-red-500" : "text-zinc-400 dark:text-zinc-500"]}>
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>

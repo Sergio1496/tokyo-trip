@@ -117,7 +117,7 @@ const isWalking = (line: string) => line.toLowerCase().includes("andando");
             <div class="flex flex-col">
               <span class="text-xs font-bold text-zinc-800 dark:text-zinc-200">{step.from}</span>
               <span class:list={[
-                "text-[0.55rem] font-semibold uppercase tracking-wider",
+                "text-[0.65rem] font-semibold uppercase tracking-wider",
                 isFirst ? "text-emerald-600 dark:text-emerald-400" : "text-amber-600 dark:text-amber-400",
               ]}>
                 {isFirst ? (walking ? "Inicio" : "Subir aqui") : (walking ? "Caminar" : "Transbordo")}
@@ -154,9 +154,9 @@ const isWalking = (line: string) => line.toLowerCase().includes("andando");
                   {step.line}
                 </span>
               )}
-              <span class="text-[0.6rem] text-zinc-400 dark:text-zinc-500">{step.duration}</span>
+              <span class="text-[0.65rem] text-zinc-400 dark:text-zinc-500">{step.duration}</span>
               {cost && (
-                <span class="text-[0.6rem] font-semibold text-emerald-600 dark:text-emerald-400">{cost}</span>
+                <span class="text-[0.65rem] font-semibold text-emerald-600 dark:text-emerald-400">{cost}</span>
               )}
             </div>
           </div>
@@ -170,7 +170,7 @@ const isWalking = (line: string) => line.toLowerCase().includes("andando");
               />
               <div class="flex flex-col">
                 <span class="text-xs font-bold text-red-600 dark:text-red-400">{step.to}</span>
-                <span class="text-[0.55rem] font-semibold uppercase tracking-wider text-red-500 dark:text-red-400">
+                <span class="text-[0.65rem] font-semibold uppercase tracking-wider text-red-500 dark:text-red-400">
                   {walking ? "Destino" : "Bajar aqui"}
                 </span>
               </div>
