@@ -20,11 +20,11 @@ const hoodsForClient = neighborhoods.map(h => ({
     <div class="text-center">
       <h1 class="text-2xl font-bold text-zinc-900 dark:text-white">Descubrir</h1>
       <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
-        Explora barrios, restaurantes y tus lugares guardados
+        Explora barrios, restaurantes, tiendas y tus lugares guardados
       </p>
     </div>
 
-    <div class="grid grid-cols-3 gap-2">
+    <div class="grid grid-cols-2 gap-2">
       <button
         id="randomBtn"
         class="bg-rose-500 hover:bg-rose-400 text-white font-bold px-3 py-3.5 rounded-xl text-sm active:scale-95 transition-all"
@@ -36,6 +36,12 @@ const hoodsForClient = neighborhoods.map(h => ({
         class="bg-red-500 hover:bg-red-400 text-white font-bold px-3 py-3.5 rounded-xl text-sm active:scale-95 transition-all flex items-center justify-center text-center"
       >
         🍜 Comer
+      </a>
+      <a
+        href="/tiendas"
+        class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-3.5 rounded-xl text-sm active:scale-95 transition-all flex items-center justify-center text-center"
+      >
+        🏷️ Chollos
       </a>
       <a
         href="/lugares"
