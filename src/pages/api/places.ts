@@ -14,12 +14,19 @@ export const GET: APIRoute = async ({ url }) => {
   }
 
   try {
+    const lat = url.searchParams.get("lat");
+    const lng = url.searchParams.get("lng");
+
     const serpUrl = new URL("https://serpapi.com/search.json");
     serpUrl.searchParams.set("engine", "google_maps");
     serpUrl.searchParams.set("q", q);
     serpUrl.searchParams.set("type", "search");
     serpUrl.searchParams.set("hl", "es");
     serpUrl.searchParams.set("api_key", SERPAPI_KEY || "");
+
+    if (lat && lng) {
+      serpUrl.searchParams.set("ll", `@${lat},${lng},15z`);
+    }
 
     const res = await fetch(serpUrl.toString());
     const data = await res.json();

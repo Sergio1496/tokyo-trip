@@ -56,6 +56,20 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </div>
 
+      <!-- Geo toggle -->
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <button
+          id="geo-toggle"
+          class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all border-2 border-zinc-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 hover:border-blue-400 dark:hover:border-blue-500"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span id="geo-label">Usar mi ubicación</span>
+        </button>
+      </div>
+
       <!-- Spin button -->
       <button
         id="spin-btn"
@@ -148,8 +162,59 @@ import Layout from "../layouts/Layout.astro";
   const resultsList = document.getElementById("results-list")!;
   const comboEl = document.getElementById("combo")!;
   const comboText = document.getElementById("combo-text")!;
+  const geoToggle = document.getElementById("geo-toggle") as HTMLButtonElement;
+  const geoLabel = document.getElementById("geo-label")!;
 
   let spinning = false;
+  let geoMode = false;
+  let userCoords: { lat: number; lng: number } | null = null;
+
+  geoToggle.addEventListener("click", async () => {
+    if (geoMode) {
+      // Disable geo mode
+      geoMode = false;
+      userCoords = null;
+      geoToggle.classList.remove("border-blue-500", "dark:border-blue-400", "bg-blue-50", "dark:bg-blue-950", "text-blue-600", "dark:text-blue-400");
+      geoToggle.classList.add("border-zinc-200", "dark:border-zinc-700", "text-zinc-500", "dark:text-zinc-400");
+      geoLabel.textContent = "Usar mi ubicación";
+      // Restore zone reel
+      reelZone.parentElement!.parentElement!.classList.remove("hidden");
+      return;
+    }
+
+    if (!navigator.geolocation) {
+      geoLabel.textContent = "GPS no disponible";
+      return;
+    }
+
+    geoLabel.textContent = "Localizando...";
+    geoToggle.disabled = true;
+
+    try {
+      const pos = await new Promise<GeolocationPosition>((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, {
+          enableHighAccuracy: true,
+          timeout: 10000,
+        });
+      });
+
+      userCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+      geoMode = true;
+
+      geoToggle.classList.remove("border-zinc-200", "dark:border-zinc-700", "text-zinc-500", "dark:text-zinc-400");
+      geoToggle.classList.add("border-blue-500", "dark:border-blue-400", "bg-blue-50", "dark:bg-blue-950", "text-blue-600", "dark:text-blue-400");
+      geoLabel.textContent = "Cerca de mí ✓";
+
+      // Hide zone reel
+      reelZone.parentElement!.parentElement!.classList.add("hidden");
+    } catch (err: any) {
+      const msg = err.code === 1 ? "Permiso denegado" : "Error de GPS";
+      geoLabel.textContent = msg;
+      setTimeout(() => { geoLabel.textContent = "Usar mi ubicación"; }, 2000);
+    } finally {
+      geoToggle.disabled = false;
+    }
+  });
 
   function renderItem(el: HTMLElement, item: { emoji: string; label: string }) {
     el.innerHTML = `<span class="text-3xl block leading-none">${item.emoji}</span><span class="text-[0.65rem] font-bold text-zinc-700 block mt-1">${item.label}</span>`;
@@ -203,22 +268,30 @@ import Layout from "../layouts/Layout.astro";
     resultsEl.classList.add("hidden");
     comboEl.classList.add("hidden");
 
-    const [food, zone, price] = await Promise.all([
+    const reels: Promise<any>[] = [
       animateReel(reelFood, FOODS, 1200),
-      animateReel(reelZone, ZONES, 1800),
+      geoMode ? Promise.resolve(null) : animateReel(reelZone, ZONES, 1800),
       animateReel(reelPrice, PRICES, 2400),
-    ]);
+    ];
+    const [food, zone, price] = await Promise.all(reels);
 
     // Build search query
     const priceQuery = price.query ? ` ${price.query}` : "";
-    const query = `${food.query}${priceQuery} ${zone.label} Tokyo`;
+    const zoneName = geoMode ? "mi zona" : zone.label;
+    const query = geoMode
+      ? `${food.query}${priceQuery}`
+      : `${food.query}${priceQuery} ${zone.label} Tokyo`;
 
-    comboText.textContent = `${food.emoji} ${food.label} ${price.label} en ${zone.label}`;
+    comboText.textContent = `${food.emoji} ${food.label} ${price.label} en ${zoneName}`;
     comboEl.classList.remove("hidden");
     loadingEl.classList.remove("hidden");
 
     try {
-      const res = await fetch(`/api/places?q=${encodeURIComponent(query)}`);
+      let apiUrl = `/api/places?q=${encodeURIComponent(query)}`;
+      if (geoMode && userCoords) {
+        apiUrl += `&lat=${userCoords.lat}&lng=${userCoords.lng}`;
+      }
+      const res = await fetch(apiUrl);
       const data = await res.json();
 
       if (data.error || !Array.isArray(data) || data.length === 0) {
@@ -229,7 +302,7 @@ import Layout from "../layouts/Layout.astro";
             <p class="text-sm mt-1">Prueba a girar de nuevo</p>
           </div>`;
       } else {
-        renderResults(data, food, zone, price);
+        renderResults(data, food, zone || { label: "mi zona", emoji: "📍" }, price);
       }
     } catch (err: any) {
       resultsList.innerHTML = `
@@ -309,9 +382,16 @@ import Layout from "../layouts/Layout.astro";
     html += `</ul></div>`;
 
     // Google Maps link for full search
-    const mapsQuery = encodeURIComponent(`${food.query} ${zone.label} Tokyo`);
+    let mapsUrl: string;
+    if (geoMode && userCoords) {
+      const mapsQuery = encodeURIComponent(food.query);
+      mapsUrl = `https://www.google.com/maps/search/${mapsQuery}/@${userCoords.lat},${userCoords.lng},15z`;
+    } else {
+      const mapsQuery = encodeURIComponent(`${food.query} ${zone.label} Tokyo`);
+      mapsUrl = `https://www.google.com/maps/search/${mapsQuery}`;
+    }
     html += `
-      <a href="https://www.google.com/maps/search/${mapsQuery}" target="_blank" rel="noopener noreferrer"
+      <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer"
          class="flex items-center justify-center gap-2 bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl shadow hover:bg-blue-600 transition text-sm">
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         Ver todos en Google Maps
