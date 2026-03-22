@@ -1,0 +1,570 @@
+<!-- Floating AI Chat Widget with Streaming + Conversation History -->
+<div id="chat-widget">
+  <!-- Toggle button -->
+  <button
+    id="chat-toggle"
+    class="fixed bottom-20 right-4 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-red-500 to-rose-600 text-white shadow-lg shadow-red-500/30 flex items-center justify-center active:scale-90 transition-all hover:shadow-red-500/50"
+    aria-label="Abrir chat"
+  >
+    <svg id="chat-icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+    </svg>
+    <svg id="chat-icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+
+  <!-- Chat panel -->
+  <div
+    id="chat-panel"
+    class="fixed bottom-20 right-4 z-50 w-[calc(100vw-2rem)] max-w-sm h-[70vh] max-h-[500px] bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl shadow-black/20 border border-zinc-200 dark:border-zinc-800 flex-col overflow-hidden"
+    style="display: none;"
+  >
+    <!-- Header -->
+    <div class="flex items-center gap-3 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 bg-gradient-to-r from-red-500 to-rose-600">
+      <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-lg">🗼</div>
+      <div class="flex-1 min-w-0">
+        <p class="text-white font-semibold text-sm">Tokyo AI</p>
+        <p class="text-white/70 text-xs">Tu guia personal del viaje</p>
+      </div>
+      <button id="chat-history-btn" class="text-white/60 hover:text-white transition-colors p-1" title="Historial">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </button>
+      <button id="chat-new" class="text-white/60 hover:text-white transition-colors p-1" title="Nueva conversacion">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- History panel -->
+    <div id="chat-history-panel" class="absolute inset-0 top-[52px] bg-white dark:bg-zinc-900 z-10 flex-col overflow-hidden" style="display: none;">
+      <div class="px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+        <p class="text-sm font-semibold">Conversaciones</p>
+        <button id="chat-history-close" class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="chat-history-list" class="flex-1 overflow-y-auto" style="scrollbar-width: thin;"></div>
+    </div>
+
+    <!-- Messages -->
+    <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3" style="scrollbar-width: thin;"></div>
+
+    <!-- Suggestions -->
+    <div id="chat-suggestions" class="px-4 pb-2 flex flex-wrap gap-1.5">
+      <button class="chat-suggestion text-xs px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800/50 hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors">Que hacemos el dia 1?</button>
+      <button class="chat-suggestion text-xs px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800/50 hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors">Como llego a Akihabara?</button>
+      <button class="chat-suggestion text-xs px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800/50 hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors">Donde comer ramen barato?</button>
+      <button class="chat-suggestion text-xs px-3 py-1.5 rounded-full bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800/50 hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors">A que hora sale el vuelo?</button>
+    </div>
+
+    <!-- Input -->
+    <div class="p-3 border-t border-zinc-200 dark:border-zinc-800">
+      <form id="chat-form" class="flex gap-2">
+        <input
+          id="chat-input"
+          type="text"
+          placeholder="Pregunta lo que quieras..."
+          autocomplete="off"
+          class="flex-1 min-w-0 px-3 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-sm focus:outline-none focus:border-red-500 transition-colors placeholder-zinc-400"
+        />
+        <button
+          type="submit"
+          id="chat-send"
+          class="px-3 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-white active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+          disabled
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  /* Streaming cursor */
+  .chat-cursor::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: #ef4444;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: cursor-blink 0.6s steps(1) infinite;
+  }
+  @keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Fade in for streaming bubble */
+  .chat-stream-bubble {
+    animation: bubble-in 0.25s ease-out;
+  }
+  @keyframes bubble-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Thinking dots */
+  .chat-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+    opacity: 0.3;
+    animation: dot-pulse 1.4s ease-in-out infinite;
+  }
+  .chat-dot:nth-child(2) { animation-delay: 0.2s; }
+  .chat-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dot-pulse {
+    0%, 80%, 100% { transform: scale(0.5); opacity: 0.3; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Streaming shimmer on the bubble while loading */
+  .chat-streaming .chat-bubble-content {
+    background-size: 200% 100%;
+    background-image: linear-gradient(90deg, transparent 0%, rgba(239,68,68,0.04) 50%, transparent 100%);
+    animation: shimmer 1.8s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+</style>
+
+<script>
+  // ─── Types ───
+  interface ChatMessage { role: "user" | "model"; content: string }
+  interface Conversation { id: string; title: string; messages: ChatMessage[]; updatedAt: number }
+
+  // ─── DOM ───
+  const toggle = document.getElementById("chat-toggle")!;
+  const panel = document.getElementById("chat-panel")!;
+  const iconOpen = document.getElementById("chat-icon-open")!;
+  const iconClose = document.getElementById("chat-icon-close")!;
+  const form = document.getElementById("chat-form") as HTMLFormElement;
+  const input = document.getElementById("chat-input") as HTMLInputElement;
+  const sendBtn = document.getElementById("chat-send") as HTMLButtonElement;
+  const messagesEl = document.getElementById("chat-messages")!;
+  const suggestionsEl = document.getElementById("chat-suggestions")!;
+  const newBtn = document.getElementById("chat-new")!;
+  const historyBtn = document.getElementById("chat-history-btn")!;
+  const historyPanel = document.getElementById("chat-history-panel")!;
+  const historyList = document.getElementById("chat-history-list")!;
+  const historyClose = document.getElementById("chat-history-close")!;
+
+  const STORAGE_KEY = "tokyo_chat_conversations";
+  let isOpen = false;
+  let isLoading = false;
+  let currentConvoId: string | null = null;
+
+  // ─── Conversation Storage ───
+  function loadConversations(): Conversation[] {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    } catch { return []; }
+  }
+
+  function saveConversations(convos: Conversation[]) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(convos));
+  }
+
+  function getConvo(id: string): Conversation | undefined {
+    return loadConversations().find(c => c.id === id);
+  }
+
+  function updateConvo(id: string, messages: ChatMessage[], title?: string) {
+    const convos = loadConversations();
+    const idx = convos.findIndex(c => c.id === id);
+    if (idx >= 0) {
+      convos[idx].messages = messages;
+      convos[idx].updatedAt = Date.now();
+      if (title) convos[idx].title = title;
+    }
+    saveConversations(convos);
+  }
+
+  function createConvo(): Conversation {
+    const convo: Conversation = {
+      id: crypto.randomUUID(),
+      title: "Nueva conversacion",
+      messages: [],
+      updatedAt: Date.now(),
+    };
+    const convos = loadConversations();
+    convos.unshift(convo);
+    saveConversations(convos);
+    return convo;
+  }
+
+  function deleteConvo(id: string) {
+    const convos = loadConversations().filter(c => c.id !== id);
+    saveConversations(convos);
+  }
+
+  // ─── Migrate old format ───
+  try {
+    const old = localStorage.getItem("tokyo_chat_history");
+    if (old) {
+      const msgs: ChatMessage[] = JSON.parse(old);
+      if (msgs.length > 0) {
+        const convo = createConvo();
+        convo.title = msgs[0].content.substring(0, 40) + (msgs[0].content.length > 40 ? "..." : "");
+        convo.messages = msgs;
+        updateConvo(convo.id, msgs, convo.title);
+        currentConvoId = convo.id;
+      }
+      localStorage.removeItem("tokyo_chat_history");
+    }
+  } catch {}
+
+  // ─── Init ───
+  function initChat() {
+    const convos = loadConversations();
+    if (convos.length > 0 && !currentConvoId) {
+      currentConvoId = convos[0].id;
+    }
+    renderCurrentConvo();
+  }
+
+  function renderCurrentConvo() {
+    messagesEl.innerHTML = "";
+    appendWelcome();
+    const convo = currentConvoId ? getConvo(currentConvoId) : null;
+    if (convo && convo.messages.length > 0) {
+      convo.messages.forEach(m => appendMessage(m.role, m.content, false));
+      suggestionsEl.style.display = "none";
+    } else {
+      suggestionsEl.style.display = "";
+    }
+    scrollToBottom();
+  }
+
+  function appendWelcome() {
+    const el = document.createElement("div");
+    el.className = "flex gap-2";
+    el.innerHTML = `
+      <div class="w-7 h-7 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-sm shrink-0">🗼</div>
+      <div class="bg-zinc-100 dark:bg-zinc-800 rounded-2xl rounded-tl-sm px-3 py-2 text-sm max-w-[85%]">
+        <p>Hola! Soy vuestro asistente para el viaje a Tokyo. Preguntadme lo que querais sobre el itinerario, transporte, restaurantes, precios... lo que sea! 🇯🇵</p>
+      </div>`;
+    messagesEl.appendChild(el);
+  }
+
+  initChat();
+
+  // ─── Toggle ───
+  function closeChat() {
+    isOpen = false;
+    panel.style.display = "none";
+    iconOpen.classList.remove("hidden");
+    iconClose.classList.add("hidden");
+  }
+
+  toggle.addEventListener("click", () => {
+    isOpen = !isOpen;
+    panel.style.display = isOpen ? "flex" : "none";
+    iconOpen.classList.toggle("hidden", isOpen);
+    iconClose.classList.toggle("hidden", !isOpen);
+    if (isOpen) { input.focus(); scrollToBottom(); }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!isOpen) return;
+    const target = e.target as HTMLElement;
+    if (!panel.contains(target) && !toggle.contains(target)) {
+      closeChat();
+    }
+  });
+
+  input.addEventListener("input", () => {
+    sendBtn.disabled = !input.value.trim() || isLoading;
+  });
+
+  document.querySelectorAll(".chat-suggestion").forEach(btn => {
+    btn.addEventListener("click", () => {
+      input.value = btn.textContent!.trim();
+      sendBtn.disabled = false;
+      form.dispatchEvent(new Event("submit"));
+    });
+  });
+
+  newBtn.addEventListener("click", () => {
+    const convo = createConvo();
+    currentConvoId = convo.id;
+    renderCurrentConvo();
+    historyPanel.style.display = "none";
+    input.focus();
+  });
+
+  historyBtn.addEventListener("click", () => {
+    renderHistory();
+    historyPanel.style.display = historyPanel.style.display === "none" ? "flex" : "none";
+  });
+  historyClose.addEventListener("click", () => {
+    historyPanel.style.display = "none";
+  });
+
+  function renderHistory() {
+    const convos = loadConversations();
+    if (convos.length === 0) {
+      historyList.innerHTML = `<p class="text-zinc-400 text-sm text-center py-8">No hay conversaciones</p>`;
+      return;
+    }
+    historyList.innerHTML = convos.map(c => {
+      const date = new Date(c.updatedAt);
+      const timeStr = date.toLocaleDateString("es", { day: "numeric", month: "short" }) + " " + date.toLocaleTimeString("es", { hour: "2-digit", minute: "2-digit" });
+      const isActive = c.id === currentConvoId;
+      return `
+        <div class="flex items-center gap-2 px-4 py-3 border-b border-zinc-100 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 cursor-pointer transition-colors ${isActive ? "bg-red-50 dark:bg-red-900/10" : ""}" data-convo-id="${c.id}">
+          <div class="flex-1 min-w-0" data-convo-select="${c.id}">
+            <p class="text-sm font-medium truncate ${isActive ? "text-red-500" : ""}">${escapeHtml(c.title)}</p>
+            <p class="text-xs text-zinc-400">${c.messages.length} msgs · ${timeStr}</p>
+          </div>
+          <button class="text-zinc-300 hover:text-red-500 transition-colors shrink-0 p-1" data-convo-delete="${c.id}" title="Eliminar">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+          </button>
+        </div>`;
+    }).join("");
+
+    historyList.querySelectorAll("[data-convo-select]").forEach(el => {
+      el.addEventListener("click", () => {
+        currentConvoId = (el as HTMLElement).dataset.convoSelect!;
+        renderCurrentConvo();
+        historyPanel.style.display = "none";
+      });
+    });
+    historyList.querySelectorAll("[data-convo-delete]").forEach(el => {
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = (el as HTMLElement).dataset.convoDelete!;
+        deleteConvo(id);
+        if (currentConvoId === id) {
+          const remaining = loadConversations();
+          currentConvoId = remaining.length > 0 ? remaining[0].id : null;
+          renderCurrentConvo();
+        }
+        renderHistory();
+      });
+    });
+  }
+
+  // ─── Send message (streaming) ───
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text || isLoading) return;
+
+    isLoading = true;
+    input.value = "";
+    sendBtn.disabled = true;
+    suggestionsEl.style.display = "none";
+
+    if (!currentConvoId) {
+      const convo = createConvo();
+      currentConvoId = convo.id;
+    }
+
+    const convo = getConvo(currentConvoId)!;
+    const messages = convo.messages;
+
+    messages.push({ role: "user", content: text });
+    appendMessage("user", text);
+
+    if (messages.length === 1) {
+      const title = text.substring(0, 50) + (text.length > 50 ? "..." : "");
+      updateConvo(currentConvoId, messages, title);
+    } else {
+      updateConvo(currentConvoId, messages);
+    }
+
+    // Create streaming bubble
+    const { wrapper, contentEl } = createStreamingBubble();
+    wrapper.classList.add("chat-streaming");
+    let fullText = "";
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Server error");
+      }
+
+      const reader = res.body!.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+
+        for (const line of lines) {
+          if (!line.startsWith("data: ")) continue;
+          const payload = line.slice(6);
+          if (payload === "[DONE]") continue;
+
+          try {
+            const data = JSON.parse(payload);
+            if (data.error) throw new Error(data.error);
+            if (data.text) {
+              fullText += data.text;
+              contentEl.innerHTML = formatMarkdown(fullText) + '<span class="chat-cursor"></span>';
+              scrollToBottom();
+            }
+          } catch (parseErr: any) {
+            if (parseErr.message && parseErr.message !== "Unexpected end of JSON input") {
+              throw parseErr;
+            }
+          }
+        }
+      }
+
+      // Streaming done: remove cursor + shimmer, render final
+      wrapper.classList.remove("chat-streaming");
+      contentEl.innerHTML = formatMarkdown(fullText);
+
+      messages.push({ role: "model", content: fullText });
+      updateConvo(currentConvoId!, messages);
+
+    } catch (err: any) {
+      wrapper.classList.remove("chat-streaming");
+      if (!fullText) {
+        wrapper.remove();
+        appendMessage("model", "Error: " + (err.message || "Error de conexion"));
+      } else {
+        contentEl.innerHTML = formatMarkdown(fullText);
+      }
+    }
+
+    isLoading = false;
+    sendBtn.disabled = !input.value.trim();
+  });
+
+  // ─── UI Helpers ───
+  function createStreamingBubble(): { wrapper: HTMLElement; contentEl: HTMLElement } {
+    const wrapper = document.createElement("div");
+    wrapper.className = "flex gap-2 chat-stream-bubble";
+    wrapper.innerHTML = `
+      <div class="w-7 h-7 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-sm shrink-0">🗼</div>
+      <div class="chat-bubble-content bg-zinc-100 dark:bg-zinc-800 rounded-2xl rounded-tl-sm px-3 py-2 text-sm max-w-[85%] chat-prose">
+        <div class="chat-thinking flex items-center gap-1.5 h-5">
+          <span class="chat-dot"></span>
+          <span class="chat-dot"></span>
+          <span class="chat-dot"></span>
+        </div>
+      </div>`;
+    messagesEl.appendChild(wrapper);
+    scrollToBottom();
+    const contentEl = wrapper.querySelector(".chat-prose")!;
+    return { wrapper, contentEl: contentEl as HTMLElement };
+  }
+
+  function appendMessage(role: "user" | "model", content: string, scroll = true) {
+    const wrapper = document.createElement("div");
+    wrapper.className = role === "user" ? "flex gap-2 justify-end" : "flex gap-2";
+
+    if (role === "user") {
+      wrapper.innerHTML = `
+        <div class="bg-red-500 text-white rounded-2xl rounded-tr-sm px-3 py-2 text-sm max-w-[85%]">
+          <p>${escapeHtml(content)}</p>
+        </div>`;
+    } else {
+      wrapper.innerHTML = `
+        <div class="w-7 h-7 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-sm shrink-0">🗼</div>
+        <div class="bg-zinc-100 dark:bg-zinc-800 rounded-2xl rounded-tl-sm px-3 py-2 text-sm max-w-[85%] chat-prose">
+          ${formatMarkdown(content)}
+        </div>`;
+    }
+
+    messagesEl.appendChild(wrapper);
+    if (scroll) scrollToBottom();
+  }
+
+  function scrollToBottom() {
+    requestAnimationFrame(() => {
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    });
+  }
+
+  function escapeHtml(text: string): string {
+    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function formatMarkdown(text: string): string {
+    // Bold
+    let html = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+    // Italic
+    html = html.replace(/(?<!=)\*([^*<]+)\*(?!=)/g, "<em>$1</em>");
+
+    // Inline code
+    html = html.replace(/`(.*?)`/g, '<code class="bg-zinc-200 dark:bg-zinc-700 px-1 rounded text-xs">$1</code>');
+
+    // Split into paragraphs and process lines
+    html = html.split("\n\n").map(para => {
+      const lines = para.split("\n").map(line => {
+        // Unordered list
+        if (/^[-•]\s/.test(line)) {
+          return `<li class="ml-3 pl-1 list-disc marker:text-red-400">${line.replace(/^[-•]\s/, "")}</li>`;
+        }
+        // Ordered list: "1. text"
+        if (/^\d+\.\s/.test(line)) {
+          return `<li class="ml-3 pl-1 list-decimal marker:text-red-400">${line.replace(/^\d+\.\s/, "")}</li>`;
+        }
+        return line;
+      });
+
+      // Wrap consecutive <li> in <ul>/<ol>
+      let result = "";
+      let inList = false;
+      let listType = "";
+      for (const line of lines) {
+        const isUl = line.startsWith('<li class="ml-3 pl-1 list-disc');
+        const isOl = line.startsWith('<li class="ml-3 pl-1 list-decimal');
+        const isList = isUl || isOl;
+        const currentType = isUl ? "ul" : isOl ? "ol" : "";
+
+        if (isList && !inList) {
+          listType = currentType;
+          result += `<${listType} class="my-1.5 space-y-0.5">`;
+          inList = true;
+        } else if (!isList && inList) {
+          result += `</${listType}>`;
+          inList = false;
+        }
+        if (!isList && line.trim()) {
+          result += (result && !inList ? "<br>" : "") + line;
+        } else {
+          result += line;
+        }
+      }
+      if (inList) result += `</${listType}>`;
+
+      return `<div class="mb-2 last:mb-0">${result}</div>`;
+    }).join("");
+
+    return html;
+  }
+</script>

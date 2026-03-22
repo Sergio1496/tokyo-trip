@@ -6,6 +6,7 @@ interface Props {
 
 const { title, activeNav = "home" } = Astro.props;
 import "../styles/global.css";
+import ChatWidget from "../components/ChatWidget.astro";
 ---
 
 <!doctype html>
@@ -55,6 +56,8 @@ import "../styles/global.css";
     </div>
 
     <slot />
+
+    <ChatWidget />
 
     <!-- Bottom Navigation -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 z-50 safe-area-bottom">
