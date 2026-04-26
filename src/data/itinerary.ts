@@ -229,6 +229,12 @@ export const days: DayData[] = [
               a("Tiendas de retro gaming, figuras, vinilo, relojes vintage"),
             ],
           }),
+          nuevo("Nakano Sun Mall", { cat: 'attraction', cost: "GRATIS", description: "Calle comercial cubierta que conecta la estación de Nakano con la entrada de Broadway" }),
+          nuevo("Junjō Shōtengai (Pure Heart Shopping Street)", { cat: 'attraction', cost: "GRATIS",
+            description: "Calle comercial retro inmortalizada por la novela de Nejime Shōichi. Está en Kōenji, 1 parada al oeste de Nakano por JR Chūō (~4 min)",
+            transit: [{ from: "Nakano", to: "Kōenji", line: "JR Chūō" }],
+            tips: ["Combina bien con un paseo por Kita-guchi (norte de la estación de Kōenji): ropa vintage y bares de barrio"],
+          }),
         ],
       },
       {
@@ -237,6 +243,10 @@ export const days: DayData[] = [
         timeRange: "18:00+",
         activities: [
           saved("Yakinikuraiku Nakanosanmoruten", { cat: 'food', description: "Yakiniku en Nakano" }),
+          nuevo("Chūka Soba Aoba (中華そば 青葉) Nakano", { cat: 'food', description: "Ramen icónico tokio-style (mezcla de shōyu + tonkotsu). A pocos minutos de Sun Mall" }),
+          nuevo("Nakano Beer Kobo", { cat: 'food', description: "Cervecería artesanal con tapas japonesas, ambiente local" }),
+          nuevo("Tensuke (天すけ)", { cat: 'food', description: "Tempura famosa por su huevo crujiente. En Kōenji, muy cerca de Junjō Shōtengai. Llegar pronto, hace cola" }),
+          nuevo("Kōenji Kita-guchi izakaya yokochō", { cat: 'food', description: "Callejones de izakaya retro al norte de la estación de Kōenji, justo al lado de Junjō Shōtengai" }),
           a("O cenar en Ikebukuro de vuelta (muchas opciones baratas)"),
         ],
       },
