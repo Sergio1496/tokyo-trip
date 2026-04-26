@@ -115,8 +115,9 @@ const dayColors: Record<string, string> = {
     const tripStart = new Date(2026, 4, 3);
     const today = new Date();
     const diffDays = Math.floor((today.getTime() - tripStart.getTime()) / (1000 * 60 * 60 * 24)) + 1;
-    if (diffDays >= 1 && diffDays <= 14) {
-      const el = document.querySelector(`[data-trip-day="${diffDays}"]`);
+    const dayInMay = diffDays + 2;
+    if (dayInMay >= 3 && dayInMay <= 16) {
+      const el = document.querySelector(`[data-trip-day="${dayInMay}"]`);
       if (el) {
         el.classList.add("ring-2", "ring-red-500", "ring-offset-2");
         const badge = document.createElement("span");

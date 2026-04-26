@@ -78,7 +78,7 @@ export const GET: APIRoute = async () => {
     const hasForecastWindow = forecastEnd >= forecastStart && forecastEnd >= tripStart;
 
     const dayMap = new Map<string, DayInfo>();
-    let dayNumber = 1;
+    let dayNumber = 3;
 
     const tripDays: string[] = [];
     for (let d = new Date(tripStart); d <= tripEnd; d.setDate(d.getDate() + 1)) {

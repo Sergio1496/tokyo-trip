@@ -4,16 +4,16 @@ interface Props {
 }
 const { currentDay } = Astro.props;
 const dayLabels = [
-  "Llegada", "Akiba", "Ikeb+Nak", "Asakusa", "Yanaka",
-  "Shinjuku", "Shibuya", "Kamakura", "Fuji", "Ginza",
-  "Kawagoe", "teamLab", "Kasukabe", "Salida"
+  "Llegada", "Akiba", "Asakusa", "Ikeb+Nak", "Yanaka",
+  "Shinjuku", "Shibuya", "Kawagoe", "Fuji", "Ginza",
+  "Kamakura", "Roppongi", "Kasukabe", "Salida"
 ];
 ---
 
 <div class="sticky top-0 z-40 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
   <div class="overflow-x-auto scrollbar-hide">
     <div class="flex gap-1.5 p-2 min-w-max px-3" id="day-nav">
-      {Array.from({ length: 14 }, (_, i) => i + 1).map((day) => (
+      {Array.from({ length: 14 }, (_, i) => i + 3).map((day) => (
         <a
           href={`/dia/${day}`}
           class:list={[
@@ -25,7 +25,7 @@ const dayLabels = [
           data-day={day}
         >
           <span class="text-[0.65rem] opacity-70">{day}</span>
-          <span class="truncate max-w-[3rem]">{dayLabels[day - 1]}</span>
+          <span class="truncate max-w-[3rem]">{dayLabels[day - 3]}</span>
         </a>
       ))}
     </div>

@@ -16,8 +16,8 @@ export function getStaticPaths() {
 }
 
 const { day } = Astro.props;
-const prevDay = day.dayNumber > 1 ? day.dayNumber - 1 : null;
-const nextDay = day.dayNumber < 14 ? day.dayNumber + 1 : null;
+const prevDay = day.dayNumber > 3 ? day.dayNumber - 1 : null;
+const nextDay = day.dayNumber < 16 ? day.dayNumber + 1 : null;
 ---
 
 <Layout title={`Dia ${day.dayNumber} - ${day.title}`} activeNav="days">

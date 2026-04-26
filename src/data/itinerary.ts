@@ -71,9 +71,9 @@ function nuevo(name: string, opts: Partial<Activity> = {}): Activity {
 }
 
 export const days: DayData[] = [
-  // ============ DIA 1 ============
+  // ============ DIA 3 ============
   {
-    dayNumber: 1,
+    dayNumber: 3,
     date: "3 de Mayo",
     weekday: "Domingo",
     title: "Llegada + Ueno",
@@ -130,9 +130,9 @@ export const days: DayData[] = [
       },
     ],
   },
-  // ============ DIA 2 ============
+  // ============ DIA 4 ============
   {
-    dayNumber: 2,
+    dayNumber: 4,
     date: "4 de Mayo",
     weekday: "Lunes",
     title: "Akihabara",
@@ -181,13 +181,72 @@ export const days: DayData[] = [
       },
     ],
   },
-  // ============ DIA 3 ============
+  // ============ DIA 5 ============
   {
-    dayNumber: 3,
+    dayNumber: 5,
     date: "5 de Mayo",
     weekday: "Martes",
+    title: "Asakusa + Kappabashi",
+    subtitle: "Día del Niño - último día de Golden Week. Esperar gente, sobre todo en Senso-ji.",
+    area: "Asakusa",
+    route: [
+      { from: "Ukima-Funado", to: "Akabane", line: "JR Saikyo", duration: "3 min" },
+      { from: "Akabane", to: "Ueno", line: "JR Keihin-Tohoku", duration: "17 min" },
+      { from: "Ueno", to: "Asakusa", line: "Andando", duration: "15 min" },
+    ],
+    returnRoute: [
+      { from: "Asakusa", to: "Ueno", line: "Andando", duration: "15 min" },
+      { from: "Ueno", to: "Akabane", line: "JR Utsunomiya", duration: "9 min" },
+      { from: "Akabane", to: "Ukima-Funado", line: "JR Saikyo", duration: "3 min" },
+    ],
+    timeSlots: [
+      {
+        label: "Mañana",
+        icon: "sun",
+        timeRange: "9:00 - 13:00",
+        activities: [
+          saved("Porton Kaminarimon", { cat: 'temple', cost: "GRATIS", description: "Icónica puerta roja con farol gigante" }),
+          a("Calle Nakamise-dori", { description: "Snacks baratos, souvenirs" }),
+          saved("Puerta Hozomon", { cat: 'temple', cost: "GRATIS" }),
+          saved("Senso-ji", { cat: 'temple', cost: "GRATIS", description: "El templo principal de Asakusa" }),
+          saved("Salon Chingodo", { cat: 'temple', cost: "GRATIS" }),
+          saved("Yasakiinari Shrine", { cat: 'temple', cost: "GRATIS", description: "Torii rojos" }),
+          saved("Hoon-ji", { cat: 'temple', cost: "GRATIS" }),
+          saved("Genkuji", { cat: 'temple', cost: "GRATIS" }),
+          saved("Templo Sogenji", { cat: 'temple', cost: "GRATIS" }),
+          saved("Akiba Shrine", { cat: 'temple', cost: "GRATIS" }),
+          nuevo("Sumida Park", { cat: 'attraction', cost: "GRATIS", description: "Vistas al Skytree desde el rio" }),
+        ],
+      },
+      {
+        label: "Tarde",
+        icon: "sunset",
+        timeRange: "13:00 - 18:00",
+        activities: [
+          a("Asakusa a Kappabashi (~10 min)", { transit: [{ from: "Asakusa", to: "Kappabashi", line: "Andando" }] }),
+          saved("Seisuke Knife - Kappabashi", { cat: 'attraction', description: "Calle de utensilios de cocina, cuchillos japoneses, réplicas de comida en cera. GRATIS pasear" }),
+          a("Kappabashi a Okachimachi (~15 min)", { transit: [{ from: "Kappabashi", to: "Okachimachi", line: "Andando" }] }),
+          saved("Ramen Kamo to Negi", { cat: 'food', description: "Ramen de pato, en Okachimachi" }),
+          a("Okachimachi a Ueno (~5 min)", { transit: [{ from: "Okachimachi", to: "Ueno", line: "Andando" }] }),
+        ],
+      },
+      {
+        label: "Noche",
+        icon: "moon",
+        timeRange: "18:00+",
+        activities: [
+          nuevo("Senso-ji iluminado de noche", { cat: 'temple', cat: 'temple', cost: "GRATIS", description: "Espectacular y mucha menos gente" }),
+        ],
+      },
+    ],
+  },
+  // ============ DIA 6 ============
+  {
+    dayNumber: 6,
+    date: "6 de Mayo",
+    weekday: "Miércoles",
     title: "Ikebukuro + Nakano",
-    subtitle: "Golden Week - Día del Niño. JR Saikyo directo, sin transbordos.",
+    subtitle: "Golden Week terminada. JR Saikyō directo, sin transbordos.",
     area: "Ikebukuro / Nakano",
     route: [
       { from: "Ukima-Funado", to: "Ikebukuro", line: "JR Saikyo", duration: "15 min" },
@@ -252,68 +311,9 @@ export const days: DayData[] = [
       },
     ],
   },
-  // ============ DIA 4 ============
+  // ============ DIA 7 ============
   {
-    dayNumber: 4,
-    date: "6 de Mayo",
-    weekday: "Miércoles",
-    title: "Asakusa + Kappabashi",
-    subtitle: "Golden Week terminada. Menos gente.",
-    area: "Asakusa",
-    route: [
-      { from: "Ukima-Funado", to: "Akabane", line: "JR Saikyo", duration: "3 min" },
-      { from: "Akabane", to: "Ueno", line: "JR Keihin-Tohoku", duration: "17 min" },
-      { from: "Ueno", to: "Asakusa", line: "Andando", duration: "15 min" },
-    ],
-    returnRoute: [
-      { from: "Asakusa", to: "Ueno", line: "Andando", duration: "15 min" },
-      { from: "Ueno", to: "Akabane", line: "JR Utsunomiya", duration: "9 min" },
-      { from: "Akabane", to: "Ukima-Funado", line: "JR Saikyo", duration: "3 min" },
-    ],
-    timeSlots: [
-      {
-        label: "Mañana",
-        icon: "sun",
-        timeRange: "9:00 - 13:00",
-        activities: [
-          saved("Porton Kaminarimon", { cat: 'temple', cost: "GRATIS", description: "Icónica puerta roja con farol gigante" }),
-          a("Calle Nakamise-dori", { description: "Snacks baratos, souvenirs" }),
-          saved("Puerta Hozomon", { cat: 'temple', cost: "GRATIS" }),
-          saved("Senso-ji", { cat: 'temple', cost: "GRATIS", description: "El templo principal de Asakusa" }),
-          saved("Salon Chingodo", { cat: 'temple', cost: "GRATIS" }),
-          saved("Yasakiinari Shrine", { cat: 'temple', cost: "GRATIS", description: "Torii rojos" }),
-          saved("Hoon-ji", { cat: 'temple', cost: "GRATIS" }),
-          saved("Genkuji", { cat: 'temple', cost: "GRATIS" }),
-          saved("Templo Sogenji", { cat: 'temple', cost: "GRATIS" }),
-          saved("Akiba Shrine", { cat: 'temple', cost: "GRATIS" }),
-          nuevo("Sumida Park", { cat: 'attraction', cost: "GRATIS", description: "Vistas al Skytree desde el rio" }),
-        ],
-      },
-      {
-        label: "Tarde",
-        icon: "sunset",
-        timeRange: "13:00 - 18:00",
-        activities: [
-          a("Asakusa a Kappabashi (~10 min)", { transit: [{ from: "Asakusa", to: "Kappabashi", line: "Andando" }] }),
-          saved("Seisuke Knife - Kappabashi", { cat: 'attraction', description: "Calle de utensilios de cocina, cuchillos japoneses, réplicas de comida en cera. GRATIS pasear" }),
-          a("Kappabashi a Okachimachi (~15 min)", { transit: [{ from: "Kappabashi", to: "Okachimachi", line: "Andando" }] }),
-          saved("Ramen Kamo to Negi", { cat: 'food', description: "Ramen de pato, en Okachimachi" }),
-          a("Okachimachi a Ueno (~5 min)", { transit: [{ from: "Okachimachi", to: "Ueno", line: "Andando" }] }),
-        ],
-      },
-      {
-        label: "Noche",
-        icon: "moon",
-        timeRange: "18:00+",
-        activities: [
-          nuevo("Senso-ji iluminado de noche", { cat: 'temple', cat: 'temple', cost: "GRATIS", description: "Espectacular y mucha menos gente" }),
-        ],
-      },
-    ],
-  },
-  // ============ DIA 5 ============
-  {
-    dayNumber: 5,
+    dayNumber: 7,
     date: "7 de Mayo",
     weekday: "Jueves",
     title: "Yanaka + Nezu",
@@ -361,9 +361,9 @@ export const days: DayData[] = [
       },
     ],
   },
-  // ============ DIA 6 ============
+  // ============ DIA 8 ============
   {
-    dayNumber: 6,
+    dayNumber: 8,
     date: "8 de Mayo",
     weekday: "Viernes",
     title: "Shinjuku",
@@ -373,6 +373,7 @@ export const days: DayData[] = [
       { from: "Ukima-Funado", to: "Shinjuku", line: "JR Saikyo", duration: "25 min" },
     ],
     returnRoute: [
+      { from: "Azabu-Jūban", to: "Shinjuku", line: "Toei Ōedo", duration: "13 min" },
       { from: "Shinjuku", to: "Ukima-Funado", line: "JR Saikyo", duration: "19 min" },
     ],
     timeSlots: [
@@ -393,6 +394,7 @@ export const days: DayData[] = [
           nuevo("Kabukicho", { cat: 'attraction', cost: "GRATIS", description: "Barrio de entretenimiento, Godzilla Head en Hotel Gracery" }),
           saved("Sumibiyaki noukou chuka soba seafood", { cat: 'food', description: "Ramen de marisco con carbon" }),
           saved("HALAL WAGYU RAMEN SHINJUKU-TEI", { cat: 'food', description: "Ramen wagyu" }),
+          saved("Omoide Yokocho / Callejón de los Recuerdos", { cat: 'food', description: "Callejones con yakitori desde 100-200 yen, cerveza barata. Pasar al final de la tarde sin prisa por llegar a teamLab" }),
         ],
       },
       {
@@ -400,15 +402,17 @@ export const days: DayData[] = [
         icon: "moon",
         timeRange: "18:00+",
         activities: [
-          saved("Omoide Yokocho / Callejón de los Recuerdos", { cat: 'food', description: "Callejones con yakitori desde 100-200 yen, cerveza barata. Ambiente increíble" }),
-          nuevo("Golden Gai", { cat: 'food', cost: "GRATIS", description: "200+ bares minúsculos (6-8 personas). Muchos no cobran cover a extranjeros" }),
+          a("Shinjuku a Azabudai Hills (~25 min). Salir antes de las 18:30", { transit: [{ from: "Shinjuku", to: "Azabu-Jūban", line: "Toei Ōedo" }] }),
+          saved("teamLab Borderless", { cat: 'attraction', cost: "~3.800 yen", description: "RESERVA entrada 19:00 - 19:30. Visita ~2-3h, salida sobre 21:30-22:00. Ir con ropa clara. En Azabudai Hills" }),
+          nuevo("Cena o copa en Azabu-Jūban / Roppongi", { cat: 'food', description: "Tras teamLab, quedarse cerca en vez de volver a Shinjuku. Azabu-Jūban tiene muchas izakaya tranquilas; Roppongi es más fiestero" }),
+          a("Vuelta a casa por Toei Ōedo desde Azabu-Jūban (transbordo en Shinjuku a JR Saikyō)"),
         ],
       },
     ],
   },
-  // ============ DIA 7 ============
+  // ============ DIA 9 ============
   {
-    dayNumber: 7,
+    dayNumber: 9,
     date: "9 de Mayo",
     weekday: "Sábado",
     title: "Shibuya + Harajuku",
@@ -458,49 +462,47 @@ export const days: DayData[] = [
       },
     ],
   },
-  // ============ DIA 8 ============
+  // ============ DIA 10 ============
   {
-    dayNumber: 8,
+    dayNumber: 10,
     date: "10 de Mayo",
     weekday: "Domingo",
-    title: "Excursion: Kamakura",
-    subtitle: "~1h15 desde Shinjuku. JR Shonan-Shinjuku Line directo.",
-    area: "Kamakura",
+    title: "Kawagoe (Pequeño Edo)",
+    subtitle: "JR Saikyo DIRECTO. ~40 min sin transbordo.",
+    area: "Kawagoe",
     route: [
-      { from: "Ukima-Funado", to: "Shinjuku", line: "JR Saikyo", duration: "25 min" },
-      { from: "Shinjuku", to: "Kamakura", line: "JR Shonan-Shinjuku", duration: "60 min" },
+      { from: "Ukima-Funado", to: "Kawagoe", line: "JR Saikyo", duration: "40 min" },
     ],
     returnRoute: [
-      { from: "Kamakura", to: "Shinjuku", line: "JR Yokosuka + JR Yamanote", duration: "1h 15 min" },
-      { from: "Shinjuku", to: "Ukima-Funado", line: "JR Saikyo", duration: "19 min" },
+      { from: "Kawagoe", to: "Ukima-Funado", line: "JR Saikyo", duration: "46 min" },
     ],
     timeSlots: [
       {
         label: "Día completo",
         icon: "sun",
-        timeRange: "8:00 - 19:00",
+        timeRange: "9:00 - 17:00",
         activities: [
-          saved("Templo Hokoku-ji", { cat: 'temple', cost: "300 yen", description: "Bosque de bambu de Kamakura", tips: ["Tomar matcha en el jardin (600 yen) - experiencia unica"] }),
-          nuevo("Gran Buda de Kamakura (Kotoku-in)", { cat: 'attraction', cost: "300 yen", description: "Buda al aire libre de 13 metros. Entrar dentro +50 yen" }),
-          nuevo("Templo Hasedera", { cat: 'temple', cost: "400 yen", description: "Vistas al mar, cuevas con estatuas, jardin japones" }),
-          nuevo("Calle Komachi-dori", { cat: 'attraction', cost: "GRATIS", description: "Calle comercial con snacks, tiendas, helados" }),
-          nuevo("Playa de Yuigahama", { cat: 'attraction', cost: "GRATIS", description: "Paseo por la playa al atardecer antes de volver" }),
-          a("Coste total actividades: ~1.050 yen (sin matcha) o ~1.650 yen (con matcha)"),
+          nuevo("Kurazukuri Street", { cat: 'attraction', cost: "GRATIS", description: "Calle de almacenes estilo Edo. Edificios de 200+ años, muy fotográficos" }),
+          nuevo("Toki no Kane", { cat: 'attraction', cost: "GRATIS", description: "Torre del reloj icónico de Kawagoe" }),
+          nuevo("Kashiya Yokocho", { cat: 'attraction', description: "Callejón de los dulces. Snacks desde 50 yen, caramelos gigantes" }),
+          nuevo("Santuario Hikawa", { cat: 'temple', cost: "GRATIS", description: "Uno de los más bonitos de Saitama" }),
+          nuevo("Templo Kitain", { cat: 'temple', cost: "400 yen", description: "500 estatuas Rakan, cada una con expresión única" }),
+          a("Almuerzo: probar unagi (anguila), especialidad de Kawagoe", { cost: "~1.500-2.000 yen" }),
         ],
       },
       {
-        label: "Vuelta",
-        icon: "moon",
-        timeRange: "19:00+",
+        label: "Tarde / Vuelta",
+        icon: "sunset",
+        timeRange: "17:00+",
         activities: [
-          a("Cenar por el camino en Shinjuku o en casa"),
+          saved("Surugaya Omiya Maruiten", { cat: 'attraction', description: "Tienda retro gaming/coleccionismo. Parada en Omiya de camino" }),
         ],
       },
     ],
   },
-  // ============ DIA 9 ============
+  // ============ DIA 11 ============
   {
-    dayNumber: 9,
+    dayNumber: 11,
     date: "11 de Mayo",
     weekday: "Lunes",
     title: "Excursion: Monte Fuji",
@@ -540,9 +542,9 @@ export const days: DayData[] = [
       },
     ],
   },
-  // ============ DIA 10 ============
+  // ============ DIA 12 ============
   {
-    dayNumber: 10,
+    dayNumber: 12,
     date: "12 de Mayo",
     weekday: "Martes",
     title: "Ginza + Tsukiji",
@@ -591,51 +593,53 @@ export const days: DayData[] = [
       },
     ],
   },
-  // ============ DIA 11 ============
+  // ============ DIA 13 ============
   {
-    dayNumber: 11,
+    dayNumber: 13,
     date: "13 de Mayo",
     weekday: "Miércoles",
-    title: "Kawagoe (Pequeño Edo)",
-    subtitle: "JR Saikyo DIRECTO. ~40 min sin transbordo.",
-    area: "Kawagoe",
+    title: "Excursion: Kamakura",
+    subtitle: "~1h15 desde Shinjuku. JR Shonan-Shinjuku Line directo.",
+    area: "Kamakura",
     route: [
-      { from: "Ukima-Funado", to: "Kawagoe", line: "JR Saikyo", duration: "40 min" },
+      { from: "Ukima-Funado", to: "Shinjuku", line: "JR Saikyo", duration: "25 min" },
+      { from: "Shinjuku", to: "Kamakura", line: "JR Shonan-Shinjuku", duration: "60 min" },
     ],
     returnRoute: [
-      { from: "Kawagoe", to: "Ukima-Funado", line: "JR Saikyo", duration: "46 min" },
+      { from: "Kamakura", to: "Shinjuku", line: "JR Yokosuka + JR Yamanote", duration: "1h 15 min" },
+      { from: "Shinjuku", to: "Ukima-Funado", line: "JR Saikyo", duration: "19 min" },
     ],
     timeSlots: [
       {
         label: "Día completo",
         icon: "sun",
-        timeRange: "9:00 - 17:00",
+        timeRange: "8:00 - 19:00",
         activities: [
-          nuevo("Kurazukuri Street", { cat: 'attraction', cost: "GRATIS", description: "Calle de almacenes estilo Edo. Edificios de 200+ años, muy fotográficos" }),
-          nuevo("Toki no Kane", { cat: 'attraction', cost: "GRATIS", description: "Torre del reloj icónico de Kawagoe" }),
-          nuevo("Kashiya Yokocho", { cat: 'attraction', description: "Callejón de los dulces. Snacks desde 50 yen, caramelos gigantes" }),
-          nuevo("Santuario Hikawa", { cat: 'temple', cost: "GRATIS", description: "Uno de los más bonitos de Saitama" }),
-          nuevo("Templo Kitain", { cat: 'temple', cost: "400 yen", description: "500 estatuas Rakan, cada una con expresión única" }),
-          a("Almuerzo: probar unagi (anguila), especialidad de Kawagoe", { cost: "~1.500-2.000 yen" }),
+          saved("Templo Hokoku-ji", { cat: 'temple', cost: "300 yen", description: "Bosque de bambu de Kamakura", tips: ["Tomar matcha en el jardin (600 yen) - experiencia unica"] }),
+          nuevo("Gran Buda de Kamakura (Kotoku-in)", { cat: 'attraction', cost: "300 yen", description: "Buda al aire libre de 13 metros. Entrar dentro +50 yen" }),
+          nuevo("Templo Hasedera", { cat: 'temple', cost: "400 yen", description: "Vistas al mar, cuevas con estatuas, jardin japones" }),
+          nuevo("Calle Komachi-dori", { cat: 'attraction', cost: "GRATIS", description: "Calle comercial con snacks, tiendas, helados" }),
+          nuevo("Playa de Yuigahama", { cat: 'attraction', cost: "GRATIS", description: "Paseo por la playa al atardecer antes de volver" }),
+          a("Coste total actividades: ~1.050 yen (sin matcha) o ~1.650 yen (con matcha)"),
         ],
       },
       {
-        label: "Tarde / Vuelta",
-        icon: "sunset",
-        timeRange: "17:00+",
+        label: "Vuelta",
+        icon: "moon",
+        timeRange: "19:00+",
         activities: [
-          saved("Surugaya Omiya Maruiten", { cat: 'attraction', description: "Tienda retro gaming/coleccionismo. Parada en Omiya de camino" }),
+          a("Cenar por el camino en Shinjuku o en casa"),
         ],
       },
     ],
   },
-  // ============ DIA 12 ============
+  // ============ DIA 14 ============
   {
-    dayNumber: 12,
+    dayNumber: 14,
     date: "14 de Mayo",
     weekday: "Jueves",
-    title: "Todoroki + teamLab + Roppongi",
-    subtitle: "Arte, naturaleza e inmersion digital.",
+    title: "Todoroki + Roppongi",
+    subtitle: "Naturaleza por la mañana y Roppongi por la noche.",
     area: "Todoroki / Roppongi",
     route: [
       { from: "Ukima-Funado", to: "Shibuya", line: "JR Saikyo", duration: "30 min" },
@@ -660,8 +664,8 @@ export const days: DayData[] = [
         icon: "sunset",
         timeRange: "13:00 - 18:00",
         activities: [
-          a("Todoroki a Azabudai Hills (~30 min)", { transit: [{ from: "Todoroki", to: "Shibuya", line: "Tokyu Ōimachi" }, { from: "Shibuya", to: "Roppongi-Itchome", line: "Metro Namboku" }] }),
-          saved("teamLab Borderless", { cat: 'attraction', cost: "~3.800 yen", description: "Reservar online con antelación. Ir con ropa clara. Dedicarle 2-3 horas minimo. En Azabudai Hills" }),
+          a("Todoroki a Roppongi (~30 min)", { transit: [{ from: "Todoroki", to: "Shibuya", line: "Tokyu Ōimachi" }, { from: "Shibuya", to: "Roppongi", line: "Metro Hibiya" }] }),
+          nuevo("Azabudai Hills", { cat: 'attraction', cost: "GRATIS pasear", description: "Complejo nuevo con jardines, plazas y arquitectura espectacular" }),
         ],
       },
       {
@@ -669,7 +673,6 @@ export const days: DayData[] = [
         icon: "moon",
         timeRange: "18:00+",
         activities: [
-          a("Azabudai Hills a Roppongi (~10 min)", { transit: [{ from: "Azabudai Hills", to: "Roppongi", line: "Andando" }] }),
           saved("GYOPAO Gyoza Roppongi", { cat: 'food', description: "Gyozas" }),
           nuevo("Tokyo Tower de noche", { cat: 'attraction', cost: "GRATIS (desde fuera)", description: "Andando desde Roppongi ~15 min. Iluminada es preciosa" }),
           saved("Santuario Atago", { cat: 'temple', cost: "GRATIS", description: "En una colina en Minato, tranquilo de noche" }),
@@ -677,9 +680,9 @@ export const days: DayData[] = [
       },
     ],
   },
-  // ============ DIA 13 ============
+  // ============ DIA 15 ============
   {
-    dayNumber: 13,
+    dayNumber: 15,
     date: "15 de Mayo",
     weekday: "Viernes",
     title: "Kasukabe + Tiempo libre",
@@ -751,9 +754,9 @@ export const days: DayData[] = [
       },
     ],
   },
-  // ============ DIA 14 ============
+  // ============ DIA 16 ============
   {
-    dayNumber: 14,
+    dayNumber: 16,
     date: "16 de Mayo",
     weekday: "Sábado",
     title: "Salida",
