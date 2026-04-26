@@ -94,7 +94,7 @@ const nextDay = day.dayNumber < 14 ? day.dayNumber + 1 : null;
             document.getElementById("w-rain-label").textContent = w.rainProb !== null ? w.rainProb + "% prob." : "lluvia";
           }
 
-          document.getElementById("w-source").textContent = data.source === "forecast"
+          document.getElementById("w-source").textContent = w.source === "forecast"
             ? "Pronostico real"
             : "Basado en datos de mayo 2025 (referencia)";
         })

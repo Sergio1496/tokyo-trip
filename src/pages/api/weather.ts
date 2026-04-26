@@ -33,63 +33,127 @@ function getWeatherInfo(code: number) {
   return weatherCodes[code] || { desc: "Desconocido", emoji: "❓" };
 }
 
+type DayInfo = {
+  date: string;
+  dayNumber: number;
+  tempMax: number;
+  tempMin: number;
+  rain: number;
+  rainProb: number | null;
+  code: number;
+  description: string;
+  emoji: string;
+  source: "forecast" | "historical";
+};
+
+function toISODate(d: Date) {
+  return d.toISOString().split("T")[0];
+}
+
+async function fetchForecast(startStr: string, endStr: string) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${TOKYO_LAT}&longitude=${TOKYO_LON}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,weather_code&timezone=Asia/Tokyo&start_date=${startStr}&end_date=${endStr}`;
+  const res = await fetch(url);
+  return res.json();
+}
+
+async function fetchHistorical(startStr: string, endStr: string) {
+  const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${TOKYO_LAT}&longitude=${TOKYO_LON}&start_date=${startStr}&end_date=${endStr}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weather_code&timezone=Asia/Tokyo`;
+  const res = await fetch(url);
+  return res.json();
+}
+
 export const GET: APIRoute = async () => {
   try {
     const now = new Date();
     const tripStart = new Date(TRIP_START);
+    const tripEnd = new Date(TRIP_END);
     const daysUntilTrip = Math.floor((tripStart.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 
-    let data;
-    let source: string;
+    // Open-Meteo allows forecast up to ~15 days ahead. Use 14 as a safe upper bound.
+    const forecastMaxEnd = new Date(now);
+    forecastMaxEnd.setDate(forecastMaxEnd.getDate() + 14);
 
-    if (daysUntilTrip <= 14 && daysUntilTrip >= -14) {
-      // Real forecast available
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${TOKYO_LAT}&longitude=${TOKYO_LON}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,weather_code&timezone=Asia/Tokyo&start_date=${TRIP_START}&end_date=${TRIP_END}`;
-      const res = await fetch(url);
-      data = await res.json();
-      source = "forecast";
-    } else {
-      // Use last year's data as reference
-      const lastYear = new Date(tripStart);
-      lastYear.setFullYear(lastYear.getFullYear() - 1);
-      const startStr = lastYear.toISOString().split("T")[0];
-      const endDate = new Date(TRIP_END);
-      endDate.setFullYear(endDate.getFullYear() - 1);
-      const endStr = endDate.toISOString().split("T")[0];
+    const forecastStart = tripStart > now ? tripStart : now;
+    const forecastEnd = tripEnd < forecastMaxEnd ? tripEnd : forecastMaxEnd;
+    const hasForecastWindow = forecastEnd >= forecastStart && forecastEnd >= tripStart;
 
-      const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${TOKYO_LAT}&longitude=${TOKYO_LON}&start_date=${startStr}&end_date=${endStr}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weather_code&timezone=Asia/Tokyo`;
-      const res = await fetch(url);
-      data = await res.json();
-      source = "historical";
+    const dayMap = new Map<string, DayInfo>();
+    let dayNumber = 1;
+
+    const tripDays: string[] = [];
+    for (let d = new Date(tripStart); d <= tripEnd; d.setDate(d.getDate() + 1)) {
+      tripDays.push(toISODate(d));
     }
 
-    if (!data.daily) {
-      return new Response(JSON.stringify({ error: "No weather data", raw: data }), {
+    // 1) Forecast for the window we can actually request
+    if (hasForecastWindow) {
+      const fStart = toISODate(forecastStart);
+      const fEnd = toISODate(forecastEnd);
+      const fData = await fetchForecast(fStart, fEnd);
+      if (fData.daily) {
+        fData.daily.time.forEach((date: string, i: number) => {
+          const code = fData.daily.weather_code[i];
+          const info = getWeatherInfo(code);
+          dayMap.set(date, {
+            date,
+            dayNumber: 0,
+            tempMax: fData.daily.temperature_2m_max[i],
+            tempMin: fData.daily.temperature_2m_min[i],
+            rain: fData.daily.precipitation_sum[i],
+            rainProb: fData.daily.precipitation_probability_max?.[i] ?? null,
+            code,
+            description: info.desc,
+            emoji: info.emoji,
+            source: "forecast",
+          });
+        });
+      }
+    }
+
+    // 2) Historical (last year) for any trip day not covered by forecast
+    const missing = tripDays.filter((d) => !dayMap.has(d));
+    if (missing.length > 0) {
+      const lastYearStart = new Date(tripStart);
+      lastYearStart.setFullYear(lastYearStart.getFullYear() - 1);
+      const lastYearEnd = new Date(tripEnd);
+      lastYearEnd.setFullYear(lastYearEnd.getFullYear() - 1);
+      const hData = await fetchHistorical(toISODate(lastYearStart), toISODate(lastYearEnd));
+      if (hData.daily) {
+        hData.daily.time.forEach((date: string, i: number) => {
+          const mapped = date.replace(/^\d{4}/, String(tripStart.getFullYear()));
+          if (dayMap.has(mapped)) return;
+          const code = hData.daily.weather_code[i];
+          const info = getWeatherInfo(code);
+          dayMap.set(mapped, {
+            date: mapped,
+            dayNumber: 0,
+            tempMax: hData.daily.temperature_2m_max[i],
+            tempMin: hData.daily.temperature_2m_min[i],
+            rain: hData.daily.precipitation_sum[i],
+            rainProb: null,
+            code,
+            description: info.desc,
+            emoji: info.emoji,
+            source: "historical",
+          });
+        });
+      }
+    }
+
+    const days = tripDays
+      .map((d) => dayMap.get(d))
+      .filter((x): x is DayInfo => Boolean(x))
+      .map((d) => ({ ...d, dayNumber: dayNumber++ }));
+
+    if (days.length === 0) {
+      return new Response(JSON.stringify({ error: "No weather data" }), {
         status: 500,
         headers: { "Content-Type": "application/json" },
       });
     }
 
-    const days = data.daily.time.map((date: string, i: number) => {
-      const code = data.daily.weather_code[i];
-      const info = getWeatherInfo(code);
-      // Map historical date to 2026 date
-      const actualDate = source === "historical"
-        ? date.replace(/^\d{4}/, "2026")
-        : date;
-
-      return {
-        date: actualDate,
-        dayNumber: i + 1,
-        tempMax: data.daily.temperature_2m_max[i],
-        tempMin: data.daily.temperature_2m_min[i],
-        rain: data.daily.precipitation_sum[i],
-        rainProb: data.daily.precipitation_probability_max?.[i] ?? null,
-        code,
-        description: info.desc,
-        emoji: info.emoji,
-      };
-    });
+    const sources = new Set(days.map((d) => d.source));
+    const source = sources.size === 1 ? [...sources][0] : "mixed";
 
     return new Response(JSON.stringify({ source, daysUntilTrip, days }), {
       headers: { "Content-Type": "application/json" },
